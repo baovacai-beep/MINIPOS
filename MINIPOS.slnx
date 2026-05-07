@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="MINIPOS/MINIPOS_GUI.csproj" />
+  <Project Path="MINIPOS_BUS/MINIPOS_BUS.csproj" />
+  <Project Path="MINIPOS_DAO/MINIPOS_DAO.csproj" />
+  <Project Path="MINIPOS_DTO/MINIPOS_DTO.csproj" />
+</Solution>
