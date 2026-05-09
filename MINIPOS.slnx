@@ -1,6 +1,6 @@
 <Solution>
-  <Project Path="MINIPOS/MINIPOS_GUI.csproj" />
-  <Project Path="MINIPOS_BUS/MINIPOS_BUS.csproj" />
-  <Project Path="MINIPOS_DAO/MINIPOS_DAO.csproj" />
-  <Project Path="MINIPOS_DTO/MINIPOS_DTO.csproj" />
+  <Project Path="MINIPOS/MINIPOS_GUI.csproj" Id="8228f805-bf8b-42f6-8529-6afbf500a88c" />
+  <Project Path="MINIPOS_BUS/MINIPOS_BUS.csproj" Id="3021d7f1-3126-4883-9049-81ba94f54a54" />
+  <Project Path="MINIPOS_DAO/MINIPOS_DAO.csproj" Id="e8151847-81e4-47bb-bb05-c78c13a01cc0" />
+  <Project Path="MINIPOS_DTO/MINIPOS_DTO.csproj" Id="4e584244-1ced-4f51-a5b3-4de24b925752" />
 </Solution>
