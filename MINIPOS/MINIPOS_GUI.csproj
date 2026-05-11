@@ -46,6 +46,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddInventoryForManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddInventoryForManager.Designer.cs">
+      <DependentUpon>AddInventoryForManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditInventoryForManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditInventoryForManager.Designer.cs">
+      <DependentUpon>EditInventoryForManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryForManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryForManager.Designer.cs">
+      <DependentUpon>InventoryForManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryForStaff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryForStaff.Designer.cs">
+      <DependentUpon>InventoryForStaff.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,8 +84,23 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AddInventoryForManager.resx">
+      <DependentUpon>AddInventoryForManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditInventoryForManager.resx">
+      <DependentUpon>EditInventoryForManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryForManager.resx">
+      <DependentUpon>InventoryForManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryForStaff.resx">
+      <DependentUpon>InventoryForStaff.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
