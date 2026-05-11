@@ -34,8 +34,6 @@ namespace MINIPOS
             this.lblPassword = new System.Windows.Forms.Label();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.btnLogin = new System.Windows.Forms.Button();
-            this.btnRegister = new System.Windows.Forms.Button();
-            this.lnkForgotPassword = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -90,33 +88,12 @@ namespace MINIPOS
             this.btnLogin.Text = "Đăng nhập";
             this.btnLogin.UseVisualStyleBackColor = true;
             // 
-            // btnRegister
-            // 
-            this.btnRegister.Location = new System.Drawing.Point(53, 245);
-            this.btnRegister.Name = "btnRegister";
-            this.btnRegister.Size = new System.Drawing.Size(250, 35);
-            this.btnRegister.TabIndex = 7;
-            this.btnRegister.Text = "Đăng ký";
-            this.btnRegister.UseVisualStyleBackColor = true;
-            // 
-            // lnkForgotPassword
-            // 
-            this.lnkForgotPassword.AutoSize = true;
-            this.lnkForgotPassword.Location = new System.Drawing.Point(203, 290);
-            this.lnkForgotPassword.Name = "lnkForgotPassword";
-            this.lnkForgotPassword.Size = new System.Drawing.Size(100, 16);
-            this.lnkForgotPassword.TabIndex = 5;
-            this.lnkForgotPassword.TabStop = true;
-            this.lnkForgotPassword.Text = "Quên mật khẩu?";
-            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(360, 360);
             this.Controls.Add(this.lblTitle);
-            this.Controls.Add(this.lnkForgotPassword);
-            this.Controls.Add(this.btnRegister);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.lblPassword);
@@ -139,8 +116,6 @@ namespace MINIPOS
         private System.Windows.Forms.Label lblPassword;
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Button btnLogin;
-        private System.Windows.Forms.Button btnRegister;
-        private System.Windows.Forms.LinkLabel lnkForgotPassword;
     }
 }
 
