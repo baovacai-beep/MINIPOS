@@ -43,23 +43,23 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.txtProductName = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.txtBarcode = new System.Windows.Forms.TextBox();
-            this.cboCategory = new System.Windows.Forms.ComboBox();
-            this.nudImportPrice = new System.Windows.Forms.NumericUpDown();
-            this.nudSellPrice = new System.Windows.Forms.NumericUpDown();
-            this.nudQuantity = new System.Windows.Forms.NumericUpDown();
-            this.txtUnit = new System.Windows.Forms.TextBox();
-            this.rtxtDescription = new System.Windows.Forms.RichTextBox();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.lvlProductName = new System.Windows.Forms.Label();
-            this.lblBarcode = new System.Windows.Forms.Label();
-            this.lblCategory = new System.Windows.Forms.Label();
-            this.lblImportPrice = new System.Windows.Forms.Label();
-            this.lblSellPrice = new System.Windows.Forms.Label();
-            this.lblQuantity = new System.Windows.Forms.Label();
-            this.lblUnit = new System.Windows.Forms.Label();
             this.lblDescription = new System.Windows.Forms.Label();
+            this.lblUnit = new System.Windows.Forms.Label();
+            this.lblQuantity = new System.Windows.Forms.Label();
+            this.lblSellPrice = new System.Windows.Forms.Label();
+            this.lblImportPrice = new System.Windows.Forms.Label();
+            this.lblCategory = new System.Windows.Forms.Label();
+            this.lblBarcode = new System.Windows.Forms.Label();
+            this.lvlProductName = new System.Windows.Forms.Label();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.rtxtDescription = new System.Windows.Forms.RichTextBox();
+            this.txtUnit = new System.Windows.Forms.TextBox();
+            this.nudQuantity = new System.Windows.Forms.NumericUpDown();
+            this.nudSellPrice = new System.Windows.Forms.NumericUpDown();
+            this.nudImportPrice = new System.Windows.Forms.NumericUpDown();
+            this.cboCategory = new System.Windows.Forms.ComboBox();
+            this.txtBarcode = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).BeginInit();
@@ -67,9 +67,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudImportPrice)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudSellPrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudQuantity)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudSellPrice)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudImportPrice)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -178,6 +178,7 @@
             this.btnSell.TabIndex = 2;
             this.btnSell.Text = "BÁN HÀNG";
             this.btnSell.UseVisualStyleBackColor = true;
+            this.btnSell.Click += new System.EventHandler(this.btnSell_Click);
             // 
             // pictureBox1
             // 
@@ -228,130 +229,14 @@
             this.panel3.Size = new System.Drawing.Size(633, 357);
             this.panel3.TabIndex = 29;
             // 
-            // txtBarcode
+            // lblDescription
             // 
-            this.txtBarcode.Location = new System.Drawing.Point(153, 42);
-            this.txtBarcode.Name = "txtBarcode";
-            this.txtBarcode.Size = new System.Drawing.Size(467, 22);
-            this.txtBarcode.TabIndex = 31;
-            // 
-            // cboCategory
-            // 
-            this.cboCategory.FormattingEnabled = true;
-            this.cboCategory.Location = new System.Drawing.Point(153, 70);
-            this.cboCategory.Name = "cboCategory";
-            this.cboCategory.Size = new System.Drawing.Size(467, 24);
-            this.cboCategory.TabIndex = 32;
-            // 
-            // nudImportPrice
-            // 
-            this.nudImportPrice.Location = new System.Drawing.Point(153, 100);
-            this.nudImportPrice.Name = "nudImportPrice";
-            this.nudImportPrice.Size = new System.Drawing.Size(467, 22);
-            this.nudImportPrice.TabIndex = 33;
-            // 
-            // nudSellPrice
-            // 
-            this.nudSellPrice.Location = new System.Drawing.Point(153, 128);
-            this.nudSellPrice.Name = "nudSellPrice";
-            this.nudSellPrice.Size = new System.Drawing.Size(467, 22);
-            this.nudSellPrice.TabIndex = 34;
-            // 
-            // nudQuantity
-            // 
-            this.nudQuantity.Location = new System.Drawing.Point(153, 156);
-            this.nudQuantity.Name = "nudQuantity";
-            this.nudQuantity.Size = new System.Drawing.Size(467, 22);
-            this.nudQuantity.TabIndex = 35;
-            // 
-            // txtUnit
-            // 
-            this.txtUnit.Location = new System.Drawing.Point(153, 184);
-            this.txtUnit.Name = "txtUnit";
-            this.txtUnit.Size = new System.Drawing.Size(467, 22);
-            this.txtUnit.TabIndex = 36;
-            // 
-            // rtxtDescription
-            // 
-            this.rtxtDescription.Location = new System.Drawing.Point(15, 240);
-            this.rtxtDescription.Name = "rtxtDescription";
-            this.rtxtDescription.Size = new System.Drawing.Size(605, 50);
-            this.rtxtDescription.TabIndex = 37;
-            this.rtxtDescription.Text = "";
-            // 
-            // btnSave
-            // 
-            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(139, 303);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(93, 35);
-            this.btnSave.TabIndex = 38;
-            this.btnSave.Text = "Lưu";
-            this.btnSave.UseVisualStyleBackColor = true;
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(361, 303);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(93, 35);
-            this.btnCancel.TabIndex = 39;
-            this.btnCancel.Text = "Hủy";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            // 
-            // lvlProductName
-            // 
-            this.lvlProductName.AutoSize = true;
-            this.lvlProductName.Location = new System.Drawing.Point(12, 17);
-            this.lvlProductName.Name = "lvlProductName";
-            this.lvlProductName.Size = new System.Drawing.Size(96, 16);
-            this.lvlProductName.TabIndex = 40;
-            this.lvlProductName.Text = "Tên sản phẩm:";
-            // 
-            // lblBarcode
-            // 
-            this.lblBarcode.AutoSize = true;
-            this.lblBarcode.Location = new System.Drawing.Point(12, 45);
-            this.lblBarcode.Name = "lblBarcode";
-            this.lblBarcode.Size = new System.Drawing.Size(62, 16);
-            this.lblBarcode.TabIndex = 41;
-            this.lblBarcode.Text = "Barcode:";
-            // 
-            // lblCategory
-            // 
-            this.lblCategory.AutoSize = true;
-            this.lblCategory.Location = new System.Drawing.Point(12, 73);
-            this.lblCategory.Name = "lblCategory";
-            this.lblCategory.Size = new System.Drawing.Size(36, 16);
-            this.lblCategory.TabIndex = 42;
-            this.lblCategory.Text = "Loại:";
-            // 
-            // lblImportPrice
-            // 
-            this.lblImportPrice.AutoSize = true;
-            this.lblImportPrice.Location = new System.Drawing.Point(12, 102);
-            this.lblImportPrice.Name = "lblImportPrice";
-            this.lblImportPrice.Size = new System.Drawing.Size(64, 16);
-            this.lblImportPrice.TabIndex = 43;
-            this.lblImportPrice.Text = "Giá nhập:";
-            // 
-            // lblSellPrice
-            // 
-            this.lblSellPrice.AutoSize = true;
-            this.lblSellPrice.Location = new System.Drawing.Point(12, 130);
-            this.lblSellPrice.Name = "lblSellPrice";
-            this.lblSellPrice.Size = new System.Drawing.Size(57, 16);
-            this.lblSellPrice.TabIndex = 44;
-            this.lblSellPrice.Text = "Giá bán:";
-            // 
-            // lblQuantity
-            // 
-            this.lblQuantity.AutoSize = true;
-            this.lblQuantity.Location = new System.Drawing.Point(12, 158);
-            this.lblQuantity.Name = "lblQuantity";
-            this.lblQuantity.Size = new System.Drawing.Size(63, 16);
-            this.lblQuantity.TabIndex = 45;
-            this.lblQuantity.Text = "Số lượng:";
+            this.lblDescription.AutoSize = true;
+            this.lblDescription.Location = new System.Drawing.Point(12, 218);
+            this.lblDescription.Name = "lblDescription";
+            this.lblDescription.Size = new System.Drawing.Size(43, 16);
+            this.lblDescription.TabIndex = 47;
+            this.lblDescription.Text = "Mô tả:";
             // 
             // lblUnit
             // 
@@ -362,14 +247,132 @@
             this.lblUnit.TabIndex = 46;
             this.lblUnit.Text = "Đơn vị:";
             // 
-            // lblDescription
+            // lblQuantity
             // 
-            this.lblDescription.AutoSize = true;
-            this.lblDescription.Location = new System.Drawing.Point(12, 218);
-            this.lblDescription.Name = "lblDescription";
-            this.lblDescription.Size = new System.Drawing.Size(43, 16);
-            this.lblDescription.TabIndex = 47;
-            this.lblDescription.Text = "Mô tả:";
+            this.lblQuantity.AutoSize = true;
+            this.lblQuantity.Location = new System.Drawing.Point(12, 158);
+            this.lblQuantity.Name = "lblQuantity";
+            this.lblQuantity.Size = new System.Drawing.Size(63, 16);
+            this.lblQuantity.TabIndex = 45;
+            this.lblQuantity.Text = "Số lượng:";
+            // 
+            // lblSellPrice
+            // 
+            this.lblSellPrice.AutoSize = true;
+            this.lblSellPrice.Location = new System.Drawing.Point(12, 130);
+            this.lblSellPrice.Name = "lblSellPrice";
+            this.lblSellPrice.Size = new System.Drawing.Size(57, 16);
+            this.lblSellPrice.TabIndex = 44;
+            this.lblSellPrice.Text = "Giá bán:";
+            // 
+            // lblImportPrice
+            // 
+            this.lblImportPrice.AutoSize = true;
+            this.lblImportPrice.Location = new System.Drawing.Point(12, 102);
+            this.lblImportPrice.Name = "lblImportPrice";
+            this.lblImportPrice.Size = new System.Drawing.Size(64, 16);
+            this.lblImportPrice.TabIndex = 43;
+            this.lblImportPrice.Text = "Giá nhập:";
+            // 
+            // lblCategory
+            // 
+            this.lblCategory.AutoSize = true;
+            this.lblCategory.Location = new System.Drawing.Point(12, 73);
+            this.lblCategory.Name = "lblCategory";
+            this.lblCategory.Size = new System.Drawing.Size(36, 16);
+            this.lblCategory.TabIndex = 42;
+            this.lblCategory.Text = "Loại:";
+            // 
+            // lblBarcode
+            // 
+            this.lblBarcode.AutoSize = true;
+            this.lblBarcode.Location = new System.Drawing.Point(12, 45);
+            this.lblBarcode.Name = "lblBarcode";
+            this.lblBarcode.Size = new System.Drawing.Size(62, 16);
+            this.lblBarcode.TabIndex = 41;
+            this.lblBarcode.Text = "Barcode:";
+            // 
+            // lvlProductName
+            // 
+            this.lvlProductName.AutoSize = true;
+            this.lvlProductName.Location = new System.Drawing.Point(12, 17);
+            this.lvlProductName.Name = "lvlProductName";
+            this.lvlProductName.Size = new System.Drawing.Size(96, 16);
+            this.lvlProductName.TabIndex = 40;
+            this.lvlProductName.Text = "Tên sản phẩm:";
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.Location = new System.Drawing.Point(361, 303);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(93, 35);
+            this.btnCancel.TabIndex = 39;
+            this.btnCancel.Text = "Hủy";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // btnSave
+            // 
+            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Location = new System.Drawing.Point(139, 303);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(93, 35);
+            this.btnSave.TabIndex = 38;
+            this.btnSave.Text = "Lưu";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // rtxtDescription
+            // 
+            this.rtxtDescription.Location = new System.Drawing.Point(15, 240);
+            this.rtxtDescription.Name = "rtxtDescription";
+            this.rtxtDescription.Size = new System.Drawing.Size(605, 50);
+            this.rtxtDescription.TabIndex = 37;
+            this.rtxtDescription.Text = "";
+            // 
+            // txtUnit
+            // 
+            this.txtUnit.Location = new System.Drawing.Point(153, 184);
+            this.txtUnit.Name = "txtUnit";
+            this.txtUnit.Size = new System.Drawing.Size(467, 22);
+            this.txtUnit.TabIndex = 36;
+            // 
+            // nudQuantity
+            // 
+            this.nudQuantity.Location = new System.Drawing.Point(153, 156);
+            this.nudQuantity.Name = "nudQuantity";
+            this.nudQuantity.Size = new System.Drawing.Size(467, 22);
+            this.nudQuantity.TabIndex = 35;
+            // 
+            // nudSellPrice
+            // 
+            this.nudSellPrice.Location = new System.Drawing.Point(153, 128);
+            this.nudSellPrice.Name = "nudSellPrice";
+            this.nudSellPrice.Size = new System.Drawing.Size(467, 22);
+            this.nudSellPrice.TabIndex = 34;
+            // 
+            // nudImportPrice
+            // 
+            this.nudImportPrice.Location = new System.Drawing.Point(153, 100);
+            this.nudImportPrice.Name = "nudImportPrice";
+            this.nudImportPrice.Size = new System.Drawing.Size(467, 22);
+            this.nudImportPrice.TabIndex = 33;
+            // 
+            // cboCategory
+            // 
+            this.cboCategory.FormattingEnabled = true;
+            this.cboCategory.Location = new System.Drawing.Point(153, 70);
+            this.cboCategory.Name = "cboCategory";
+            this.cboCategory.Size = new System.Drawing.Size(467, 24);
+            this.cboCategory.TabIndex = 32;
+            // 
+            // txtBarcode
+            // 
+            this.txtBarcode.Location = new System.Drawing.Point(153, 42);
+            this.txtBarcode.Name = "txtBarcode";
+            this.txtBarcode.Size = new System.Drawing.Size(467, 22);
+            this.txtBarcode.TabIndex = 31;
             // 
             // AddInventoryForManager
             // 
@@ -380,7 +383,8 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.Name = "AddInventoryForManager";
-            this.Text = "Quản Lý Kho - Thêm Sản Phẩm";
+            this.Text = "Quản Lý Kho - Thêm Sản Phẩm (dành cho quản lý)";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AddInventoryForManager_FormClosed);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -390,9 +394,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudImportPrice)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudSellPrice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudQuantity)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudSellPrice)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudImportPrice)).EndInit();
             this.ResumeLayout(false);
 
         }

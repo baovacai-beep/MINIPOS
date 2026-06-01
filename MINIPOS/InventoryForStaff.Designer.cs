@@ -29,15 +29,17 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnSettings = new System.Windows.Forms.Button();
+            this.pictureBox18 = new System.Windows.Forms.PictureBox();
+            this.btnInventory = new System.Windows.Forms.Button();
+            this.btnSell = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.txtSearchInventory = new System.Windows.Forms.TextBox();
             this.lblMiniPOSInventory = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.lblHiStaffName = new System.Windows.Forms.Label();
             this.lblDate = new System.Windows.Forms.Label();
-            this.btnSell = new System.Windows.Forms.Button();
-            this.btnInventory = new System.Windows.Forms.Button();
+            this.lblHiStaffName = new System.Windows.Forms.Label();
             this.btnAll = new System.Windows.Forms.Button();
             this.btnDrink = new System.Windows.Forms.Button();
             this.btnCandySnack = new System.Windows.Forms.Button();
@@ -45,14 +47,12 @@
             this.btnMilk = new System.Windows.Forms.Button();
             this.btnVPP = new System.Windows.Forms.Button();
             this.btnBodyCare = new System.Windows.Forms.Button();
-            this.pictureBox18 = new System.Windows.Forms.PictureBox();
-            this.btnSettings = new System.Windows.Forms.Button();
             this.dgvInventory = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInventory)).BeginInit();
             this.SuspendLayout();
             // 
@@ -68,6 +68,41 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(137, 357);
             this.panel1.TabIndex = 0;
+            // 
+            // btnSettings
+            // 
+            this.btnSettings.Location = new System.Drawing.Point(19, 288);
+            this.btnSettings.Name = "btnSettings";
+            this.btnSettings.Size = new System.Drawing.Size(97, 23);
+            this.btnSettings.TabIndex = 5;
+            this.btnSettings.Text = "CÀI ĐẶT";
+            this.btnSettings.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox18
+            // 
+            this.pictureBox18.Location = new System.Drawing.Point(0, 238);
+            this.pictureBox18.Name = "pictureBox18";
+            this.pictureBox18.Size = new System.Drawing.Size(137, 119);
+            this.pictureBox18.TabIndex = 4;
+            this.pictureBox18.TabStop = false;
+            // 
+            // btnInventory
+            // 
+            this.btnInventory.Location = new System.Drawing.Point(19, 167);
+            this.btnInventory.Name = "btnInventory";
+            this.btnInventory.Size = new System.Drawing.Size(97, 23);
+            this.btnInventory.TabIndex = 3;
+            this.btnInventory.Text = "XEM KHO";
+            this.btnInventory.UseVisualStyleBackColor = true;
+            // 
+            // btnSell
+            // 
+            this.btnSell.Location = new System.Drawing.Point(19, 45);
+            this.btnSell.Name = "btnSell";
+            this.btnSell.Size = new System.Drawing.Size(97, 23);
+            this.btnSell.TabIndex = 2;
+            this.btnSell.Text = "BÁN HÀNG";
+            this.btnSell.UseVisualStyleBackColor = true;
             // 
             // pictureBox1
             // 
@@ -115,16 +150,6 @@
             this.panel2.Size = new System.Drawing.Size(776, 63);
             this.panel2.TabIndex = 4;
             // 
-            // lblHiStaffName
-            // 
-            this.lblHiStaffName.AutoSize = true;
-            this.lblHiStaffName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHiStaffName.Location = new System.Drawing.Point(557, 7);
-            this.lblHiStaffName.Name = "lblHiStaffName";
-            this.lblHiStaffName.Size = new System.Drawing.Size(105, 20);
-            this.lblHiStaffName.TabIndex = 5;
-            this.lblHiStaffName.Text = "Chào ... (NV)";
-            // 
             // lblDate
             // 
             this.lblDate.AutoSize = true;
@@ -135,23 +160,15 @@
             this.lblDate.TabIndex = 6;
             this.lblDate.Text = "Ngày - Giờ";
             // 
-            // btnSell
+            // lblHiStaffName
             // 
-            this.btnSell.Location = new System.Drawing.Point(19, 45);
-            this.btnSell.Name = "btnSell";
-            this.btnSell.Size = new System.Drawing.Size(97, 23);
-            this.btnSell.TabIndex = 2;
-            this.btnSell.Text = "BÁN HÀNG";
-            this.btnSell.UseVisualStyleBackColor = true;
-            // 
-            // btnInventory
-            // 
-            this.btnInventory.Location = new System.Drawing.Point(19, 167);
-            this.btnInventory.Name = "btnInventory";
-            this.btnInventory.Size = new System.Drawing.Size(97, 23);
-            this.btnInventory.TabIndex = 3;
-            this.btnInventory.Text = "XEM KHO";
-            this.btnInventory.UseVisualStyleBackColor = true;
+            this.lblHiStaffName.AutoSize = true;
+            this.lblHiStaffName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHiStaffName.Location = new System.Drawing.Point(557, 7);
+            this.lblHiStaffName.Name = "lblHiStaffName";
+            this.lblHiStaffName.Size = new System.Drawing.Size(105, 20);
+            this.lblHiStaffName.TabIndex = 5;
+            this.lblHiStaffName.Text = "Chào ... (NV)";
             // 
             // btnAll
             // 
@@ -216,23 +233,6 @@
             this.btnBodyCare.Text = "Mỹ phẩm + Chăm sóc cá nhân";
             this.btnBodyCare.UseVisualStyleBackColor = true;
             // 
-            // pictureBox18
-            // 
-            this.pictureBox18.Location = new System.Drawing.Point(0, 238);
-            this.pictureBox18.Name = "pictureBox18";
-            this.pictureBox18.Size = new System.Drawing.Size(137, 119);
-            this.pictureBox18.TabIndex = 4;
-            this.pictureBox18.TabStop = false;
-            // 
-            // btnSettings
-            // 
-            this.btnSettings.Location = new System.Drawing.Point(19, 288);
-            this.btnSettings.Name = "btnSettings";
-            this.btnSettings.Size = new System.Drawing.Size(97, 23);
-            this.btnSettings.TabIndex = 5;
-            this.btnSettings.Text = "CÀI ĐẶT";
-            this.btnSettings.UseVisualStyleBackColor = true;
-            // 
             // dgvInventory
             // 
             this.dgvInventory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -260,13 +260,13 @@
             this.Controls.Add(this.txtSearchInventory);
             this.Controls.Add(this.panel1);
             this.Name = "InventoryForStaff";
-            this.Text = "Xem Kho";
+            this.Text = "Xem Kho (dành cho nhân viên)";
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInventory)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

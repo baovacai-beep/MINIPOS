@@ -1,6 +1,6 @@
 ﻿namespace MINIPOS
 {
-    partial class MainForm
+    partial class MainFormForManager
     {
         /// <summary>
         /// Required designer variable.
@@ -91,7 +91,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(137, 523);
             this.panel1.TabIndex = 33;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // btnCaiDat
             // 
@@ -141,6 +140,7 @@
             this.btnQLK.TabIndex = 9;
             this.btnQLK.Text = "Quản lý kho";
             this.btnQLK.UseVisualStyleBackColor = false;
+            this.btnQLK.Click += new System.EventHandler(this.btnQLK_Click);
             // 
             // pictureBox2
             // 
@@ -237,7 +237,6 @@
             this.txtSearch.Size = new System.Drawing.Size(410, 30);
             this.txtSearch.TabIndex = 38;
             this.txtSearch.Text = "Tìm kiếm sản phẩm";
-            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // panel5
             // 
@@ -409,7 +408,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(103, 8);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(146, 39);
+            this.label1.Size = new System.Drawing.Size(140, 38);
             this.label1.TabIndex = 36;
             this.label1.Text = "Hóa đơn";
             // 
@@ -422,7 +421,7 @@
             this.panel7.Size = new System.Drawing.Size(352, 55);
             this.panel7.TabIndex = 38;
             // 
-            // MainForm
+            // MainFormForManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -434,9 +433,9 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
-            this.Name = "MainForm";
-            this.Text = "Form1";
-            this.Load += new System.EventHandler(this.MainForm_Load);
+            this.Name = "MainFormForManager";
+            this.Text = "Bán Hàng (dành cho quản lý)";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainFormForManager_FormClosed);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
