@@ -31,7 +31,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnCaiDat = new System.Windows.Forms.Button();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnStaff = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.btnQLK = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -52,7 +52,7 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnAll = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnDrink = new System.Windows.Forms.Button();
             this.btnBanhKeo = new System.Windows.Forms.Button();
             this.btnMi = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
@@ -81,7 +81,7 @@
             this.panel1.BackColor = System.Drawing.Color.LightSteelBlue;
             this.panel1.Controls.Add(this.btnCaiDat);
             this.panel1.Controls.Add(this.pictureBox4);
-            this.panel1.Controls.Add(this.button3);
+            this.panel1.Controls.Add(this.btnStaff);
             this.panel1.Controls.Add(this.pictureBox3);
             this.panel1.Controls.Add(this.btnQLK);
             this.panel1.Controls.Add(this.pictureBox2);
@@ -111,16 +111,16 @@
             this.pictureBox4.TabIndex = 12;
             this.pictureBox4.TabStop = false;
             // 
-            // button3
+            // btnStaff
             // 
-            this.button3.BackColor = System.Drawing.Color.Khaki;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(19, 288);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(97, 56);
-            this.button3.TabIndex = 11;
-            this.button3.Text = "Nhân viên";
-            this.button3.UseVisualStyleBackColor = false;
+            this.btnStaff.BackColor = System.Drawing.Color.Khaki;
+            this.btnStaff.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStaff.Location = new System.Drawing.Point(19, 288);
+            this.btnStaff.Name = "btnStaff";
+            this.btnStaff.Size = new System.Drawing.Size(97, 56);
+            this.btnStaff.TabIndex = 11;
+            this.btnStaff.Text = "Nhân viên";
+            this.btnStaff.UseVisualStyleBackColor = false;
             // 
             // pictureBox3
             // 
@@ -302,7 +302,7 @@
             this.flowLayoutPanel1.AutoScroll = true;
             this.flowLayoutPanel1.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.flowLayoutPanel1.Controls.Add(this.btnAll);
-            this.flowLayoutPanel1.Controls.Add(this.button1);
+            this.flowLayoutPanel1.Controls.Add(this.btnDrink);
             this.flowLayoutPanel1.Controls.Add(this.btnBanhKeo);
             this.flowLayoutPanel1.Controls.Add(this.btnMi);
             this.flowLayoutPanel1.Controls.Add(this.btnSua);
@@ -323,15 +323,15 @@
             this.btnAll.Text = "Tất cả";
             this.btnAll.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btnDrink
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(124, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(115, 41);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Nước uống";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnDrink.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDrink.Location = new System.Drawing.Point(124, 3);
+            this.btnDrink.Name = "btnDrink";
+            this.btnDrink.Size = new System.Drawing.Size(115, 41);
+            this.btnDrink.TabIndex = 8;
+            this.btnDrink.Text = "Nước uống";
+            this.btnDrink.UseVisualStyleBackColor = true;
             // 
             // btnBanhKeo
             // 
@@ -470,7 +470,7 @@
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnDrink;
         private System.Windows.Forms.Button btnAll;
         private System.Windows.Forms.Button btnBanhKeo;
         private System.Windows.Forms.Button btnMi;
@@ -481,7 +481,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnCaiDat;
         private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnStaff;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Button btnQLK;
         private System.Windows.Forms.PictureBox pictureBox2;

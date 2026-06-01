@@ -58,6 +58,12 @@
     <Compile Include="EditInventoryForManager.Designer.cs">
       <DependentUpon>EditInventoryForManager.cs</DependentUpon>
     </Compile>
+    <Compile Include="MainFormForStaff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainFormForStaff.Designer.cs">
+      <DependentUpon>MainFormForStaff.cs</DependentUpon>
+    </Compile>
     <Compile Include="InventoryForManager.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,6 +107,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainFormForManager.resx">
       <DependentUpon>MainFormForManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainFormForStaff.resx">
+      <DependentUpon>MainFormForStaff.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
