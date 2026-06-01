@@ -47,8 +47,8 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btnVPP = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox19 = new System.Windows.Forms.PictureBox();
             this.btnStaff = new System.Windows.Forms.Button();
+            this.pictureBox19 = new System.Windows.Forms.PictureBox();
             this.btnAddProduct = new System.Windows.Forms.Button();
             this.dgvInventory = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).BeginInit();
@@ -148,6 +148,7 @@
             this.btnSell.TabIndex = 2;
             this.btnSell.Text = "BÁN HÀNG";
             this.btnSell.UseVisualStyleBackColor = true;
+            this.btnSell.Click += new System.EventHandler(this.btnSell_Click);
             // 
             // lblDate
             // 
@@ -239,14 +240,6 @@
             this.panel1.Size = new System.Drawing.Size(137, 357);
             this.panel1.TabIndex = 25;
             // 
-            // pictureBox19
-            // 
-            this.pictureBox19.Location = new System.Drawing.Point(0, 179);
-            this.pictureBox19.Name = "pictureBox19";
-            this.pictureBox19.Size = new System.Drawing.Size(137, 89);
-            this.pictureBox19.TabIndex = 6;
-            this.pictureBox19.TabStop = false;
-            // 
             // btnStaff
             // 
             this.btnStaff.Location = new System.Drawing.Point(19, 211);
@@ -255,6 +248,14 @@
             this.btnStaff.TabIndex = 7;
             this.btnStaff.Text = "NHÂN VIÊN";
             this.btnStaff.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox19
+            // 
+            this.pictureBox19.Location = new System.Drawing.Point(0, 179);
+            this.pictureBox19.Name = "pictureBox19";
+            this.pictureBox19.Size = new System.Drawing.Size(137, 89);
+            this.pictureBox19.TabIndex = 6;
+            this.pictureBox19.TabStop = false;
             // 
             // btnAddProduct
             // 
@@ -265,6 +266,7 @@
             this.btnAddProduct.TabIndex = 63;
             this.btnAddProduct.Text = "Thêm sản phẩm";
             this.btnAddProduct.UseVisualStyleBackColor = true;
+            this.btnAddProduct.Click += new System.EventHandler(this.btnAddProduct_Click);
             // 
             // dgvInventory
             // 
@@ -275,6 +277,7 @@
             this.dgvInventory.RowTemplate.Height = 24;
             this.dgvInventory.Size = new System.Drawing.Size(517, 257);
             this.dgvInventory.TabIndex = 64;
+            this.dgvInventory.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInventory_CellContentClick);
             // 
             // InventoryForManager
             // 
@@ -294,7 +297,9 @@
             this.Controls.Add(this.btnVPP);
             this.Controls.Add(this.panel1);
             this.Name = "InventoryForManager";
-            this.Text = "Quản Lý Kho";
+            this.Text = "Quản Lý Kho (dành cho quản lý)";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.InventoryForManager_FormClosed);
+            this.Load += new System.EventHandler(this.InventoryForManager_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();

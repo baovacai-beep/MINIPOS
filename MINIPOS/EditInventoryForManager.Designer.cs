@@ -188,6 +188,7 @@
             this.btnUpdate.TabIndex = 38;
             this.btnUpdate.Text = "Cập nhật";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // rtxtDescription
             // 
@@ -313,6 +314,7 @@
             this.btnSell.TabIndex = 2;
             this.btnSell.Text = "BÁN HÀNG";
             this.btnSell.UseVisualStyleBackColor = true;
+            this.btnSell.Click += new System.EventHandler(this.btnSell_Click);
             // 
             // pictureBox1
             // 
@@ -380,7 +382,9 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.Name = "EditInventoryForManager";
-            this.Text = "Quản Lý Kho - Chỉnh Sửa Sản Phẩm";
+            this.Text = "Quản Lý Kho - Chỉnh Sửa Sản Phẩm (dành cho quản lý)";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.EditInventoryForManager_FormClosed);
+            this.Load += new System.EventHandler(this.EditInventoryForManager_Load);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudQuantity)).EndInit();

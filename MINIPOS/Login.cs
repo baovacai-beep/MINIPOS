@@ -48,7 +48,7 @@ namespace MINIPOS
                     MessageBoxIcon.Information);
 
                 // Mở MainForm và đóng Login
-                MainForm mainForm = new MainForm();
+                MainFormForManager mainForm = new MainFormForManager();
                 mainForm.Show();
                 this.Hide();
                 mainForm.FormClosed += (s, args) => this.Close();
