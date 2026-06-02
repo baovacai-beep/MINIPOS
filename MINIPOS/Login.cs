@@ -50,7 +50,7 @@ namespace MINIPOS
                 }
                 else if (tk.TenVaiTro == "NhanVien")
                 {
-                    mainForm = new InventoryForStaff();
+                    mainForm = new MainFormForStaff();
                 }
                 else
                 {
