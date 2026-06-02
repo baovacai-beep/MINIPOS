@@ -1,10 +1,11 @@
-﻿using FontAwesome.Sharp;
+using FontAwesome.Sharp;
 using MINIPOS_DAO;
+using MINIPOS_BUS;
+using MINIPOS_DTO;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -22,6 +23,21 @@ namespace MINIPOS
 {
     public partial class MainFormForManager : Form
     {
+        // ── BUS layer ──────────────────────────────────────────────
+        private readonly HoaDonBUS    _hoaDonBUS    = new HoaDonBUS();
+        private readonly KhachHangBUS _khachHangBUS = new KhachHangBUS();
+
+        // ── Trạng thái khách hàng đang chọn ───────────────────────
+        private KhachHangDTO _khachHang = null;   // null = khách vãng lai
+
+        // ── Cột ẩn lưu MaSanPham trong dgvGioHang ─────────────────
+        private const int COL_MASP      = 0;  // ẩn
+        private const int COL_STT       = 1;
+        private const int COL_TENSP     = 2;
+        private const int COL_DONGIA    = 3;
+        private const int COL_SOLUONG   = 4;  // editable
+        private const int COL_THANHTIEN = 5;
+
         public MainFormForManager()
         {
             InitializeComponent();
@@ -42,223 +58,299 @@ namespace MINIPOS
             this.Hide();
         }
         // hiển thị tất cả SP
-        private void LoadSanPham()
+        private void LoadSanPham(string where = "")
         {
-            string listSP = @"
-                        SELECT  
-                            MaSanPham AS [Mã SP],
-                            TenSanPham AS [Tên SP],
-                            TenLoai AS [Loại SP],
-                            DonGiaBan AS [Đơn giá],
-                            DonViTinh AS [Đơn vị]
-                        FROM v_SanPham";
-            dgvSanPham.DataSource = SQLConnection.ExecuteQuery(listSP);
+            string sql = @"
+                SELECT MaSanPham AS [Mã SP],
+                       TenSanPham AS [Tên SP],
+                       TenLoai AS [Loại SP],
+                       DonGiaBan AS [Đơn giá],
+                       DonViTinh AS [Đơn vị],
+                       SoLuongTon AS [Tồn kho]
+                FROM v_SanPham
+                WHERE TrangThai = 1 "
+                + (string.IsNullOrEmpty(where) ? "" : "AND " + where);
+            dgvSanPham.DataSource = SQLConnection.ExecuteQuery(sql);
         }
 
         private void MainFormForManager_Load(object sender, EventArgs e)
         {
-            dgvGioHang.Columns.Add("STT", "STT");
-            dgvGioHang.Columns.Add("TenSP", "Tên sản phẩm");
-            dgvGioHang.Columns.Add("DonGia", "Đơn giá");
-            dgvGioHang.Columns.Add("SoLuong", "Số lượng");
-            dgvGioHang.Columns.Add("ThanhTien", "Thành tiền");
-
-            dgvGioHang.Columns["SoLuong"].ReadOnly = false;
+            KhoiTaoGioHang();
+            WireUpButtons();
             LoadSanPham();
         }
+
+        private void KhoiTaoGioHang()
+        {
+            dgvGioHang.Columns.Clear();
+
+            // Cột ẩn: MaSanPham
+            var colMaSP = new DataGridViewTextBoxColumn
+            {
+                Name    = "MaSanPham",
+                Visible = false
+            };
+
+            var colSTT = new DataGridViewTextBoxColumn
+            {
+                Name         = "STT",
+                HeaderText   = "STT",
+                ReadOnly     = true,
+                Width        = 35
+            };
+            var colTen = new DataGridViewTextBoxColumn
+            {
+                Name         = "TenSP",
+                HeaderText   = "Tên sản phẩm",
+                ReadOnly     = true
+            };
+            var colGia = new DataGridViewTextBoxColumn
+            {
+                Name         = "DonGia",
+                HeaderText   = "Đơn giá",
+                ReadOnly     = true,
+                Width        = 65,
+                DefaultCellStyle = new DataGridViewCellStyle { Format = "N0" }
+            };
+            var colSL = new DataGridViewTextBoxColumn
+            {
+                Name         = "SoLuong",
+                HeaderText   = "SL",
+                ReadOnly     = false,
+                Width        = 40
+            };
+            var colTT = new DataGridViewTextBoxColumn
+            {
+                Name         = "ThanhTien",
+                HeaderText   = "Thành tiền",
+                ReadOnly     = true,
+                DefaultCellStyle = new DataGridViewCellStyle { Format = "N0" }
+            };
+
+            dgvGioHang.Columns.AddRange(colMaSP, colSTT, colTen, colGia, colSL, colTT);
+            dgvGioHang.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvGioHang.Columns["STT"].AutoSizeMode     = DataGridViewAutoSizeColumnMode.None;
+            dgvGioHang.Columns["STT"].Width            = 35;
+            dgvGioHang.Columns["SoLuong"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvGioHang.Columns["SoLuong"].Width        = 45;
+        }
+
+        private void WireUpButtons()
+        {
+            btnThanhToan.Click += BtnThanhToan_Click;
+            btnVoucher.Click   += BtnTraCuuKhachHang_Click;
+            btnXoaHang.Click   += btnXoaHang_Click;
+        }
+
         //tim kiem SP theo ten
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
-            string tenSP = txtTimKiem.Text.Trim();
-            var listSP = $@"
-                        SELECT  
-                            MaSanPham AS [Mã SP],
-                            TenSanPham AS [Tên SP],
-                            TenLoai AS [Loại SP],
-                            DonGiaBan AS [Đơn giá],
-                            DonViTinh AS [Đơn vị]
-                        FROM v_SanPham
-                        WHERE TenSanPham LIKE N'%{tenSP}%' ";
-            dgvSanPham.DataSource = SQLConnection.ExecuteQuery(listSP);
+            string ten = txtTimKiem.Text.Trim().Replace("'", "''");
+            LoadSanPham($"TenSanPham LIKE N'%{ten}%'");
         }
 
-        private void btnAll_Click(object sender, EventArgs e)
-        {
-            string listSP = @"
-                        SELECT  
-                            MaSanPham AS [Mã SP],
-                            TenSanPham AS [Tên SP],
-                            TenLoai AS [Loại SP],
-                            DonGiaBan AS [Đơn giá],
-                            DonViTinh AS [Đơn vị]
-                        FROM v_SanPham";
-            dgvSanPham.DataSource = SQLConnection.ExecuteQuery(listSP);
-        }
-        //tim kiem theo loai SP
-        private void btnDrink_Click(object sender, EventArgs e)
-        {
-            string listSP = @"
-                        SELECT  
-                            MaSanPham AS [Mã SP],
-                            TenSanPham AS [Tên SP],
-                            TenLoai AS [Loại SP],
-                            DonGiaBan AS [Đơn giá],
-                            DonViTinh AS [Đơn vị]
-                        FROM v_SanPham
-                        WHERE TenLoai = N'Nước uống & Đồ uống'";
-            dgvSanPham.DataSource = SQLConnection.ExecuteQuery(listSP);
-        }
+        private void btnAll_Click(object sender, EventArgs e)      => LoadSanPham();
+        private void btnDrink_Click(object sender, EventArgs e)    => LoadSanPham("TenLoai = N'Nước uống & Đồ uống'");
+        private void btnBanhKeo_Click(object sender, EventArgs e)  => LoadSanPham("TenLoai = N'Bánh kẹo & Snack'");
+        private void btnMi_Click(object sender, EventArgs e)       => LoadSanPham("TenLoai = N'Mì & Thực phẩm ăn liền'");
+        private void btnSua_Click(object sender, EventArgs e)      => LoadSanPham("TenLoai = N'Sữa & Sản phẩm từ sữa'");
+        private void btnVPP_Click(object sender, EventArgs e)      => LoadSanPham("TenLoai = N'Văn phòng phẩm'");
+        private void btnMyPham_Click(object sender, EventArgs e)   => LoadSanPham("TenLoai = N'Mỹ phẩm & Chăm sóc cá nhân'");
+        private void btnGiaVi_Click(object sender, EventArgs e)    => LoadSanPham("TenLoai = N'Gia vị & Thực phẩm khô'");
 
-        private void btnBanhKeo_Click(object sender, EventArgs e)
-        {
-            string listSP = @"
-                        SELECT  
-                            MaSanPham AS [Mã SP],
-                            TenSanPham AS [Tên SP],
-                            TenLoai AS [Loại SP],
-                            DonGiaBan AS [Đơn giá],
-                            DonViTinh AS [Đơn vị]
-                        FROM v_SanPham
-                        WHERE TenLoai = N'Bánh kẹo & Snack'";
-            dgvSanPham.DataSource = SQLConnection.ExecuteQuery(listSP);
-        }
-
-        private void btnMi_Click(object sender, EventArgs e)
-        {
-            string listSP = @"
-                        SELECT  
-                            MaSanPham AS [Mã SP],
-                            TenSanPham AS [Tên SP],
-                            TenLoai AS [Loại SP],
-                            DonGiaBan AS [Đơn giá],
-                            DonViTinh AS [Đơn vị]
-                        FROM v_SanPham
-                        WHERE TenLoai = N'Mì & Thực phẩm ăn liền'";
-            dgvSanPham.DataSource = SQLConnection.ExecuteQuery(listSP);
-        }
-
-        private void btnSua_Click(object sender, EventArgs e)
-        {
-            string listSP = @"
-                        SELECT  
-                            MaSanPham AS [Mã SP],
-                            TenSanPham AS [Tên SP],
-                            TenLoai AS [Loại SP],
-                            DonGiaBan AS [Đơn giá],
-                            DonViTinh AS [Đơn vị]
-                        FROM v_SanPham
-                        WHERE TenLoai = N'Sữa & Sản phẩm từ sữa'";
-            dgvSanPham.DataSource = SQLConnection.ExecuteQuery(listSP);
-        }
-
-        private void btnVPP_Click(object sender, EventArgs e)
-        {
-            string listSP = @"
-                        SELECT  
-                            MaSanPham AS [Mã SP],
-                            TenSanPham AS [Tên SP],
-                            TenLoai AS [Loại SP],
-                            DonGiaBan AS [Đơn giá],
-                            DonViTinh AS [Đơn vị]
-                        FROM v_SanPham
-                        WHERE TenLoai = N'Văn phòng phẩm'";
-            dgvSanPham.DataSource = SQLConnection.ExecuteQuery(listSP);
-        }
-
-        private void btnMyPham_Click(object sender, EventArgs e)
-        {
-            string listSP = @"
-                        SELECT  
-                            MaSanPham AS [Mã SP],
-                            TenSanPham AS [Tên SP],
-                            TenLoai AS [Loại SP],
-                            DonGiaBan AS [Đơn giá],
-                            DonViTinh AS [Đơn vị]
-                        FROM v_SanPham
-                        WHERE TenLoai = N'Mỹ phẩm & Chăm sóc cá nhân'";
-            dgvSanPham.DataSource = SQLConnection.ExecuteQuery(listSP);
-        }
-
-        private void btnGiaVi_Click(object sender, EventArgs e)
-        {
-            string listSP = @"
-                        SELECT  
-                            MaSanPham AS [Mã SP],
-                            TenSanPham AS [Tên SP],
-                            TenLoai AS [Loại SP],
-                            DonGiaBan AS [Đơn giá],
-                            DonViTinh AS [Đơn vị]
-                        FROM v_SanPham
-                        WHERE TenLoai = N'Gia vị & Thực phẩm khô'";
-            dgvSanPham.DataSource = SQLConnection.ExecuteQuery(listSP);
-        }
         //double click de them SP vao gio hang
         private void dgvSanPham_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            string tenSP = dgvSanPham.Rows[e.RowIndex].Cells["Tên SP"].Value.ToString();
-            decimal dongia = Convert.ToDecimal(dgvSanPham.Rows[e.RowIndex].Cells["Đơn giá"].Value);
-            //kiem tra them trung sp
-            foreach (DataGridViewRow row in dgvGioHang.Rows)
+            if (e.RowIndex < 0) return;
+
+            var row    = dgvSanPham.Rows[e.RowIndex];
+            int maSP   = Convert.ToInt32(row.Cells["Mã SP"].Value);
+            string ten = row.Cells["Tên SP"].Value.ToString();
+            decimal gia = Convert.ToDecimal(row.Cells["Đơn giá"].Value);
+            int tonKho  = Convert.ToInt32(row.Cells["Tồn kho"].Value);
+
+            // Kiểm tra trùng
+            foreach (DataGridViewRow r in dgvGioHang.Rows)
             {
-                if (row.Cells["TenSP"].Value != null && row.Cells["TenSP"].Value.ToString() == tenSP)
+                if (r.Cells[COL_MASP].Value != null &&
+                    Convert.ToInt32(r.Cells[COL_MASP].Value) == maSP)
                 {
-                    MessageBox.Show($"Sản phẩm '{tenSP}' đã có trong giỏ hàng", "Thông báo trùng lặp", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    int slHienTai = Convert.ToInt32(r.Cells[COL_SOLUONG].Value);
+                    if (slHienTai >= tonKho)
+                    {
+                        MessageBox.Show($"'{ten}' chỉ còn {tonKho} trong kho.",
+                            "Không đủ hàng", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                    r.Cells[COL_SOLUONG].Value   = slHienTai + 1;
+                    r.Cells[COL_THANHTIEN].Value = gia * (slHienTai + 1);
+                    TinhTongTien();
                     return;
                 }
             }
-            dgvGioHang.Rows.Add(dgvGioHang.Rows.Count + 1, tenSP, dongia, 1, dongia);
+
+            // Thêm dòng mới
+            int stt = dgvGioHang.Rows.Count + 1;
+            dgvGioHang.Rows.Add(maSP, stt, ten, gia, 1, gia);
             TinhTongTien();
         }
+
         //tong tien gio hang
-        private void TinhTongTien()
+        private decimal TinhTongTien()
         {
-            decimal tongTien = 0;
-
+            decimal tong = 0;
             foreach (DataGridViewRow row in dgvGioHang.Rows)
-            {
-                if (row.Cells[4].Value != null)
-                {
-                    tongTien +=
-                        Convert.ToDecimal(row.Cells[4].Value);
-                }
-            }
+                if (row.Cells[COL_THANHTIEN].Value != null)
+                    tong += Convert.ToDecimal(row.Cells[COL_THANHTIEN].Value);
 
-            txtTongTien.Text =
-                tongTien.ToString("N0");
+            txtTongTien.Text = tong.ToString("N0") + " đ";
+            return tong;
         }
+
         //dieu chinh so luong hang trong gio
         private void dgvGioHang_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 3)
+            if (e.ColumnIndex != COL_SOLUONG) return;
+
+            var row = dgvGioHang.Rows[e.RowIndex];
+            int sl;
+            if (!int.TryParse(row.Cells[COL_SOLUONG].Value?.ToString(), out sl) || sl <= 0)
             {
-                DataGridViewRow row =
-                    dgvGioHang.Rows[e.RowIndex];
-
-                decimal donGia =
-                    Convert.ToDecimal(row.Cells[2].Value);
-
-                int soLuong =
-                    Convert.ToInt32(row.Cells[3].Value);
-
-                row.Cells[4].Value =
-                    donGia * soLuong;
-
-                TinhTongTien();
+                MessageBox.Show("Số lượng phải là số nguyên dương.", "Lỗi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                row.Cells[COL_SOLUONG].Value = 1;
+                sl = 1;
             }
+
+            decimal gia              = Convert.ToDecimal(row.Cells[COL_DONGIA].Value);
+            row.Cells[COL_THANHTIEN].Value = gia * sl;
+            TinhTongTien();
         }
+
         //xoa hang trong gio
         private void btnXoaHang_Click(object sender, EventArgs e)
         {
-            if (dgvGioHang.CurrentRow != null)
+            if (dgvGioHang.CurrentRow == null) return;
+            dgvGioHang.Rows.Remove(dgvGioHang.CurrentRow);
+            CapNhatSTT();
+            TinhTongTien();
+        }
+
+        private void CapNhatSTT()
+        {
+            for (int i = 0; i < dgvGioHang.Rows.Count; i++)
+                dgvGioHang.Rows[i].Cells[COL_STT].Value = i + 1;
+        }
+
+
+        private void BtnTraCuuKhachHang_Click(object sender, EventArgs e)
+        {
+            string sdt = Microsoft.VisualBasic.Interaction.InputBox(
+                "Nhập số điện thoại khách hàng:", "Tra cứu khách hàng", "");
+
+            if (string.IsNullOrWhiteSpace(sdt)) return;
+
+            KhachHangDTO kh = _khachHangBUS.TimKiemTheoSDT(sdt);
+            if (kh == null)
             {
-                dgvGioHang.Rows.Remove(dgvGioHang.CurrentRow);
-                //cap nhat STT
-                for (int i = 0; i < dgvGioHang.Rows.Count; i++)
+                MessageBox.Show($"Không tìm thấy khách hàng có SĐT: {sdt}",
+                    "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            _khachHang = kh;
+            CapNhatHienThiKhachHang();
+        }
+
+        private void CapNhatHienThiKhachHang()
+        {
+            if (_khachHang == null)
+            {
+                label1.Text = "Giỏ hàng";
+                label1.ForeColor = Color.Black;
+            }
+            else
+            {
+                label1.Text = $"Giỏ hàng  |  KH: {_khachHang.TenKhachHang}" +
+                              $"  [{_khachHang.TenHang} -{_khachHang.TyLeGiamGia:0}%]";
+                label1.ForeColor = Color.DarkBlue;
+            }
+        }
+
+        private void BtnThanhToan_Click(object sender, EventArgs e)
+        {
+            if (dgvGioHang.Rows.Count == 0)
+            {
+                MessageBox.Show("Giỏ hàng đang trống!", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Lấy thông tin nhân viên từ Login
+            int maNV = Login.TaiKhoanDangNhap?.MaNhanVien ?? 0;
+            if (maNV == 0)
+            {
+                MessageBox.Show("Không xác định được nhân viên. Vui lòng đăng nhập lại.",
+                    "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Tính tổng tiền & giảm giá
+            decimal tongTien     = TinhTongTien();
+            decimal tyLeGiam     = _khachHang?.TyLeGiamGia ?? 0;
+            decimal soTienGiam   = Math.Round(tongTien * tyLeGiam / 100, 0);
+            decimal thanhTien    = tongTien - soTienGiam;
+
+            // Hiển thị dialog thanh toán
+            using (var dlg = new ThanhToanDialog(tongTien, tyLeGiam, soTienGiam, thanhTien, _khachHang))
+            {
+                if (dlg.ShowDialog() != DialogResult.OK) return;
+
+                // Xây dựng HoaDonDTO
+                var hd = new HoaDonDTO
                 {
-                    dgvGioHang.Rows[i].Cells["STT"].Value = i + 1;
+                    MaNhanVien          = maNV,
+                    MaKhachHang         = _khachHang?.MaKhachHang,
+                    TongTien            = tongTien,
+                    TyLeGiamGia         = tyLeGiam,
+                    SoTienGiam          = soTienGiam,
+                    ThanhTien           = thanhTien,
+                    TienKhachDua        = dlg.TienKhachDua,
+                    TienThoi            = dlg.TienThoi,
+                    PhuongThucThanhToan = dlg.PhuongThuc,
+                    GhiChu              = null
+                };
+
+                // Thêm chi tiết từ giỏ hàng
+                foreach (DataGridViewRow row in dgvGioHang.Rows)
+                {
+                    hd.ChiTiet.Add(new ChiTietHoaDonDTO
+                    {
+                        MaSanPham  = Convert.ToInt32(row.Cells[COL_MASP].Value),
+                        TenSanPham = row.Cells[COL_TENSP].Value.ToString(),
+                        DonGia     = Convert.ToDecimal(row.Cells[COL_DONGIA].Value),
+                        SoLuong    = Convert.ToInt32(row.Cells[COL_SOLUONG].Value)
+                    });
                 }
 
-                TinhTongTien();
+                try
+                {
+                    int maHD = _hoaDonBUS.ThanhToan(hd);
+                    MessageBox.Show("Thanh toán thành công ✔", "Thông báo",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Reset giỏ hàng
+                    dgvGioHang.Rows.Clear();
+                    _khachHang = null;
+                    CapNhatHienThiKhachHang();
+                    TinhTongTien();
+                    LoadSanPham(); // Refresh tồn kho
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi thanh toán:\n" + ex.Message, "Lỗi",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
     }
