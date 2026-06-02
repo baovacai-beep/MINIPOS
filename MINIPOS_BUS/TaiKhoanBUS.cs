@@ -19,7 +19,7 @@ namespace MINIPOS_BUS
             if (string.IsNullOrWhiteSpace(matKhau))
                 throw new ArgumentException("Vui lòng nhập mật khẩu.");
 
-            // ── 2. Băm mật khẩu MD5 ───────────────────────────────────
+            // ── 2. Mã hóa mật khẩu MD5 để so khớp với cơ sở dữ liệu ─────────
             string matKhauMD5 = MaHoaMD5(matKhau.Trim());
 
             // ── 3. Gọi DAO xác thực ───────────────────────────────────
@@ -34,15 +34,18 @@ namespace MINIPOS_BUS
             return taiKhoan;
         }
 
-        // ── Helper: MD5 hash ─────────────────────────────────────────────
-        private static string MaHoaMD5(string input)
+        private string MaHoaMD5(string input)
         {
             using (MD5 md5 = MD5.Create())
             {
-                byte[] bytes = md5.ComputeHash(Encoding.UTF8.GetBytes(input));
+                byte[] inputBytes = Encoding.UTF8.GetBytes(input);
+                byte[] hashBytes = md5.ComputeHash(inputBytes);
+
                 StringBuilder sb = new StringBuilder();
-                foreach (byte b in bytes)
-                    sb.Append(b.ToString("x2"));   // lowercase hex, khớp DB
+                for (int i = 0; i < hashBytes.Length; i++)
+                {
+                    sb.Append(hashBytes[i].ToString("x2"));
+                }
                 return sb.ToString();
             }
         }
