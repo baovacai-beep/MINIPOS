@@ -33,8 +33,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FontAwesome.Sharp, Version=6.6.0.0, Culture=neutral, PublicKeyToken=d16d1e4e568ec10f, processorArchitecture=MSIL">
+      <HintPath>..\packages\FontAwesome.Sharp.6.6.0\lib\net472\FontAwesome.Sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,6 +50,7 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AddInventoryForManager.cs">
@@ -57,6 +64,12 @@
     </Compile>
     <Compile Include="EditInventoryForManager.Designer.cs">
       <DependentUpon>EditInventoryForManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainFormForStaff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainFormForStaff.Designer.cs">
+      <DependentUpon>MainFormForStaff.cs</DependentUpon>
     </Compile>
     <Compile Include="InventoryForManager.cs">
       <SubType>Form</SubType>
@@ -102,6 +115,9 @@
     <EmbeddedResource Include="MainFormForManager.resx">
       <DependentUpon>MainFormForManager.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MainFormForStaff.resx">
+      <DependentUpon>MainFormForStaff.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -110,7 +126,9 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -141,6 +159,7 @@
   <ItemGroup>
     <Folder Include="Images\" />
     <Folder Include="Reports\" />
+    <Folder Include="Resources\" />
     <Folder Include="UserControls\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
