@@ -8,7 +8,7 @@ namespace MINIPOS_DTO
         public string TenDangNhap     { get; set; }
         public string MatKhau         { get; set; }   // MD5 hash
         public int    MaVaiTro        { get; set; }
-        public string TenVaiTro       { get; set; }   // 'NhanVien' | 'QuanLy'
+        public string TenVaiTro       { get; set; }   // 'Admin' | 'QuanLy' | 'NhanVien'
         public bool   TrangThai       { get; set; }   // true = hoạt động
         public DateTime NgayTao       { get; set; }
         public DateTime? LanDangNhapCuoi { get; set; }

@@ -9,7 +9,7 @@ namespace MINIPOS
     {
         private readonly TaiKhoanBUS _bus = new TaiKhoanBUS();
 
-        // Lưu thông tin tài khoản đang đăng nhập để các form khác truy cập
+        // Lưu thông tin tài khoản đăng nhập thành công để form khác có thể dùng
         public static TaiKhoanDTO TaiKhoanDangNhap { get; private set; }
 
         public Login()
@@ -19,7 +19,7 @@ namespace MINIPOS
             // Cho phép nhấn Enter để đăng nhập
             this.AcceptButton = btnLogin;
 
-            // Gán sự kiện click
+            // Sự kiện click nút đăng nhập
             btnLogin.Click += btnLogin_Click;
         }
 
@@ -41,27 +41,16 @@ namespace MINIPOS
                 // Lưu vào biến tĩnh để dùng toàn app
                 TaiKhoanDangNhap = tk;
 
-                // ── Phân quyền: mở form đúng theo vai trò ──────────────────
-                Form mainForm;
+                MessageBox.Show(
+                    $"Xin chào, {tk.HoTen}!\nVai trò: {tk.TenVaiTro}",
+                    "Đăng nhập thành công",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
 
-                if (tk.TenVaiTro == "QuanLy")
-                {
-                    mainForm = new MainFormForManager();
-                }
-                else if (tk.TenVaiTro == "NhanVien")
-                {
-                    mainForm = new InventoryForStaff();
-                }
-                else
-                {
-                    // Vai trò không xác định → từ chối truy cập
-                    throw new Exception("Vai trò không được hỗ trợ. Vui lòng liên hệ quản trị viên.");
-                }
-
+                // Mở MainForm và đóng Login
+                MainFormForManager mainForm = new MainFormForManager();
                 mainForm.Show();
                 this.Hide();
-
-                // Khi đóng MainForm thì đóng hẳn ứng dụng (bao gồm Login đang ẩn)
                 mainForm.FormClosed += (s, args) => this.Close();
             }
             catch (Exception ex)
