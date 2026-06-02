@@ -78,6 +78,5 @@ namespace MINIPOS
                 btnLogin.Text    = "Đăng nhập";
             }
         }
-
     }
 }
