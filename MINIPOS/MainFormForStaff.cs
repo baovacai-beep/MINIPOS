@@ -20,25 +20,23 @@ using System.Windows.Markup;
 
 namespace MINIPOS
 {
-    public partial class MainFormForManager : Form
+    public partial class MainFormForStaff : Form
     {
-        public MainFormForManager()
+        public MainFormForStaff()
         {
             InitializeComponent();
-
-            this.FormClosed += MainFormForManager_FormClosed;
+            this.FormClosed += MainFormForStaff_FormClosed;
         }
-
-        private void MainFormForManager_FormClosed(object sender, FormClosedEventArgs e)
+        private void MainFormForStaff_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
         }
-
         private void btnKho_Click(object sender, EventArgs e)
         {
-            InventoryForManager frm = new InventoryForManager();
+            InventoryForStaff frm = new InventoryForStaff();
 
             frm.Show();
+
             this.Hide();
         }
         // hiển thị tất cả SP
@@ -55,7 +53,7 @@ namespace MINIPOS
             dgvSanPham.DataSource = SQLConnection.ExecuteQuery(listSP);
         }
 
-        private void MainFormForManager_Load(object sender, EventArgs e)
+        private void MainFormForStaff_Load(object sender, EventArgs e)
         {
             dgvGioHang.Columns.Add("STT", "STT");
             dgvGioHang.Columns.Add("TenSP", "Tên sản phẩm");
@@ -81,7 +79,6 @@ namespace MINIPOS
                         WHERE TenSanPham LIKE N'%{tenSP}%' ";
             dgvSanPham.DataSource = SQLConnection.ExecuteQuery(listSP);
         }
-
         private void btnAll_Click(object sender, EventArgs e)
         {
             string listSP = @"
@@ -94,7 +91,7 @@ namespace MINIPOS
                         FROM v_SanPham";
             dgvSanPham.DataSource = SQLConnection.ExecuteQuery(listSP);
         }
-        //tim kiem theo loai SP
+
         private void btnDrink_Click(object sender, EventArgs e)
         {
             string listSP = @"
