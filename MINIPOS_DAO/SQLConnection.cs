@@ -6,6 +6,7 @@ namespace MINIPOS_DAO
 {
     public static class SQLConnection
     {
+
         private static readonly string _connectionString =
             ConfigurationManager.ConnectionStrings["MiniPOS"].ConnectionString;
 
