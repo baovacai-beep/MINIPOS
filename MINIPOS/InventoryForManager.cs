@@ -22,7 +22,7 @@ namespace MINIPOS
 
             this.FormClosed += InventoryForManager_FormClosed;
 
-            dgvSanPham.CellContentClick += dgvInventory_CellContentClick;
+            dgvInventory.CellContentClick += dgvInventory_CellContentClick;
         }
 
         private void InventoryForManager_FormClosed(object sender, FormClosedEventArgs e)
@@ -32,14 +32,14 @@ namespace MINIPOS
 
         private void LoadProducts()
         {
-            dgvSanPham.DataSource = spBUS.GetAllProducts();
+            dgvInventory.DataSource = spBUS.GetAllProducts();
         }
 
         private void InventoryForManager_Load(object sender, EventArgs e)
         {
             LoadProducts();
 
-            if (!dgvSanPham.Columns.Contains("Edit"))
+            if (!dgvInventory.Columns.Contains("Edit"))
             {
                 DataGridViewButtonColumn btnEdit =
                     new DataGridViewButtonColumn();
@@ -49,7 +49,7 @@ namespace MINIPOS
                 btnEdit.Text = "Chỉnh sửa";
                 btnEdit.UseColumnTextForButtonValue = true;
 
-                dgvSanPham.Columns.Add(btnEdit);
+                dgvInventory.Columns.Add(btnEdit);
             }
         }
 
@@ -75,11 +75,11 @@ namespace MINIPOS
         private void dgvInventory_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex ==
-        dgvSanPham.Columns["Edit"].Index
+        dgvInventory.Columns["Edit"].Index
         && e.RowIndex >= 0)
             {
                 int maSP = Convert.ToInt32(
-                    dgvSanPham.Rows[e.RowIndex]
+                    dgvInventory.Rows[e.RowIndex]
                     .Cells["MaSanPham"].Value);
 
                 EditInventoryForManager frm =
