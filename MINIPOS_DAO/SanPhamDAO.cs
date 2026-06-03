@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Windows.Forms;
 using System.Data.SqlClient;
 using MINIPOS_DTO;
 
@@ -9,24 +10,15 @@ namespace MINIPOS_DAO
     {
         public DataTable GetAllProducts()
         {
-            using (SqlConnection conn =
-                SQLConnection.GetConnection())
-            {
-                conn.Open();
+            string query = "SELECT * FROM v_SanPham";
 
-                string query =
-                    "SELECT * FROM v_SanPham";
+            SqlDataAdapter da = new SqlDataAdapter(query, SQLConnection.GetConnection());
 
-                SqlDataAdapter da =
-                    new SqlDataAdapter(query, conn);
+            DataTable dt = new DataTable();
 
-                DataTable dt =
-                    new DataTable();
+            da.Fill(dt);
 
-                da.Fill(dt);
-
-                return dt;
-            }
+            return dt;
         }
 
         public SanPhamDTO GetProductById(int maSP)
@@ -51,7 +43,7 @@ namespace MINIPOS_DAO
 
                         TenSanPham = rd["TenSanPham"].ToString(),
 
-                        Loai = Convert.ToInt32(rd["Loai"]),
+                        MaLoai = Convert.ToInt32(rd["MaLoai"]),
 
                         DonGiaBan = Convert.ToDecimal(rd["DonGiaBan"]),
 
@@ -69,40 +61,33 @@ namespace MINIPOS_DAO
             }
         }
 
-        public bool UpdateProduct(SanPhamDTO sp)
+        public bool UpdateSanPham(SanPhamDTO sp)
         {
+            string query = @"UPDATE SanPham
+            SET
+                TenSanPham = @TenSanPham,
+                MaLoai = @MaLoai,
+                DonGiaBan = @DonGiaBan,
+                SoLuongTon = @SoLuongTon,
+                Barcode = @Barcode,
+                DonViTinh = @DonViTinh,
+                TrangThai = @TrangThai
+            WHERE MaSanPham = @MaSanPham";
+
             using (SqlConnection conn = SQLConnection.GetConnection())
             {
                 conn.Open();
 
-                string sql = @"UPDATE SanPham
-                SET
-                    TenSanPham=@TenSanPham,
-                    Loai=@Loai,
-                    DonGiaBan=@DonGiaBan,
-                    SoLuongTon=@SoLuongTon,
-                    Barcode=@Barcode,
-                    DonViTinh=@DonViTinh,
-                    MoTa=@MoTa
-                WHERE MaSanPham=@MaSanPham";
-
-                SqlCommand cmd = new SqlCommand(sql, conn);
-
-                cmd.Parameters.AddWithValue("@TenSanPham", sp.TenSanPham);
-
-                cmd.Parameters.AddWithValue("@Loai", sp.Loai);
-
-                cmd.Parameters.AddWithValue("@DonGiaBan", sp.DonGiaBan);
-
-                cmd.Parameters.AddWithValue("@SoLuongTon", sp.SoLuongTon);
-
-                cmd.Parameters.AddWithValue("@Barcode", sp.Barcode);
-
-                cmd.Parameters.AddWithValue("@DonViTinh", sp.DonViTinh);
-
-                cmd.Parameters.AddWithValue("@MoTa", sp.MoTa);
+                SqlCommand cmd = new SqlCommand(query, conn);
 
                 cmd.Parameters.AddWithValue("@MaSanPham", sp.MaSanPham);
+                cmd.Parameters.AddWithValue("@TenSanPham", sp.TenSanPham);
+                cmd.Parameters.AddWithValue("@MaLoai", sp.MaLoai);
+                cmd.Parameters.AddWithValue("@DonGiaBan", sp.DonGiaBan);
+                cmd.Parameters.AddWithValue("@SoLuongTon", sp.SoLuongTon);
+                cmd.Parameters.AddWithValue("@Barcode", sp.Barcode);
+                cmd.Parameters.AddWithValue("@DonViTinh", sp.DonViTinh);
+                cmd.Parameters.AddWithValue("@TrangThai", sp.TrangThai);
 
                 return cmd.ExecuteNonQuery() > 0;
             }
@@ -117,7 +102,7 @@ namespace MINIPOS_DAO
                 string sql = @"INSERT INTO SanPham
                 (
                     TenSanPham,
-                    Loai,
+                    MaLoai,
                     DonGiaBan,
                     SoLuongTon,
                     Barcode,
@@ -127,7 +112,7 @@ namespace MINIPOS_DAO
                 VALUES
                 (
                     @TenSanPham,
-                    @Loai,
+                    @MaLoai,
                     @DonGiaBan,
                     @SoLuongTon,
                     @Barcode,
@@ -139,7 +124,7 @@ namespace MINIPOS_DAO
 
                 cmd.Parameters.AddWithValue("@TenSanPham", sp.TenSanPham);
 
-                cmd.Parameters.AddWithValue("@Loai", sp.Loai);
+                cmd.Parameters.AddWithValue("@MaLoai", sp.MaLoai);
 
                 cmd.Parameters.AddWithValue("@DonGiaBan", sp.DonGiaBan);
 

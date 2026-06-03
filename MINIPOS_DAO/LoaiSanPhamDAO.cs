@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MINIPOS_DAO
 {
-    internal class LoaiSanPhamDAO
+    internal class MaLoaiSanPhamDAO
     {
     }
 }

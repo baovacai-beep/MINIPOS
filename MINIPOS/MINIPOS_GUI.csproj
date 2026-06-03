@@ -60,11 +60,53 @@
     <Compile Include="AddInventoryForManager.Designer.cs">
       <DependentUpon>AddInventoryForManager.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditInventoryForManager.cs">
+    <Compile Include="CustomerManagement.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EditInventoryForManager.Designer.cs">
-      <DependentUpon>EditInventoryForManager.cs</DependentUpon>
+    <Compile Include="CustomerManagement.Designer.cs">
+      <DependentUpon>CustomerManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report.Designer.cs">
+      <DependentUpon>Report.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SettingsForManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SettingsForManager.Designer.cs">
+      <DependentUpon>SettingsForManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SettingsForStaff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SettingsForStaff.Designer.cs">
+      <DependentUpon>SettingsForStaff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StaffManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StaffManagement.Designer.cs">
+      <DependentUpon>StaffManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CouponManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CouponManagement.Designer.cs">
+      <DependentUpon>CouponManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DraftInvoiceForManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DraftInvoiceForManager.Designer.cs">
+      <DependentUpon>DraftInvoiceForManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DraftInvoiceForStaff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DraftInvoiceForStaff.Designer.cs">
+      <DependentUpon>DraftInvoiceForStaff.cs</DependentUpon>
     </Compile>
     <Compile Include="MainFormForStaff.cs">
       <SubType>Form</SubType>
@@ -104,8 +146,17 @@
     <EmbeddedResource Include="AddInventoryForManager.resx">
       <DependentUpon>AddInventoryForManager.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditInventoryForManager.resx">
-      <DependentUpon>EditInventoryForManager.cs</DependentUpon>
+    <EmbeddedResource Include="CouponManagement.resx">
+      <DependentUpon>CouponManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomerManagement.resx">
+      <DependentUpon>CustomerManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DraftInvoiceForManager.resx">
+      <DependentUpon>DraftInvoiceForManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DraftInvoiceForStaff.resx">
+      <DependentUpon>DraftInvoiceForStaff.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryForManager.resx">
       <DependentUpon>InventoryForManager.cs</DependentUpon>
@@ -132,6 +183,23 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <EmbeddedResource Include="Report.resx">
+      <DependentUpon>Report.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SettingsForManager.resx">
+      <DependentUpon>SettingsForManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SettingsForStaff.resx">
+      <DependentUpon>SettingsForStaff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StaffManagement.resx">
+      <DependentUpon>StaffManagement.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -165,6 +233,11 @@
     <Folder Include="Reports\" />
     <Folder Include="Resources\" />
     <Folder Include="UserControls\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

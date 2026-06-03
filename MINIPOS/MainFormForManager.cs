@@ -57,6 +57,7 @@ namespace MINIPOS
             frm.Show();
             this.Hide();
         }
+
         // hiển thị tất cả SP
         private void LoadSanPham(string where = "")
         {

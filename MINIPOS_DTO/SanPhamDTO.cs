@@ -12,7 +12,9 @@ namespace MINIPOS_DTO
 
         public string TenSanPham { get; set; }
 
-        public int Loai { get; set; }
+        public int MaLoai { get; set; }
+
+        public decimal GiaNhap { get; set; }
 
         public decimal DonGiaBan { get; set; }
 
@@ -23,6 +25,8 @@ namespace MINIPOS_DTO
         public string DonViTinh { get; set; }
 
         public string MoTa { get; set; }
+
+        public bool TrangThai { get; set; }
 
         public string HinhAnh { get; set; }
     }

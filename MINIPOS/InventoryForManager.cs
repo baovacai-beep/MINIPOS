@@ -7,8 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MINIPOS_DAO;
 using MINIPOS_BUS;
+using MINIPOS_DAO;
+using MINIPOS_DTO;
 
 namespace MINIPOS
 {
@@ -21,8 +22,6 @@ namespace MINIPOS
             InitializeComponent();
 
             this.FormClosed += InventoryForManager_FormClosed;
-
-            dgvSanPham.CellContentClick += dgvInventory_CellContentClick;
         }
 
         private void InventoryForManager_FormClosed(object sender, FormClosedEventArgs e)
@@ -32,7 +31,7 @@ namespace MINIPOS
 
         private void LoadProducts()
         {
-            dgvSanPham.DataSource = spBUS.GetAllProducts();
+            dgvSanPham.DataSource = sanPhamBUS.GetAllProducts();
         }
 
         private void InventoryForManager_Load(object sender, EventArgs e)
@@ -41,8 +40,7 @@ namespace MINIPOS
 
             if (!dgvSanPham.Columns.Contains("Edit"))
             {
-                DataGridViewButtonColumn btnEdit =
-                    new DataGridViewButtonColumn();
+                DataGridViewButtonColumn btnEdit = new DataGridViewButtonColumn();
 
                 btnEdit.Name = "Edit";
                 btnEdit.HeaderText = "Chỉnh sửa";
@@ -72,24 +70,82 @@ namespace MINIPOS
             }
         }
 
-        private void dgvInventory_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private SanPhamBUS sanPhamBUS = new SanPhamBUS();
+
+        private void btnBanHang_Click(object sender, EventArgs e)
         {
-            if (e.ColumnIndex ==
-        dgvSanPham.Columns["Edit"].Index
-        && e.RowIndex >= 0)
+            MainFormForManager frm = new MainFormForManager();
+
+            frm.Show();
+            this.Hide();
+        }
+
+        private void dgvSanPham_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0)
+                return;
+
+            if (dgvSanPham.Columns[e.ColumnIndex].Name == "Edit")
             {
-                int maSP = Convert.ToInt32(
-                    dgvSanPham.Rows[e.RowIndex]
-                    .Cells["MaSanPham"].Value);
-
-                EditInventoryForManager frm =
-                    new EditInventoryForManager(maSP);
-
-                if (frm.ShowDialog() == DialogResult.OK)
+                try
                 {
-                    LoadProducts();
+                    DataGridViewRow row = dgvSanPham.Rows[e.RowIndex];
+
+                    SanPhamDTO sp = new SanPhamDTO();
+
+                    sp.MaSanPham = Convert.ToInt32(row.Cells["MaSanPham"].Value);
+
+                    sp.TenSanPham = row.Cells["TenSanPham"].Value.ToString();
+
+                    sp.MaLoai = Convert.ToInt32(row.Cells["MaLoai"].Value);
+
+                    sp.DonGiaBan = Convert.ToDecimal(row.Cells["DonGiaBan"].Value);
+
+                    sp.SoLuongTon = Convert.ToInt32(row.Cells["SoLuongTon"].Value);
+
+                    sp.Barcode = row.Cells["Barcode"].Value?.ToString();
+
+                    sp.DonViTinh = row.Cells["DonViTinh"].Value?.ToString();
+
+                    sp.TrangThai = Convert.ToBoolean(row.Cells["TrangThai"].Value);
+
+                    bool result = sanPhamBUS.UpdateSanPham(sp);
+
+                    if (result)
+                    {
+                        MessageBox.Show("Đã chỉnh sửa thông tin sản phẩm",
+                            "Thông báo",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information);
+
+                        LoadProducts();
+                    }
+                    else
+                    {
+                        MessageBox.Show(
+                            "Lỗi: Không thể chỉnh sửa thông tin sản phẩm",
+                            "Lỗi",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(
+                        "Lỗi: " + ex.Message,
+                        "Lỗi",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void btnThemSP_Click(object sender, EventArgs e)
+        {
+            AddInventoryForManager frm = new AddInventoryForManager();
+
+            frm.Show();
+            this.Hide();
         }
     }
 }

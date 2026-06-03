@@ -26,13 +26,13 @@ namespace MINIPOS
             Application.Exit();
         }
 
-        private void LoadLoai()
+        private void LoadMaLoai()
         {
             using (SqlConnection conn = SQLConnection.GetConnection())
             {
                 conn.Open();
 
-                string sql = @"SELECT Loai, TenLoai FROM LoaiSanPham WHERE TrangThai = 1";
+                string sql = @"SELECT MaLoai, TenLoai FROM MaLoaiSanPham WHERE TrangThai = 1";
 
                 SqlDataAdapter da = new SqlDataAdapter(sql, conn);
 
@@ -42,13 +42,13 @@ namespace MINIPOS
 
                 cboCategory.DataSource = dt;
                 cboCategory.DisplayMember = "TenLoai";
-                cboCategory.ValueMember = "Loai";
+                cboCategory.ValueMember = "MaLoai";
             }
         }
 
         private void AddInventoryForManager_Load(object sender, EventArgs e)
         {
-            LoadLoai();
+            LoadMaLoai();
         }
 
         private void btnSell_Click(object sender, EventArgs e)
@@ -71,7 +71,7 @@ namespace MINIPOS
                 (
                     TenSanPham,
                     Barcode,
-                    Loai,
+                    MaLoai,
                     DonGiaBan,
                     SoLuongTon,
                     DonViTinh,
@@ -81,7 +81,7 @@ namespace MINIPOS
                 (
                     @TenSP,
                     @Barcode,
-                    @Loai,
+                    @MaLoai,
                     @GiaBan,
                     @SoLuong,
                     @DonVi,
@@ -94,7 +94,7 @@ namespace MINIPOS
 
                 cmd.Parameters.AddWithValue("@Barcode", txtBarcode.Text);
 
-                cmd.Parameters.AddWithValue("@Loai", cboCategory.SelectedValue);
+                cmd.Parameters.AddWithValue("@MaLoai", cboCategory.SelectedValue);
 
                 cmd.Parameters.AddWithValue("@GiaBan", nudSellPrice.Value);
 

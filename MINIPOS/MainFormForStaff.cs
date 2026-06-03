@@ -1,6 +1,7 @@
 using FontAwesome.Sharp;
 using MINIPOS_BUS;
 using MINIPOS_DTO;
+using MINIPOS_DAO;
 using System;
 using System.Collections.Generic;
 using System.Data;
