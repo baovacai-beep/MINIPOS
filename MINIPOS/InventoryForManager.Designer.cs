@@ -42,7 +42,6 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnXoa = new System.Windows.Forms.Button();
             this.dgvSanPham = new System.Windows.Forms.DataGridView();
-            this.btnCapNhat = new System.Windows.Forms.Button();
             this.btnThemSP = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnTimSP = new System.Windows.Forms.Button();
@@ -241,7 +240,6 @@
             // 
             this.panel4.Controls.Add(this.btnXoa);
             this.panel4.Controls.Add(this.dgvSanPham);
-            this.panel4.Controls.Add(this.btnCapNhat);
             this.panel4.Controls.Add(this.btnThemSP);
             this.panel4.Location = new System.Drawing.Point(160, 257);
             this.panel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -277,22 +275,10 @@
             this.dgvSanPham.TabIndex = 0;
             this.dgvSanPham.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSanPham_CellContentClick);
             // 
-            // btnCapNhat
-            // 
-            this.btnCapNhat.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCapNhat.Location = new System.Drawing.Point(589, 278);
-            this.btnCapNhat.Margin = new System.Windows.Forms.Padding(4);
-            this.btnCapNhat.Name = "btnCapNhat";
-            this.btnCapNhat.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.btnCapNhat.Size = new System.Drawing.Size(143, 43);
-            this.btnCapNhat.TabIndex = 62;
-            this.btnCapNhat.Text = "Cập nhật";
-            this.btnCapNhat.UseVisualStyleBackColor = true;
-            // 
             // btnThemSP
             // 
             this.btnThemSP.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThemSP.Location = new System.Drawing.Point(439, 278);
+            this.btnThemSP.Location = new System.Drawing.Point(589, 278);
             this.btnThemSP.Margin = new System.Windows.Forms.Padding(4);
             this.btnThemSP.Name = "btnThemSP";
             this.btnThemSP.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -521,7 +507,6 @@
         private System.Windows.Forms.TextBox txtBarcode;
         private System.Windows.Forms.TextBox txtProductName;
         private System.Windows.Forms.Button btnXoa;
-        private System.Windows.Forms.Button btnCapNhat;
         private System.Windows.Forms.Button btnThemSP;
         private System.Windows.Forms.Button btnTimSP;
     }

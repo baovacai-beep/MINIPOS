@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace MINIPOS
 {
-    public partial class CouponManagement : Form
+    public partial class ReportForManager : Form
     {
-        public CouponManagement()
+        public ReportForManager()
         {
             InitializeComponent();
         }

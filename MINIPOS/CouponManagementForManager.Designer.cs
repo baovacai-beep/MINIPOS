@@ -1,6 +1,6 @@
 ﻿namespace MINIPOS
 {
-    partial class CouponManagement
+    partial class CouponManagementForManager
     {
         /// <summary>
         /// Required designer variable.
@@ -30,13 +30,13 @@
         {
             this.SuspendLayout();
             // 
-            // CouponManagement
+            // CouponManagementForManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Name = "CouponManagement";
-            this.Text = "Quản Lý Khuyến Mãi";
+            this.Name = "CouponManagementForManager";
+            this.Text = "Quán Lý Khuyến Mãi (dành cho quản lý)";
             this.ResumeLayout(false);
 
         }

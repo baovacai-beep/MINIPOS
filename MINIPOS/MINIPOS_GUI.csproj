@@ -66,11 +66,23 @@
     <Compile Include="CustomerManagement.Designer.cs">
       <DependentUpon>CustomerManagement.cs</DependentUpon>
     </Compile>
-    <Compile Include="Report.cs">
+    <Compile Include="CouponManagementForManager.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Report.Designer.cs">
-      <DependentUpon>Report.cs</DependentUpon>
+    <Compile Include="CouponManagementForManager.Designer.cs">
+      <DependentUpon>CouponManagementForManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportForManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportForManager.Designer.cs">
+      <DependentUpon>ReportForManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StaffManagementForManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StaffManagementForManager.Designer.cs">
+      <DependentUpon>StaffManagementForManager.cs</DependentUpon>
     </Compile>
     <Compile Include="SettingsForManager.cs">
       <SubType>Form</SubType>
@@ -83,18 +95,6 @@
     </Compile>
     <Compile Include="SettingsForStaff.Designer.cs">
       <DependentUpon>SettingsForStaff.cs</DependentUpon>
-    </Compile>
-    <Compile Include="StaffManagement.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="StaffManagement.Designer.cs">
-      <DependentUpon>StaffManagement.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CouponManagement.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CouponManagement.Designer.cs">
-      <DependentUpon>CouponManagement.cs</DependentUpon>
     </Compile>
     <Compile Include="DraftInvoiceForManager.cs">
       <SubType>Form</SubType>
@@ -146,8 +146,8 @@
     <EmbeddedResource Include="AddInventoryForManager.resx">
       <DependentUpon>AddInventoryForManager.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CouponManagement.resx">
-      <DependentUpon>CouponManagement.cs</DependentUpon>
+    <EmbeddedResource Include="CouponManagementForManager.resx">
+      <DependentUpon>CouponManagementForManager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CustomerManagement.resx">
       <DependentUpon>CustomerManagement.cs</DependentUpon>
@@ -188,8 +188,8 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\FontAwesome.otf" />
-    <EmbeddedResource Include="Report.resx">
-      <DependentUpon>Report.cs</DependentUpon>
+    <EmbeddedResource Include="ReportForManager.resx">
+      <DependentUpon>ReportForManager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SettingsForManager.resx">
       <DependentUpon>SettingsForManager.cs</DependentUpon>
@@ -197,8 +197,8 @@
     <EmbeddedResource Include="SettingsForStaff.resx">
       <DependentUpon>SettingsForStaff.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="StaffManagement.resx">
-      <DependentUpon>StaffManagement.cs</DependentUpon>
+    <EmbeddedResource Include="StaffManagementForManager.resx">
+      <DependentUpon>StaffManagementForManager.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

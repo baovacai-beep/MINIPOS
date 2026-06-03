@@ -1,6 +1,6 @@
 ﻿namespace MINIPOS
 {
-    partial class Report
+    partial class StaffManagementForManager
     {
         /// <summary>
         /// Required designer variable.
@@ -30,13 +30,13 @@
         {
             this.SuspendLayout();
             // 
-            // Report
+            // StaffManagementForManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Name = "Report";
-            this.Text = "Báo Cáo";
+            this.Name = "StaffManagementForManager";
+            this.Text = "Quản Lý Nhân Viên (dành cho quản lý)";
             this.ResumeLayout(false);
 
         }
