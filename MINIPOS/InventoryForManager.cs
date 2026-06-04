@@ -49,7 +49,7 @@ namespace MINIPOS
                 btnEdit.UseColumnTextForButtonValue = true;
 
                 dgvSanPham.Columns.Add(btnEdit);
-            }
+            }    
         }
 
         private void btnSell_Click(object sender, EventArgs e)
@@ -86,6 +86,7 @@ namespace MINIPOS
             if (e.RowIndex < 0)
                 return;
 
+            //Edit
             if (dgvSanPham.Columns[e.ColumnIndex].Name == "Edit")
             {
                 try
@@ -147,11 +148,6 @@ namespace MINIPOS
 
             frm.Show();
             this.Hide();
-        }
-
-        private void btnXoa_Click(object sender, EventArgs e)
-        {
-            
         }
     }
 }
