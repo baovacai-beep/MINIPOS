@@ -29,5 +29,13 @@ namespace MINIPOS_BUS
         {
             return sanPhamDAO.UpdateSanPham(sp);
         }
+
+        public bool XoaSanPham(int maSanPham)
+        {
+            if (maSanPham <= 0)
+                return false;
+
+            return dao.XoaSanPham(maSanPham);
+        }
     }
 }

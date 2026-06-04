@@ -139,5 +139,22 @@ namespace MINIPOS_DAO
                 return cmd.ExecuteNonQuery() > 0;
             }
         }
+
+        public bool XoaSanPham(int maSanPham)
+        {
+            string query = "DELETE FROM SanPham WHERE MaSanPham = @MaSanPham";
+
+            using (SqlConnection conn = SQLConnection.GetConnection())
+            {
+                conn.Open();
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@MaSanPham", maSanPham);
+
+                    return cmd.ExecuteNonQuery() > 0;
+                }
+            }
+        }
     }
 }
