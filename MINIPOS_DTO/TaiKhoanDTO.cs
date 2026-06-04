@@ -16,5 +16,8 @@ namespace MINIPOS_DTO
         // Thông tin nhân viên tương ứng (JOIN từ bảng NhanVien)
         public int    MaNhanVien      { get; set; }
         public string HoTen           { get; set; }
+        public string GioiTinh        { get; set; }
+        public string SoDienThoai     { get; set; }
+        public DateTime NgaySinh        { get; set; }
     }
 }
