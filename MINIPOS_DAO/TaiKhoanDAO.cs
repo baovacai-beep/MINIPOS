@@ -21,7 +21,10 @@ namespace MINIPOS_DAO
                     tk.NgayTao,
                     tk.LanDangNhapCuoi,
                     nv.MaNhanVien,
-                    nv.HoTen
+                    nv.HoTen,
+                    nv.GioiTinh,
+                    nv.NgaySinh,
+                    nv.SoDienThoai
                 FROM TaiKhoan tk
                 INNER JOIN VaiTro  vt ON tk.MaVaiTro   = vt.MaVaiTro
                 LEFT  JOIN NhanVien nv ON nv.MaTaiKhoan = tk.MaTaiKhoan
@@ -56,7 +59,18 @@ namespace MINIPOS_DAO
                                                    : (int)dr["MaNhanVien"],
                             HoTen            = dr["HoTen"] == DBNull.Value
                                                    ? string.Empty
-                                                   : dr["HoTen"].ToString()
+                                                   : dr["HoTen"].ToString(),
+                            GioiTinh = dr["GioiTinh"] == DBNull.Value
+                                                   ? ""
+                                                   : dr["GioiTinh"].ToString(),
+
+                            SoDienThoai = dr["SoDienThoai"] == DBNull.Value
+                                                   ? ""
+                                                   : dr["SoDienThoai"].ToString(),
+
+                            NgaySinh = dr["NgaySinh"] == DBNull.Value
+                                                   ? DateTime.MinValue
+                                                   : (DateTime)dr["NgaySinh"]
                         };
                     }
                 }

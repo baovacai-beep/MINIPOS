@@ -43,7 +43,6 @@ namespace MINIPOS
         private void MainFormForStaff_Load(object sender, EventArgs e)
         {
             KhoiTaoGioHang();
-            WireUpButtons();
             LoadSanPham();
         }
 
@@ -104,11 +103,7 @@ namespace MINIPOS
         }
 
         /// <summary>Gán sự kiện cho btnThanhToan, button1 (Lưu HĐ), btnVoucher</summary>
-        private void WireUpButtons()
-        {
-            btnThanhToan.Click += BtnThanhToan_Click;
-            btnVoucher.Click   += BtnTraCuuKhachHang_Click;
-        }
+ 
 
         // ══════════════════════════════════════════════════════════
         // HIỂN THỊ SẢN PHẨM
@@ -122,11 +117,13 @@ namespace MINIPOS
                        TenLoai AS [Loại SP],
                        DonGiaBan AS [Đơn giá],
                        DonViTinh AS [Đơn vị],
-                       SoLuongTon AS [Tồn kho]
+                       SoLuongTon AS [Tồn kho],
+                       SoLuongTonToiThieu AS [Tồn kho tối thiểu]
                 FROM v_SanPham
-                WHERE TrangThai = 1 AND SoLuongTon > 0 "
-                + (string.IsNullOrEmpty(where) ? "" : "AND " + where);
+                WHERE TrangThai = 1 AND SoLuongTon > 0 " + (string.IsNullOrEmpty(where) ? "" : "AND " + where);
             dgvSanPham.DataSource = MINIPOS_DAO.SQLConnection.ExecuteQuery(sql);
+            dgvSanPham.Columns["Tồn kho tối thiểu"].Visible = false;
+            dgvSanPham.Columns["Tồn kho"].Visible = false;
         }
 
         private void btnTimKiem_Click(object sender, EventArgs e)
@@ -160,35 +157,24 @@ namespace MINIPOS
         {
             if (e.RowIndex < 0) return;
 
-            var row    = dgvSanPham.Rows[e.RowIndex];
-            int maSP   = Convert.ToInt32(row.Cells["Mã SP"].Value);
+            var row = dgvSanPham.Rows[e.RowIndex];
+
+            int maSP = Convert.ToInt32(row.Cells["Mã SP"].Value);
             string ten = row.Cells["Tên SP"].Value.ToString();
             decimal gia = Convert.ToDecimal(row.Cells["Đơn giá"].Value);
-            int tonKho  = Convert.ToInt32(row.Cells["Tồn kho"].Value);
-
-            // Kiểm tra trùng
+            // Kiểm tra trùng sản phẩm
             foreach (DataGridViewRow r in dgvGioHang.Rows)
             {
-                if (r.Cells[COL_MASP].Value != null &&
-                    Convert.ToInt32(r.Cells[COL_MASP].Value) == maSP)
+                if (r.Cells[COL_MASP].Value != null && Convert.ToInt32(r.Cells[COL_MASP].Value) == maSP)
                 {
-                    int slHienTai = Convert.ToInt32(r.Cells[COL_SOLUONG].Value);
-                    if (slHienTai >= tonKho)
-                    {
-                        MessageBox.Show($"'{ten}' chỉ còn {tonKho} trong kho.",
-                            "Không đủ hàng", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
-                    r.Cells[COL_SOLUONG].Value   = slHienTai + 1;
-                    r.Cells[COL_THANHTIEN].Value = gia * (slHienTai + 1);
-                    TinhTongTien();
+                    MessageBox.Show($"'{ten}' đã có trong giỏ hàng.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
             }
-
-            // Thêm dòng mới
+            // Thêm stt
             int stt = dgvGioHang.Rows.Count + 1;
             dgvGioHang.Rows.Add(maSP, stt, ten, gia, 1, gia);
+
             TinhTongTien();
         }
 
@@ -201,13 +187,32 @@ namespace MINIPOS
             int sl;
             if (!int.TryParse(row.Cells[COL_SOLUONG].Value?.ToString(), out sl) || sl <= 0)
             {
-                MessageBox.Show("Số lượng phải là số nguyên dương.", "Lỗi",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Số lượng phải là số nguyên dương.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 row.Cells[COL_SOLUONG].Value = 1;
                 sl = 1;
             }
-
-            decimal gia              = Convert.ToDecimal(row.Cells[COL_DONGIA].Value);
+            // Lấy mã sp trong giỏ hàng
+            int maSP = Convert.ToInt32(row.Cells[COL_MASP].Value);
+            // Tìm sp tương ứng trong dgvSanPham
+            foreach (DataGridViewRow spRow in dgvSanPham.Rows)
+            {
+                if (spRow.Cells["Mã SP"].Value == null)
+                    continue;
+                if (Convert.ToInt32(spRow.Cells["Mã SP"].Value) == maSP)
+                {
+                    int tonKho = Convert.ToInt32(spRow.Cells["Tồn kho"].Value);
+                    int tonKhoToiThieu = Convert.ToInt32(spRow.Cells["Tồn kho tối thiểu"].Value);
+                    int slBanDuoc = Math.Max(0, tonKho - tonKhoToiThieu);
+                    if (sl > slBanDuoc)
+                    {
+                        MessageBox.Show($"Chỉ được bán tối đa {slBanDuoc} sản phẩm.", "Không đủ hàng", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        row.Cells[COL_SOLUONG].Value = slBanDuoc;
+                        sl = slBanDuoc;
+                    }
+                    break;
+                }
+            }
+            decimal gia = Convert.ToDecimal(row.Cells[COL_DONGIA].Value);
             row.Cells[COL_THANHTIEN].Value = gia * sl;
             TinhTongTien();
         }
@@ -468,6 +473,13 @@ namespace MINIPOS
                 }
                 TinhTongTien();
             }
+        }
+
+        private void btnCaiDat_Click(object sender, EventArgs e)
+        {
+            var frm = new SettingsForStaff();
+            frm.Show();
+            this.Hide();
         }
     }
 }
