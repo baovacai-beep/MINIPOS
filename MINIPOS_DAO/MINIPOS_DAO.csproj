@@ -50,10 +50,8 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaoCaoDAO.cs" />
     <Compile Include="ChiTietHoaDonDAO.cs" />
     <Compile Include="HoaDonDAO.cs" />
-    <Compile Include="HoaDonNhapDAO.cs" />
     <Compile Include="KhachHangDAO.cs" />
     <Compile Include="LoaiSanPhamDAO.cs" />
     <Compile Include="SanPhamDAO.cs" />

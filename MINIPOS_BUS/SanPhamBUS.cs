@@ -13,6 +13,16 @@ namespace MINIPOS_BUS
             return dao.GetAllProducts();
         }
 
+        public DataTable TimKiem(SanPhamFilterDTO f)
+        {
+            return dao.TimKiem(f);
+        }
+
+        public DataTable TimKiemBanHang(SanPhamFilterDTO f)
+        {
+            return dao.TimKiemBanHang(f);
+        }
+
         public SanPhamDTO GetProductById(int id)
         {
             return dao.GetProductById(id);
