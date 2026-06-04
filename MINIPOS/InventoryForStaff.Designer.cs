@@ -37,13 +37,6 @@
             this.btnKho = new FontAwesome.Sharp.IconButton();
             this.btnBanHang = new FontAwesome.Sharp.IconButton();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.panelLoc = new System.Windows.Forms.Panel();
-            this.cboLoai = new System.Windows.Forms.ComboBox();
-            this.nudGiaMin = new System.Windows.Forms.NumericUpDown();
-            this.nudGiaMax = new System.Windows.Forms.NumericUpDown();
-            this.cboTonKho = new System.Windows.Forms.ComboBox();
-            this.btnLoc = new System.Windows.Forms.Button();
-            this.btnXoaLoc = new System.Windows.Forms.Button();
             this.dgvSanPham = new System.Windows.Forms.DataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnTimSP = new System.Windows.Forms.Button();
@@ -64,9 +57,6 @@
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
-            this.panelLoc.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudGiaMin)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudGiaMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSanPham)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudQuantity)).BeginInit();
@@ -190,9 +180,8 @@
             this.btnBanHang.UseVisualStyleBackColor = true;
             // 
             // panel4
-            //
+            // 
             this.panel4.Controls.Add(this.dgvSanPham);
-            this.panel4.Controls.Add(this.panelLoc);
             this.panel4.Location = new System.Drawing.Point(157, 257);
             this.panel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel4.Name = "panel4";
@@ -206,96 +195,16 @@
             this.dgvSanPham.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvSanPham.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvSanPham.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSanPham.Location = new System.Drawing.Point(0, 59);
+            this.dgvSanPham.Location = new System.Drawing.Point(0, 9);
             this.dgvSanPham.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvSanPham.Name = "dgvSanPham";
             this.dgvSanPham.ReadOnly = true;
             this.dgvSanPham.RowHeadersVisible = false;
             this.dgvSanPham.RowHeadersWidth = 51;
             this.dgvSanPham.RowTemplate.Height = 24;
-            this.dgvSanPham.Size = new System.Drawing.Size(880, 213);
+            this.dgvSanPham.Size = new System.Drawing.Size(880, 263);
             this.dgvSanPham.TabIndex = 0;
-            //
-            // panelLoc
-            //
-            this.panelLoc.Controls.Add(this.cboLoai);
-            this.panelLoc.Controls.Add(this.nudGiaMin);
-            this.panelLoc.Controls.Add(this.nudGiaMax);
-            this.panelLoc.Controls.Add(this.cboTonKho);
-            this.panelLoc.Controls.Add(this.btnLoc);
-            this.panelLoc.Controls.Add(this.btnXoaLoc);
-            this.panelLoc.Location = new System.Drawing.Point(0, 5);
-            this.panelLoc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panelLoc.Name = "panelLoc";
-            this.panelLoc.Size = new System.Drawing.Size(880, 48);
-            this.panelLoc.TabIndex = 1;
-            //
-            // cboLoai
-            //
-            this.cboLoai.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboLoai.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.cboLoai.Location = new System.Drawing.Point(3, 12);
-            this.cboLoai.Name = "cboLoai";
-            this.cboLoai.Size = new System.Drawing.Size(120, 24);
-            this.cboLoai.TabIndex = 39;
-            //
-            // nudGiaMin
-            //
-            this.nudGiaMin.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.nudGiaMin.Location = new System.Drawing.Point(128, 12);
-            this.nudGiaMin.Maximum = new decimal(new int[] { 100000000, 0, 0, 0 });
-            this.nudGiaMin.Increment = new decimal(new int[] { 1000, 0, 0, 0 });
-            this.nudGiaMin.Name = "nudGiaMin";
-            this.nudGiaMin.Size = new System.Drawing.Size(70, 23);
-            this.nudGiaMin.TabIndex = 40;
-            this.nudGiaMin.ThousandsSeparator = true;
-            //
-            // nudGiaMax
-            //
-            this.nudGiaMax.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.nudGiaMax.Location = new System.Drawing.Point(203, 12);
-            this.nudGiaMax.Maximum = new decimal(new int[] { 100000000, 0, 0, 0 });
-            this.nudGiaMax.Increment = new decimal(new int[] { 1000, 0, 0, 0 });
-            this.nudGiaMax.Name = "nudGiaMax";
-            this.nudGiaMax.Size = new System.Drawing.Size(70, 23);
-            this.nudGiaMax.TabIndex = 41;
-            this.nudGiaMax.ThousandsSeparator = true;
-            //
-            // cboTonKho
-            //
-            this.cboTonKho.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboTonKho.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.cboTonKho.Location = new System.Drawing.Point(278, 12);
-            this.cboTonKho.Name = "cboTonKho";
-            this.cboTonKho.Size = new System.Drawing.Size(105, 24);
-            this.cboTonKho.TabIndex = 42;
-            //
-            // btnLoc
-            //
-            this.btnLoc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
-            this.btnLoc.FlatAppearance.BorderSize = 0;
-            this.btnLoc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLoc.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnLoc.ForeColor = System.Drawing.Color.White;
-            this.btnLoc.Location = new System.Drawing.Point(388, 11);
-            this.btnLoc.Name = "btnLoc";
-            this.btnLoc.Size = new System.Drawing.Size(60, 26);
-            this.btnLoc.TabIndex = 43;
-            this.btnLoc.Text = "Lọc";
-            this.btnLoc.UseVisualStyleBackColor = false;
-            //
-            // btnXoaLoc
-            //
-            this.btnXoaLoc.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(228)))), ((int)(((byte)(234)))));
-            this.btnXoaLoc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnXoaLoc.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnXoaLoc.Location = new System.Drawing.Point(452, 11);
-            this.btnXoaLoc.Name = "btnXoaLoc";
-            this.btnXoaLoc.Size = new System.Drawing.Size(68, 26);
-            this.btnXoaLoc.TabIndex = 44;
-            this.btnXoaLoc.Text = "Xóa lọc";
-            this.btnXoaLoc.UseVisualStyleBackColor = true;
-            //
+            // 
             // panel3
             // 
             this.panel3.Controls.Add(this.btnTimSP);
@@ -473,9 +382,6 @@
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
-            this.panelLoc.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.nudGiaMin)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudGiaMax)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSanPham)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
@@ -513,12 +419,5 @@
         private System.Windows.Forms.ComboBox cboCategory;
         private System.Windows.Forms.TextBox txtBarcode;
         private System.Windows.Forms.TextBox txtProductName;
-        private System.Windows.Forms.Panel panelLoc;
-        private System.Windows.Forms.ComboBox cboLoai;
-        private System.Windows.Forms.NumericUpDown nudGiaMin;
-        private System.Windows.Forms.NumericUpDown nudGiaMax;
-        private System.Windows.Forms.ComboBox cboTonKho;
-        private System.Windows.Forms.Button btnLoc;
-        private System.Windows.Forms.Button btnXoaLoc;
     }
 }
