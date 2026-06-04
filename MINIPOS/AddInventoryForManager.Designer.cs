@@ -28,283 +28,161 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.lblDate = new System.Windows.Forms.Label();
-            this.lblHiManagerName = new System.Windows.Forms.Label();
-            this.lblMiniPOSInventory = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btnStaff = new System.Windows.Forms.Button();
-            this.pictureBox19 = new System.Windows.Forms.PictureBox();
-            this.btnSettings = new System.Windows.Forms.Button();
-            this.pictureBox18 = new System.Windows.Forms.PictureBox();
-            this.btnInventory = new System.Windows.Forms.Button();
-            this.btnSell = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.txtProductName = new System.Windows.Forms.TextBox();
+            this.txtMaSP = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.lblDescription = new System.Windows.Forms.Label();
-            this.lblUnit = new System.Windows.Forms.Label();
-            this.lblQuantity = new System.Windows.Forms.Label();
-            this.lblSellPrice = new System.Windows.Forms.Label();
-            this.lblImportPrice = new System.Windows.Forms.Label();
-            this.lblCategory = new System.Windows.Forms.Label();
-            this.lblBarcode = new System.Windows.Forms.Label();
-            this.lvlProductName = new System.Windows.Forms.Label();
+            this.lblMoTa = new System.Windows.Forms.Label();
+            this.lblSoLuongTonToiThieu = new System.Windows.Forms.Label();
+            this.lblSoLuongTon = new System.Windows.Forms.Label();
+            this.lblDonGiaBan = new System.Windows.Forms.Label();
+            this.lblMaLoai = new System.Windows.Forms.Label();
+            this.lblTenSP = new System.Windows.Forms.Label();
+            this.lblMaSP = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.rtxtDescription = new System.Windows.Forms.RichTextBox();
-            this.txtUnit = new System.Windows.Forms.TextBox();
-            this.nudQuantity = new System.Windows.Forms.NumericUpDown();
-            this.nudSellPrice = new System.Windows.Forms.NumericUpDown();
-            this.nudImportPrice = new System.Windows.Forms.NumericUpDown();
-            this.cboCategory = new System.Windows.Forms.ComboBox();
+            this.rtxtMoTa = new System.Windows.Forms.RichTextBox();
+            this.txtSoLuongTonToiThieu = new System.Windows.Forms.TextBox();
+            this.txtTenSP = new System.Windows.Forms.TextBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.lblMiniPOSInventory = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnCaiDat = new FontAwesome.Sharp.IconButton();
+            this.btnBaoCao = new FontAwesome.Sharp.IconButton();
+            this.btnXemHDNhap = new FontAwesome.Sharp.IconButton();
+            this.btnKhuyenMai = new FontAwesome.Sharp.IconButton();
+            this.btnNhanVien = new FontAwesome.Sharp.IconButton();
+            this.btnKhachHang = new FontAwesome.Sharp.IconButton();
+            this.btnKho = new FontAwesome.Sharp.IconButton();
+            this.btnBanHang = new FontAwesome.Sharp.IconButton();
+            this.lblHinhAnh = new System.Windows.Forms.Label();
+            this.lblDonViTinh = new System.Windows.Forms.Label();
+            this.lblBarcode = new System.Windows.Forms.Label();
             this.txtBarcode = new System.Windows.Forms.TextBox();
+            this.txtHinhAnh = new System.Windows.Forms.TextBox();
+            this.txtDonViTinh = new System.Windows.Forms.TextBox();
+            this.txtMaLoai = new System.Windows.Forms.TextBox();
+            this.txtDonGiaBan = new System.Windows.Forms.TextBox();
+            this.txtSoLuongTon = new System.Windows.Forms.TextBox();
+            this.txtTrangThai = new System.Windows.Forms.TextBox();
+            this.lblTrangThai = new System.Windows.Forms.Label();
+            this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudQuantity)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudSellPrice)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudImportPrice)).BeginInit();
             this.SuspendLayout();
             // 
-            // panel2
+            // txtMaSP
             // 
-            this.panel2.Controls.Add(this.lblDate);
-            this.panel2.Controls.Add(this.lblHiManagerName);
-            this.panel2.Controls.Add(this.lblMiniPOSInventory);
-            this.panel2.Location = new System.Drawing.Point(12, 12);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(776, 63);
-            this.panel2.TabIndex = 28;
-            // 
-            // lblDate
-            // 
-            this.lblDate.AutoSize = true;
-            this.lblDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDate.Location = new System.Drawing.Point(557, 38);
-            this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(89, 20);
-            this.lblDate.TabIndex = 6;
-            this.lblDate.Text = "Ngày - Giờ";
-            // 
-            // lblHiManagerName
-            // 
-            this.lblHiManagerName.AutoSize = true;
-            this.lblHiManagerName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHiManagerName.Location = new System.Drawing.Point(557, 7);
-            this.lblHiManagerName.Name = "lblHiManagerName";
-            this.lblHiManagerName.Size = new System.Drawing.Size(105, 20);
-            this.lblHiManagerName.TabIndex = 5;
-            this.lblHiManagerName.Text = "Chào ... (QL)";
-            // 
-            // lblMiniPOSInventory
-            // 
-            this.lblMiniPOSInventory.AutoSize = true;
-            this.lblMiniPOSInventory.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMiniPOSInventory.Location = new System.Drawing.Point(3, 18);
-            this.lblMiniPOSInventory.Name = "lblMiniPOSInventory";
-            this.lblMiniPOSInventory.Size = new System.Drawing.Size(333, 29);
-            this.lblMiniPOSInventory.TabIndex = 2;
-            this.lblMiniPOSInventory.Text = "MiniPOS - Cửa hàng Tiện lợi";
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.btnStaff);
-            this.panel1.Controls.Add(this.pictureBox19);
-            this.panel1.Controls.Add(this.btnSettings);
-            this.panel1.Controls.Add(this.pictureBox18);
-            this.panel1.Controls.Add(this.btnInventory);
-            this.panel1.Controls.Add(this.btnSell);
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Controls.Add(this.pictureBox2);
-            this.panel1.Location = new System.Drawing.Point(12, 81);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(137, 357);
-            this.panel1.TabIndex = 29;
-            // 
-            // btnStaff
-            // 
-            this.btnStaff.Location = new System.Drawing.Point(19, 211);
-            this.btnStaff.Name = "btnStaff";
-            this.btnStaff.Size = new System.Drawing.Size(97, 23);
-            this.btnStaff.TabIndex = 7;
-            this.btnStaff.Text = "NHÂN VIÊN";
-            this.btnStaff.UseVisualStyleBackColor = true;
-            // 
-            // pictureBox19
-            // 
-            this.pictureBox19.Location = new System.Drawing.Point(0, 179);
-            this.pictureBox19.Name = "pictureBox19";
-            this.pictureBox19.Size = new System.Drawing.Size(137, 89);
-            this.pictureBox19.TabIndex = 6;
-            this.pictureBox19.TabStop = false;
-            // 
-            // btnSettings
-            // 
-            this.btnSettings.Location = new System.Drawing.Point(19, 303);
-            this.btnSettings.Name = "btnSettings";
-            this.btnSettings.Size = new System.Drawing.Size(97, 23);
-            this.btnSettings.TabIndex = 5;
-            this.btnSettings.Text = "CÀI ĐẶT";
-            this.btnSettings.UseVisualStyleBackColor = true;
-            // 
-            // pictureBox18
-            // 
-            this.pictureBox18.Location = new System.Drawing.Point(0, 268);
-            this.pictureBox18.Name = "pictureBox18";
-            this.pictureBox18.Size = new System.Drawing.Size(137, 89);
-            this.pictureBox18.TabIndex = 4;
-            this.pictureBox18.TabStop = false;
-            // 
-            // btnInventory
-            // 
-            this.btnInventory.Location = new System.Drawing.Point(19, 111);
-            this.btnInventory.Name = "btnInventory";
-            this.btnInventory.Size = new System.Drawing.Size(97, 44);
-            this.btnInventory.TabIndex = 3;
-            this.btnInventory.Text = "QUẢN LÝ KHO";
-            this.btnInventory.UseVisualStyleBackColor = true;
-            // 
-            // btnSell
-            // 
-            this.btnSell.Location = new System.Drawing.Point(19, 32);
-            this.btnSell.Name = "btnSell";
-            this.btnSell.Size = new System.Drawing.Size(97, 23);
-            this.btnSell.TabIndex = 2;
-            this.btnSell.Text = "BÁN HÀNG";
-            this.btnSell.UseVisualStyleBackColor = true;
-            this.btnSell.Click += new System.EventHandler(this.btnSell_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(137, 90);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Location = new System.Drawing.Point(0, 90);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(137, 89);
-            this.pictureBox2.TabIndex = 1;
-            this.pictureBox2.TabStop = false;
-            // 
-            // txtProductName
-            // 
-            this.txtProductName.Location = new System.Drawing.Point(153, 14);
-            this.txtProductName.Name = "txtProductName";
-            this.txtProductName.Size = new System.Drawing.Size(467, 22);
-            this.txtProductName.TabIndex = 30;
+            this.txtMaSP.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMaSP.Location = new System.Drawing.Point(218, 15);
+            this.txtMaSP.Name = "txtMaSP";
+            this.txtMaSP.Size = new System.Drawing.Size(638, 27);
+            this.txtMaSP.TabIndex = 30;
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.lblDescription);
-            this.panel3.Controls.Add(this.lblUnit);
-            this.panel3.Controls.Add(this.lblQuantity);
-            this.panel3.Controls.Add(this.lblSellPrice);
-            this.panel3.Controls.Add(this.lblImportPrice);
-            this.panel3.Controls.Add(this.lblCategory);
+            this.panel3.BackColor = System.Drawing.Color.Wheat;
+            this.panel3.Controls.Add(this.txtTrangThai);
+            this.panel3.Controls.Add(this.lblTrangThai);
+            this.panel3.Controls.Add(this.txtSoLuongTon);
+            this.panel3.Controls.Add(this.txtDonGiaBan);
+            this.panel3.Controls.Add(this.txtMaLoai);
+            this.panel3.Controls.Add(this.txtDonViTinh);
+            this.panel3.Controls.Add(this.txtHinhAnh);
+            this.panel3.Controls.Add(this.txtBarcode);
             this.panel3.Controls.Add(this.lblBarcode);
-            this.panel3.Controls.Add(this.lvlProductName);
+            this.panel3.Controls.Add(this.lblDonViTinh);
+            this.panel3.Controls.Add(this.lblHinhAnh);
+            this.panel3.Controls.Add(this.lblMoTa);
+            this.panel3.Controls.Add(this.lblSoLuongTonToiThieu);
+            this.panel3.Controls.Add(this.lblSoLuongTon);
+            this.panel3.Controls.Add(this.lblDonGiaBan);
+            this.panel3.Controls.Add(this.lblMaLoai);
+            this.panel3.Controls.Add(this.lblTenSP);
+            this.panel3.Controls.Add(this.lblMaSP);
             this.panel3.Controls.Add(this.btnCancel);
             this.panel3.Controls.Add(this.btnSave);
-            this.panel3.Controls.Add(this.rtxtDescription);
-            this.panel3.Controls.Add(this.txtUnit);
-            this.panel3.Controls.Add(this.nudQuantity);
-            this.panel3.Controls.Add(this.nudSellPrice);
-            this.panel3.Controls.Add(this.nudImportPrice);
-            this.panel3.Controls.Add(this.cboCategory);
-            this.panel3.Controls.Add(this.txtBarcode);
-            this.panel3.Controls.Add(this.txtProductName);
-            this.panel3.Location = new System.Drawing.Point(155, 81);
+            this.panel3.Controls.Add(this.rtxtMoTa);
+            this.panel3.Controls.Add(this.txtSoLuongTonToiThieu);
+            this.panel3.Controls.Add(this.txtTenSP);
+            this.panel3.Controls.Add(this.txtMaSP);
+            this.panel3.Location = new System.Drawing.Point(159, 79);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(633, 357);
+            this.panel3.Size = new System.Drawing.Size(878, 503);
             this.panel3.TabIndex = 29;
             // 
-            // lblDescription
+            // lblMoTa
             // 
-            this.lblDescription.AutoSize = true;
-            this.lblDescription.Location = new System.Drawing.Point(12, 218);
-            this.lblDescription.Name = "lblDescription";
-            this.lblDescription.Size = new System.Drawing.Size(43, 16);
-            this.lblDescription.TabIndex = 47;
-            this.lblDescription.Text = "Mô tả:";
+            this.lblMoTa.AutoSize = true;
+            this.lblMoTa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMoTa.Location = new System.Drawing.Point(12, 348);
+            this.lblMoTa.Name = "lblMoTa";
+            this.lblMoTa.Size = new System.Drawing.Size(56, 20);
+            this.lblMoTa.TabIndex = 47;
+            this.lblMoTa.Text = "Mô tả:";
             // 
-            // lblUnit
+            // lblSoLuongTonToiThieu
             // 
-            this.lblUnit.AutoSize = true;
-            this.lblUnit.Location = new System.Drawing.Point(12, 187);
-            this.lblUnit.Name = "lblUnit";
-            this.lblUnit.Size = new System.Drawing.Size(47, 16);
-            this.lblUnit.TabIndex = 46;
-            this.lblUnit.Text = "Đơn vị:";
+            this.lblSoLuongTonToiThieu.AutoSize = true;
+            this.lblSoLuongTonToiThieu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSoLuongTonToiThieu.Location = new System.Drawing.Point(12, 183);
+            this.lblSoLuongTonToiThieu.Name = "lblSoLuongTonToiThieu";
+            this.lblSoLuongTonToiThieu.Size = new System.Drawing.Size(171, 20);
+            this.lblSoLuongTonToiThieu.TabIndex = 46;
+            this.lblSoLuongTonToiThieu.Text = "Số lượng tồn tối thiểu:";
             // 
-            // lblQuantity
+            // lblSoLuongTon
             // 
-            this.lblQuantity.AutoSize = true;
-            this.lblQuantity.Location = new System.Drawing.Point(12, 158);
-            this.lblQuantity.Name = "lblQuantity";
-            this.lblQuantity.Size = new System.Drawing.Size(63, 16);
-            this.lblQuantity.TabIndex = 45;
-            this.lblQuantity.Text = "Số lượng:";
+            this.lblSoLuongTon.AutoSize = true;
+            this.lblSoLuongTon.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSoLuongTon.Location = new System.Drawing.Point(12, 150);
+            this.lblSoLuongTon.Name = "lblSoLuongTon";
+            this.lblSoLuongTon.Size = new System.Drawing.Size(107, 20);
+            this.lblSoLuongTon.TabIndex = 45;
+            this.lblSoLuongTon.Text = "Số lượng tồn:";
             // 
-            // lblSellPrice
+            // lblDonGiaBan
             // 
-            this.lblSellPrice.AutoSize = true;
-            this.lblSellPrice.Location = new System.Drawing.Point(12, 130);
-            this.lblSellPrice.Name = "lblSellPrice";
-            this.lblSellPrice.Size = new System.Drawing.Size(57, 16);
-            this.lblSellPrice.TabIndex = 44;
-            this.lblSellPrice.Text = "Giá bán:";
+            this.lblDonGiaBan.AutoSize = true;
+            this.lblDonGiaBan.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDonGiaBan.Location = new System.Drawing.Point(12, 117);
+            this.lblDonGiaBan.Name = "lblDonGiaBan";
+            this.lblDonGiaBan.Size = new System.Drawing.Size(103, 20);
+            this.lblDonGiaBan.TabIndex = 44;
+            this.lblDonGiaBan.Text = "Đơn giá bán:";
             // 
-            // lblImportPrice
+            // lblMaLoai
             // 
-            this.lblImportPrice.AutoSize = true;
-            this.lblImportPrice.Location = new System.Drawing.Point(12, 102);
-            this.lblImportPrice.Name = "lblImportPrice";
-            this.lblImportPrice.Size = new System.Drawing.Size(64, 16);
-            this.lblImportPrice.TabIndex = 43;
-            this.lblImportPrice.Text = "Giá nhập:";
+            this.lblMaLoai.AutoSize = true;
+            this.lblMaLoai.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMaLoai.Location = new System.Drawing.Point(12, 84);
+            this.lblMaLoai.Name = "lblMaLoai";
+            this.lblMaLoai.Size = new System.Drawing.Size(68, 20);
+            this.lblMaLoai.TabIndex = 42;
+            this.lblMaLoai.Text = "Mã loại:";
             // 
-            // lblCategory
+            // lblTenSP
             // 
-            this.lblCategory.AutoSize = true;
-            this.lblCategory.Location = new System.Drawing.Point(12, 73);
-            this.lblCategory.Name = "lblCategory";
-            this.lblCategory.Size = new System.Drawing.Size(36, 16);
-            this.lblCategory.TabIndex = 42;
-            this.lblCategory.Text = "Loại:";
+            this.lblTenSP.AutoSize = true;
+            this.lblTenSP.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTenSP.Location = new System.Drawing.Point(12, 51);
+            this.lblTenSP.Name = "lblTenSP";
+            this.lblTenSP.Size = new System.Drawing.Size(120, 20);
+            this.lblTenSP.TabIndex = 41;
+            this.lblTenSP.Text = "Tên sản phẩm:";
             // 
-            // lblBarcode
+            // lblMaSP
             // 
-            this.lblBarcode.AutoSize = true;
-            this.lblBarcode.Location = new System.Drawing.Point(12, 45);
-            this.lblBarcode.Name = "lblBarcode";
-            this.lblBarcode.Size = new System.Drawing.Size(62, 16);
-            this.lblBarcode.TabIndex = 41;
-            this.lblBarcode.Text = "Barcode:";
-            // 
-            // lvlProductName
-            // 
-            this.lvlProductName.AutoSize = true;
-            this.lvlProductName.Location = new System.Drawing.Point(12, 17);
-            this.lvlProductName.Name = "lvlProductName";
-            this.lvlProductName.Size = new System.Drawing.Size(96, 16);
-            this.lvlProductName.TabIndex = 40;
-            this.lvlProductName.Text = "Tên sản phẩm:";
+            this.lblMaSP.AutoSize = true;
+            this.lblMaSP.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMaSP.Location = new System.Drawing.Point(12, 18);
+            this.lblMaSP.Name = "lblMaSP";
+            this.lblMaSP.Size = new System.Drawing.Size(115, 20);
+            this.lblMaSP.TabIndex = 40;
+            this.lblMaSP.Text = "Mã sản phẩm:";
             // 
             // btnCancel
             // 
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(361, 303);
+            this.btnCancel.Location = new System.Drawing.Point(510, 465);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(93, 35);
             this.btnCancel.TabIndex = 39;
@@ -315,7 +193,7 @@
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(139, 303);
+            this.btnSave.Location = new System.Drawing.Point(274, 465);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(93, 35);
             this.btnSave.TabIndex = 38;
@@ -323,117 +201,353 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // rtxtDescription
+            // rtxtMoTa
             // 
-            this.rtxtDescription.Location = new System.Drawing.Point(15, 240);
-            this.rtxtDescription.Name = "rtxtDescription";
-            this.rtxtDescription.Size = new System.Drawing.Size(605, 50);
-            this.rtxtDescription.TabIndex = 37;
-            this.rtxtDescription.Text = "";
+            this.rtxtMoTa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtxtMoTa.Location = new System.Drawing.Point(16, 382);
+            this.rtxtMoTa.Name = "rtxtMoTa";
+            this.rtxtMoTa.Size = new System.Drawing.Size(840, 77);
+            this.rtxtMoTa.TabIndex = 37;
+            this.rtxtMoTa.Text = "";
             // 
-            // txtUnit
+            // txtSoLuongTonToiThieu
             // 
-            this.txtUnit.Location = new System.Drawing.Point(153, 184);
-            this.txtUnit.Name = "txtUnit";
-            this.txtUnit.Size = new System.Drawing.Size(467, 22);
-            this.txtUnit.TabIndex = 36;
+            this.txtSoLuongTonToiThieu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSoLuongTonToiThieu.Location = new System.Drawing.Point(218, 180);
+            this.txtSoLuongTonToiThieu.Name = "txtSoLuongTonToiThieu";
+            this.txtSoLuongTonToiThieu.Size = new System.Drawing.Size(638, 27);
+            this.txtSoLuongTonToiThieu.TabIndex = 36;
             // 
-            // nudQuantity
+            // txtTenSP
             // 
-            this.nudQuantity.Location = new System.Drawing.Point(153, 156);
-            this.nudQuantity.Name = "nudQuantity";
-            this.nudQuantity.Size = new System.Drawing.Size(467, 22);
-            this.nudQuantity.TabIndex = 35;
+            this.txtTenSP.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTenSP.Location = new System.Drawing.Point(218, 48);
+            this.txtTenSP.Name = "txtTenSP";
+            this.txtTenSP.Size = new System.Drawing.Size(638, 27);
+            this.txtTenSP.TabIndex = 31;
             // 
-            // nudSellPrice
+            // panel2
             // 
-            this.nudSellPrice.Location = new System.Drawing.Point(153, 128);
-            this.nudSellPrice.Name = "nudSellPrice";
-            this.nudSellPrice.Size = new System.Drawing.Size(467, 22);
-            this.nudSellPrice.TabIndex = 34;
+            this.panel2.BackColor = System.Drawing.Color.IndianRed;
+            this.panel2.Controls.Add(this.lblMiniPOSInventory);
+            this.panel2.Location = new System.Drawing.Point(12, 11);
+            this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1025, 63);
+            this.panel2.TabIndex = 48;
             // 
-            // nudImportPrice
+            // lblMiniPOSInventory
             // 
-            this.nudImportPrice.Location = new System.Drawing.Point(153, 100);
-            this.nudImportPrice.Name = "nudImportPrice";
-            this.nudImportPrice.Size = new System.Drawing.Size(467, 22);
-            this.nudImportPrice.TabIndex = 33;
+            this.lblMiniPOSInventory.AutoSize = true;
+            this.lblMiniPOSInventory.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMiniPOSInventory.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.lblMiniPOSInventory.Location = new System.Drawing.Point(3, 18);
+            this.lblMiniPOSInventory.Name = "lblMiniPOSInventory";
+            this.lblMiniPOSInventory.Size = new System.Drawing.Size(360, 29);
+            this.lblMiniPOSInventory.TabIndex = 2;
+            this.lblMiniPOSInventory.Text = "MiniPOS - Cửa hàng Tiện lợi";
             // 
-            // cboCategory
+            // panel1
             // 
-            this.cboCategory.FormattingEnabled = true;
-            this.cboCategory.Location = new System.Drawing.Point(153, 70);
-            this.cboCategory.Name = "cboCategory";
-            this.cboCategory.Size = new System.Drawing.Size(467, 24);
-            this.cboCategory.TabIndex = 32;
+            this.panel1.BackColor = System.Drawing.Color.Linen;
+            this.panel1.Controls.Add(this.btnCaiDat);
+            this.panel1.Controls.Add(this.btnBaoCao);
+            this.panel1.Controls.Add(this.btnXemHDNhap);
+            this.panel1.Controls.Add(this.btnKhuyenMai);
+            this.panel1.Controls.Add(this.btnNhanVien);
+            this.panel1.Controls.Add(this.btnKhachHang);
+            this.panel1.Controls.Add(this.btnKho);
+            this.panel1.Controls.Add(this.btnBanHang);
+            this.panel1.Location = new System.Drawing.Point(12, 81);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(140, 501);
+            this.panel1.TabIndex = 49;
+            // 
+            // btnCaiDat
+            // 
+            this.btnCaiDat.IconChar = FontAwesome.Sharp.IconChar.Gears;
+            this.btnCaiDat.IconColor = System.Drawing.Color.IndianRed;
+            this.btnCaiDat.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnCaiDat.IconSize = 33;
+            this.btnCaiDat.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnCaiDat.Location = new System.Drawing.Point(0, 426);
+            this.btnCaiDat.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCaiDat.Name = "btnCaiDat";
+            this.btnCaiDat.Size = new System.Drawing.Size(140, 48);
+            this.btnCaiDat.TabIndex = 19;
+            this.btnCaiDat.Text = "Cài đặt";
+            this.btnCaiDat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnCaiDat.UseVisualStyleBackColor = true;
+            // 
+            // btnBaoCao
+            // 
+            this.btnBaoCao.IconChar = FontAwesome.Sharp.IconChar.ChartColumn;
+            this.btnBaoCao.IconColor = System.Drawing.Color.IndianRed;
+            this.btnBaoCao.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnBaoCao.IconSize = 33;
+            this.btnBaoCao.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnBaoCao.Location = new System.Drawing.Point(0, 370);
+            this.btnBaoCao.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBaoCao.Name = "btnBaoCao";
+            this.btnBaoCao.Size = new System.Drawing.Size(140, 48);
+            this.btnBaoCao.TabIndex = 18;
+            this.btnBaoCao.Text = "Báo cáo";
+            this.btnBaoCao.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnBaoCao.UseVisualStyleBackColor = true;
+            // 
+            // btnXemHDNhap
+            // 
+            this.btnXemHDNhap.IconChar = FontAwesome.Sharp.IconChar.Receipt;
+            this.btnXemHDNhap.IconColor = System.Drawing.Color.IndianRed;
+            this.btnXemHDNhap.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnXemHDNhap.IconSize = 33;
+            this.btnXemHDNhap.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnXemHDNhap.Location = new System.Drawing.Point(0, 314);
+            this.btnXemHDNhap.Margin = new System.Windows.Forms.Padding(4);
+            this.btnXemHDNhap.Name = "btnXemHDNhap";
+            this.btnXemHDNhap.Size = new System.Drawing.Size(140, 48);
+            this.btnXemHDNhap.TabIndex = 17;
+            this.btnXemHDNhap.Text = "Hóa đơn nháp";
+            this.btnXemHDNhap.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnXemHDNhap.UseVisualStyleBackColor = true;
+            // 
+            // btnKhuyenMai
+            // 
+            this.btnKhuyenMai.IconChar = FontAwesome.Sharp.IconChar.TicketSimple;
+            this.btnKhuyenMai.IconColor = System.Drawing.Color.IndianRed;
+            this.btnKhuyenMai.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnKhuyenMai.IconSize = 33;
+            this.btnKhuyenMai.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnKhuyenMai.Location = new System.Drawing.Point(0, 252);
+            this.btnKhuyenMai.Margin = new System.Windows.Forms.Padding(4);
+            this.btnKhuyenMai.Name = "btnKhuyenMai";
+            this.btnKhuyenMai.Size = new System.Drawing.Size(140, 54);
+            this.btnKhuyenMai.TabIndex = 16;
+            this.btnKhuyenMai.Text = "Khuyến mãi";
+            this.btnKhuyenMai.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnKhuyenMai.UseVisualStyleBackColor = true;
+            // 
+            // btnNhanVien
+            // 
+            this.btnNhanVien.IconChar = FontAwesome.Sharp.IconChar.UserTie;
+            this.btnNhanVien.IconColor = System.Drawing.Color.IndianRed;
+            this.btnNhanVien.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnNhanVien.IconSize = 33;
+            this.btnNhanVien.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnNhanVien.Location = new System.Drawing.Point(0, 190);
+            this.btnNhanVien.Margin = new System.Windows.Forms.Padding(4);
+            this.btnNhanVien.Name = "btnNhanVien";
+            this.btnNhanVien.Size = new System.Drawing.Size(140, 54);
+            this.btnNhanVien.TabIndex = 15;
+            this.btnNhanVien.Text = "Nhân viên";
+            this.btnNhanVien.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnNhanVien.UseVisualStyleBackColor = true;
+            // 
+            // btnKhachHang
+            // 
+            this.btnKhachHang.IconChar = FontAwesome.Sharp.IconChar.User;
+            this.btnKhachHang.IconColor = System.Drawing.Color.IndianRed;
+            this.btnKhachHang.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnKhachHang.IconSize = 33;
+            this.btnKhachHang.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnKhachHang.Location = new System.Drawing.Point(0, 128);
+            this.btnKhachHang.Margin = new System.Windows.Forms.Padding(4);
+            this.btnKhachHang.Name = "btnKhachHang";
+            this.btnKhachHang.Size = new System.Drawing.Size(140, 54);
+            this.btnKhachHang.TabIndex = 14;
+            this.btnKhachHang.Text = "Khách hàng";
+            this.btnKhachHang.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnKhachHang.UseVisualStyleBackColor = true;
+            // 
+            // btnKho
+            // 
+            this.btnKho.BackColor = System.Drawing.Color.White;
+            this.btnKho.ForeColor = System.Drawing.Color.Black;
+            this.btnKho.IconChar = FontAwesome.Sharp.IconChar.Warehouse;
+            this.btnKho.IconColor = System.Drawing.Color.IndianRed;
+            this.btnKho.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnKho.IconSize = 33;
+            this.btnKho.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnKho.Location = new System.Drawing.Point(0, 66);
+            this.btnKho.Margin = new System.Windows.Forms.Padding(4);
+            this.btnKho.Name = "btnKho";
+            this.btnKho.Size = new System.Drawing.Size(140, 54);
+            this.btnKho.TabIndex = 13;
+            this.btnKho.Text = "Kho";
+            this.btnKho.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnKho.UseVisualStyleBackColor = false;
+            // 
+            // btnBanHang
+            // 
+            this.btnBanHang.BackColor = System.Drawing.Color.White;
+            this.btnBanHang.IconChar = FontAwesome.Sharp.IconChar.CartShopping;
+            this.btnBanHang.IconColor = System.Drawing.Color.IndianRed;
+            this.btnBanHang.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnBanHang.IconSize = 33;
+            this.btnBanHang.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnBanHang.Location = new System.Drawing.Point(0, 4);
+            this.btnBanHang.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBanHang.Name = "btnBanHang";
+            this.btnBanHang.Size = new System.Drawing.Size(140, 54);
+            this.btnBanHang.TabIndex = 1;
+            this.btnBanHang.Text = "Bán Hàng";
+            this.btnBanHang.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnBanHang.UseVisualStyleBackColor = false;
+            // 
+            // lblHinhAnh
+            // 
+            this.lblHinhAnh.AutoSize = true;
+            this.lblHinhAnh.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHinhAnh.Location = new System.Drawing.Point(12, 249);
+            this.lblHinhAnh.Name = "lblHinhAnh";
+            this.lblHinhAnh.Size = new System.Drawing.Size(81, 20);
+            this.lblHinhAnh.TabIndex = 48;
+            this.lblHinhAnh.Text = "Hình ảnh:";
+            // 
+            // lblDonViTinh
+            // 
+            this.lblDonViTinh.AutoSize = true;
+            this.lblDonViTinh.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDonViTinh.Location = new System.Drawing.Point(12, 282);
+            this.lblDonViTinh.Name = "lblDonViTinh";
+            this.lblDonViTinh.Size = new System.Drawing.Size(93, 20);
+            this.lblDonViTinh.TabIndex = 49;
+            this.lblDonViTinh.Text = "Đơn vị tính:";
+            // 
+            // lblBarcode
+            // 
+            this.lblBarcode.AutoSize = true;
+            this.lblBarcode.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBarcode.Location = new System.Drawing.Point(12, 216);
+            this.lblBarcode.Name = "lblBarcode";
+            this.lblBarcode.Size = new System.Drawing.Size(77, 20);
+            this.lblBarcode.TabIndex = 50;
+            this.lblBarcode.Text = "Barcode:";
             // 
             // txtBarcode
             // 
-            this.txtBarcode.Location = new System.Drawing.Point(153, 42);
+            this.txtBarcode.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBarcode.Location = new System.Drawing.Point(218, 213);
             this.txtBarcode.Name = "txtBarcode";
-            this.txtBarcode.Size = new System.Drawing.Size(467, 22);
-            this.txtBarcode.TabIndex = 31;
+            this.txtBarcode.Size = new System.Drawing.Size(638, 27);
+            this.txtBarcode.TabIndex = 51;
+            // 
+            // txtHinhAnh
+            // 
+            this.txtHinhAnh.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtHinhAnh.Location = new System.Drawing.Point(218, 246);
+            this.txtHinhAnh.Name = "txtHinhAnh";
+            this.txtHinhAnh.Size = new System.Drawing.Size(638, 27);
+            this.txtHinhAnh.TabIndex = 52;
+            // 
+            // txtDonViTinh
+            // 
+            this.txtDonViTinh.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDonViTinh.Location = new System.Drawing.Point(218, 279);
+            this.txtDonViTinh.Name = "txtDonViTinh";
+            this.txtDonViTinh.Size = new System.Drawing.Size(638, 27);
+            this.txtDonViTinh.TabIndex = 53;
+            // 
+            // txtMaLoai
+            // 
+            this.txtMaLoai.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMaLoai.Location = new System.Drawing.Point(218, 81);
+            this.txtMaLoai.Name = "txtMaLoai";
+            this.txtMaLoai.Size = new System.Drawing.Size(638, 27);
+            this.txtMaLoai.TabIndex = 54;
+            // 
+            // txtDonGiaBan
+            // 
+            this.txtDonGiaBan.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDonGiaBan.Location = new System.Drawing.Point(218, 114);
+            this.txtDonGiaBan.Name = "txtDonGiaBan";
+            this.txtDonGiaBan.Size = new System.Drawing.Size(638, 27);
+            this.txtDonGiaBan.TabIndex = 55;
+            // 
+            // txtSoLuongTon
+            // 
+            this.txtSoLuongTon.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSoLuongTon.Location = new System.Drawing.Point(218, 147);
+            this.txtSoLuongTon.Name = "txtSoLuongTon";
+            this.txtSoLuongTon.Size = new System.Drawing.Size(638, 27);
+            this.txtSoLuongTon.TabIndex = 56;
+            // 
+            // txtTrangThai
+            // 
+            this.txtTrangThai.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTrangThai.Location = new System.Drawing.Point(218, 312);
+            this.txtTrangThai.Name = "txtTrangThai";
+            this.txtTrangThai.Size = new System.Drawing.Size(638, 27);
+            this.txtTrangThai.TabIndex = 58;
+            // 
+            // lblTrangThai
+            // 
+            this.lblTrangThai.AutoSize = true;
+            this.lblTrangThai.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTrangThai.Location = new System.Drawing.Point(12, 315);
+            this.lblTrangThai.Name = "lblTrangThai";
+            this.lblTrangThai.Size = new System.Drawing.Size(89, 20);
+            this.lblTrangThai.TabIndex = 57;
+            this.lblTrangThai.Text = "Trạng thái:";
             // 
             // AddInventoryForManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.panel3);
+            this.BackColor = System.Drawing.Color.Linen;
+            this.ClientSize = new System.Drawing.Size(1045, 593);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel3);
             this.Name = "AddInventoryForManager";
             this.Text = "Quản Lý Kho - Thêm Sản Phẩm (dành cho quản lý)";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AddInventoryForManager_FormClosed);
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudQuantity)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudSellPrice)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudImportPrice)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label lblDate;
-        private System.Windows.Forms.Label lblHiManagerName;
-        private System.Windows.Forms.Label lblMiniPOSInventory;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnStaff;
-        private System.Windows.Forms.PictureBox pictureBox19;
-        private System.Windows.Forms.Button btnSettings;
-        private System.Windows.Forms.PictureBox pictureBox18;
-        private System.Windows.Forms.Button btnInventory;
-        private System.Windows.Forms.Button btnSell;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.TextBox txtProductName;
+        private System.Windows.Forms.TextBox txtMaSP;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.RichTextBox rtxtDescription;
-        private System.Windows.Forms.TextBox txtUnit;
-        private System.Windows.Forms.NumericUpDown nudQuantity;
-        private System.Windows.Forms.NumericUpDown nudSellPrice;
-        private System.Windows.Forms.NumericUpDown nudImportPrice;
-        private System.Windows.Forms.ComboBox cboCategory;
-        private System.Windows.Forms.TextBox txtBarcode;
-        private System.Windows.Forms.Label lblDescription;
-        private System.Windows.Forms.Label lblUnit;
-        private System.Windows.Forms.Label lblQuantity;
-        private System.Windows.Forms.Label lblSellPrice;
-        private System.Windows.Forms.Label lblImportPrice;
-        private System.Windows.Forms.Label lblCategory;
-        private System.Windows.Forms.Label lblBarcode;
-        private System.Windows.Forms.Label lvlProductName;
+        private System.Windows.Forms.RichTextBox rtxtMoTa;
+        private System.Windows.Forms.TextBox txtSoLuongTonToiThieu;
+        private System.Windows.Forms.TextBox txtTenSP;
+        private System.Windows.Forms.Label lblMoTa;
+        private System.Windows.Forms.Label lblSoLuongTonToiThieu;
+        private System.Windows.Forms.Label lblSoLuongTon;
+        private System.Windows.Forms.Label lblDonGiaBan;
+        private System.Windows.Forms.Label lblMaLoai;
+        private System.Windows.Forms.Label lblTenSP;
+        private System.Windows.Forms.Label lblMaSP;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label lblMiniPOSInventory;
+        private System.Windows.Forms.Panel panel1;
+        private FontAwesome.Sharp.IconButton btnCaiDat;
+        private FontAwesome.Sharp.IconButton btnBaoCao;
+        private FontAwesome.Sharp.IconButton btnXemHDNhap;
+        private FontAwesome.Sharp.IconButton btnKhuyenMai;
+        private FontAwesome.Sharp.IconButton btnNhanVien;
+        private FontAwesome.Sharp.IconButton btnKhachHang;
+        private FontAwesome.Sharp.IconButton btnKho;
+        private FontAwesome.Sharp.IconButton btnBanHang;
+        private System.Windows.Forms.Label lblBarcode;
+        private System.Windows.Forms.Label lblDonViTinh;
+        private System.Windows.Forms.Label lblHinhAnh;
+        private System.Windows.Forms.TextBox txtSoLuongTon;
+        private System.Windows.Forms.TextBox txtDonGiaBan;
+        private System.Windows.Forms.TextBox txtMaLoai;
+        private System.Windows.Forms.TextBox txtDonViTinh;
+        private System.Windows.Forms.TextBox txtHinhAnh;
+        private System.Windows.Forms.TextBox txtBarcode;
+        private System.Windows.Forms.TextBox txtTrangThai;
+        private System.Windows.Forms.Label lblTrangThai;
     }
 }

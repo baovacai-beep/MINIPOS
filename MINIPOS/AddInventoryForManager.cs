@@ -67,7 +67,7 @@ namespace MINIPOS
         private void btnSave_Click(object sender, EventArgs e)
         {
             // Kiểm tra ràng buộc dữ liệu đầu vào cơ bản trước khi lưu
-            if (string.IsNullOrWhiteSpace(txtProductName.Text))
+            if (string.IsNullOrWhiteSpace(txtMaSP.Text))
             {
                 MessageBox.Show("Vui lòng nhập tên sản phẩm!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -108,19 +108,19 @@ namespace MINIPOS
 
                     using (SqlCommand cmd = new SqlCommand(sql, conn))
                     {
-                        cmd.Parameters.AddWithValue("@TenSP", txtProductName.Text.Trim());
+                        cmd.Parameters.AddWithValue("@TenSP", txtMaSP.Text.Trim());
 
                         // TỐI ƯU: Nếu Barcode trống thì lưu NULL vào DB để tránh lỗi UNIQUE khi có nhiều sản phẩm trống mã vạch
-                        if (string.IsNullOrWhiteSpace(txtBarcode.Text))
+                        if (string.IsNullOrWhiteSpace(txtTenSP.Text))
                             cmd.Parameters.AddWithValue("@Barcode", DBNull.Value);
                         else
-                            cmd.Parameters.AddWithValue("@Barcode", txtBarcode.Text.Trim());
+                            cmd.Parameters.AddWithValue("@Barcode", txtTenSP.Text.Trim());
 
                         cmd.Parameters.AddWithValue("@MaLoai", cboCategory.SelectedValue);
                         cmd.Parameters.AddWithValue("@GiaBan", nudSellPrice.Value);
                         cmd.Parameters.AddWithValue("@SoLuong", nudQuantity.Value);
-                        cmd.Parameters.AddWithValue("@DonVi", string.IsNullOrWhiteSpace(txtUnit.Text) ? "cái" : txtUnit.Text.Trim());
-                        cmd.Parameters.AddWithValue("@MoTa", string.IsNullOrWhiteSpace(rtxtDescription.Text) ? DBNull.Value : (object)rtxtDescription.Text.Trim());
+                        cmd.Parameters.AddWithValue("@DonVi", string.IsNullOrWhiteSpace(txtSoLuongTonToiThieu.Text) ? "cái" : txtSoLuongTonToiThieu.Text.Trim());
+                        cmd.Parameters.AddWithValue("@MoTa", string.IsNullOrWhiteSpace(rtxtMoTa.Text) ? DBNull.Value : (object)rtxtMoTa.Text.Trim());
 
                         cmd.ExecuteNonQuery();
                     }
