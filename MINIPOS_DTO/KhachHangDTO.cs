@@ -15,7 +15,5 @@ namespace MINIPOS_DTO
         public decimal  TyLeGiamGia  { get; set; }    // % giảm giá theo hạng
         public DateTime NgayDangKy   { get; set; }
         public bool     TrangThai    { get; set; }
-        public string HoTen { get; set; }
-        public object HangThanhVienID { get; set; }
     }
 }

@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data;
 
 namespace MINIPOS_DAO
 {
-    internal class MaLoaiSanPhamDAO
+    public class LoaiSanPhamDAO
     {
+        // Danh sách loại sản phẩm cho combo lọc
+        public DataTable GetAll()
+        {
+            return SQLConnection.ExecuteQuery(
+                "SELECT MaLoai, TenLoai FROM LoaiSanPham ORDER BY TenLoai");
+        }
     }
 }
