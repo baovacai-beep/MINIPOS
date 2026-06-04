@@ -49,11 +49,10 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaoCaoDTO.cs" />
     <Compile Include="HoaDonDTO.cs" />
-    <Compile Include="HoaDonNhapDTO.cs" />
     <Compile Include="KhachHangDTO.cs" />
     <Compile Include="SanPhamDTO.cs" />
+    <Compile Include="SanPhamFilterDTO.cs" />
     <Compile Include="TaiKhoanDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -52,7 +52,7 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.btnXoaHang = new System.Windows.Forms.Button();
             this.dgvGioHang = new System.Windows.Forms.DataGridView();
-            this.btnLuuTam = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.btnThanhToan = new System.Windows.Forms.Button();
             this.btnVoucher = new System.Windows.Forms.Button();
             this.txtTongTien = new System.Windows.Forms.TextBox();
@@ -70,14 +70,6 @@
             this.dgvSanPham = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.btnCaiDat = new FontAwesome.Sharp.IconButton();
-            this.btnBaoCao = new FontAwesome.Sharp.IconButton();
-            this.btnXemHDNhap = new FontAwesome.Sharp.IconButton();
-            this.btnKhuyenMai = new FontAwesome.Sharp.IconButton();
-            this.btnNhanVien = new FontAwesome.Sharp.IconButton();
-            this.btnKhachHang = new FontAwesome.Sharp.IconButton();
-            this.btnKho = new FontAwesome.Sharp.IconButton();
-            this.btnBanHang = new FontAwesome.Sharp.IconButton();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -96,7 +88,7 @@
             this.panel1.BackColor = System.Drawing.SystemColors.Control;
             this.panel1.Controls.Add(this.btnCaiDat);
             this.panel1.Controls.Add(this.btnBaoCao);
-            this.panel1.Controls.Add(this.btnXemHDNhap);
+            this.panel1.Controls.Add(this.btnHoaDonNhap);
             this.panel1.Controls.Add(this.btnKhuyenMai);
             this.panel1.Controls.Add(this.btnNhanVien);
             this.panel1.Controls.Add(this.btnKhachHang);
@@ -284,7 +276,7 @@
             this.panel3.Location = new System.Drawing.Point(157, 94);
             this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(524, 47);
+            this.panel3.Size = new System.Drawing.Size(524, 88);
             this.panel3.TabIndex = 34;
             // 
             // btnXoaLoc
@@ -394,7 +386,7 @@
             // 
             this.panel5.Controls.Add(this.btnXoaHang);
             this.panel5.Controls.Add(this.dgvGioHang);
-            this.panel5.Controls.Add(this.btnLuuTam);
+            this.panel5.Controls.Add(this.button1);
             this.panel5.Controls.Add(this.btnThanhToan);
             this.panel5.Controls.Add(this.btnVoucher);
             this.panel5.Controls.Add(this.txtTongTien);
@@ -434,7 +426,7 @@
             this.dgvGioHang.TabIndex = 41;
             this.dgvGioHang.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvGioHang_CellEndEdit);
             // 
-            // btnLuuTam
+            // button1
             // 
             this.button1.BackColor = System.Drawing.Color.Plum;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
@@ -459,7 +451,6 @@
             this.btnThanhToan.TabIndex = 39;
             this.btnThanhToan.Text = "Thanh Toán";
             this.btnThanhToan.UseVisualStyleBackColor = false;
-            this.btnThanhToan.Click += new System.EventHandler(this.btnThanhToan_Click_1);
             // 
             // btnVoucher
             // 
@@ -611,10 +602,10 @@
             // panel4
             // 
             this.panel4.Controls.Add(this.dgvSanPham);
-            this.panel4.Location = new System.Drawing.Point(157, 198);
+            this.panel4.Location = new System.Drawing.Point(157, 243);
             this.panel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(521, 407);
+            this.panel4.Size = new System.Drawing.Size(521, 362);
             this.panel4.TabIndex = 37;
             // 
             // dgvSanPham
@@ -723,9 +714,9 @@
         private FontAwesome.Sharp.IconButton btnNhanVien;
         private FontAwesome.Sharp.IconButton btnCaiDat;
         private FontAwesome.Sharp.IconButton btnBaoCao;
-        private FontAwesome.Sharp.IconButton btnXemHDNhap;
+        private FontAwesome.Sharp.IconButton btnHoaDonNhap;
         private FontAwesome.Sharp.IconButton btnKhuyenMai;
-        private System.Windows.Forms.Button btnLuuTam;
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnGiaVi;
         private System.Windows.Forms.DataGridView dgvGioHang;
         private System.Windows.Forms.Button btnXoaHang;
