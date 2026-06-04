@@ -48,12 +48,14 @@
             this.lblUnit = new System.Windows.Forms.Label();
             this.lblQuantity = new System.Windows.Forms.Label();
             this.lblSellPrice = new System.Windows.Forms.Label();
+            this.lblImportPrice = new System.Windows.Forms.Label();
             this.lblCategory = new System.Windows.Forms.Label();
             this.lblBarcode = new System.Windows.Forms.Label();
             this.lvlProductName = new System.Windows.Forms.Label();
             this.txtUnit = new System.Windows.Forms.TextBox();
             this.nudQuantity = new System.Windows.Forms.NumericUpDown();
             this.nudSellPrice = new System.Windows.Forms.NumericUpDown();
+            this.nudImportPrice = new System.Windows.Forms.NumericUpDown();
             this.cboCategory = new System.Windows.Forms.ComboBox();
             this.txtBarcode = new System.Windows.Forms.TextBox();
             this.txtProductName = new System.Windows.Forms.TextBox();
@@ -64,6 +66,7 @@
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudQuantity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudSellPrice)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudImportPrice)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -291,12 +294,14 @@
             this.panel3.Controls.Add(this.lblUnit);
             this.panel3.Controls.Add(this.lblQuantity);
             this.panel3.Controls.Add(this.lblSellPrice);
+            this.panel3.Controls.Add(this.lblImportPrice);
             this.panel3.Controls.Add(this.lblCategory);
             this.panel3.Controls.Add(this.lblBarcode);
             this.panel3.Controls.Add(this.lvlProductName);
             this.panel3.Controls.Add(this.txtUnit);
             this.panel3.Controls.Add(this.nudQuantity);
             this.panel3.Controls.Add(this.nudSellPrice);
+            this.panel3.Controls.Add(this.nudImportPrice);
             this.panel3.Controls.Add(this.cboCategory);
             this.panel3.Controls.Add(this.txtBarcode);
             this.panel3.Controls.Add(this.txtProductName);
@@ -321,7 +326,7 @@
             // 
             this.lblUnit.AutoSize = true;
             this.lblUnit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUnit.Location = new System.Drawing.Point(8, 125);
+            this.lblUnit.Location = new System.Drawing.Point(9, 150);
             this.lblUnit.Name = "lblUnit";
             this.lblUnit.Size = new System.Drawing.Size(61, 20);
             this.lblUnit.TabIndex = 60;
@@ -331,7 +336,7 @@
             // 
             this.lblQuantity.AutoSize = true;
             this.lblQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblQuantity.Location = new System.Drawing.Point(8, 96);
+            this.lblQuantity.Location = new System.Drawing.Point(9, 121);
             this.lblQuantity.Name = "lblQuantity";
             this.lblQuantity.Size = new System.Drawing.Size(79, 20);
             this.lblQuantity.TabIndex = 59;
@@ -341,11 +346,21 @@
             // 
             this.lblSellPrice.AutoSize = true;
             this.lblSellPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSellPrice.Location = new System.Drawing.Point(8, 69);
+            this.lblSellPrice.Location = new System.Drawing.Point(9, 94);
             this.lblSellPrice.Name = "lblSellPrice";
             this.lblSellPrice.Size = new System.Drawing.Size(72, 20);
             this.lblSellPrice.TabIndex = 58;
             this.lblSellPrice.Text = "Giá bán:";
+            // 
+            // lblImportPrice
+            // 
+            this.lblImportPrice.AutoSize = true;
+            this.lblImportPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblImportPrice.Location = new System.Drawing.Point(9, 65);
+            this.lblImportPrice.Name = "lblImportPrice";
+            this.lblImportPrice.Size = new System.Drawing.Size(81, 20);
+            this.lblImportPrice.TabIndex = 57;
+            this.lblImportPrice.Text = "Giá nhập:";
             // 
             // lblCategory
             // 
@@ -378,7 +393,7 @@
             // 
             // txtUnit
             // 
-            this.txtUnit.Location = new System.Drawing.Point(150, 123);
+            this.txtUnit.Location = new System.Drawing.Point(151, 148);
             this.txtUnit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtUnit.Name = "txtUnit";
             this.txtUnit.Size = new System.Drawing.Size(508, 22);
@@ -386,7 +401,7 @@
             // 
             // nudQuantity
             // 
-            this.nudQuantity.Location = new System.Drawing.Point(150, 94);
+            this.nudQuantity.Location = new System.Drawing.Point(151, 119);
             this.nudQuantity.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.nudQuantity.Name = "nudQuantity";
             this.nudQuantity.Size = new System.Drawing.Size(509, 22);
@@ -394,11 +409,19 @@
             // 
             // nudSellPrice
             // 
-            this.nudSellPrice.Location = new System.Drawing.Point(150, 66);
+            this.nudSellPrice.Location = new System.Drawing.Point(151, 91);
             this.nudSellPrice.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.nudSellPrice.Name = "nudSellPrice";
             this.nudSellPrice.Size = new System.Drawing.Size(509, 22);
             this.nudSellPrice.TabIndex = 51;
+            // 
+            // nudImportPrice
+            // 
+            this.nudImportPrice.Location = new System.Drawing.Point(151, 63);
+            this.nudImportPrice.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.nudImportPrice.Name = "nudImportPrice";
+            this.nudImportPrice.Size = new System.Drawing.Size(509, 22);
+            this.nudImportPrice.TabIndex = 50;
             // 
             // cboCategory
             // 
@@ -448,6 +471,7 @@
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudQuantity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudSellPrice)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudImportPrice)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -470,12 +494,14 @@
         private System.Windows.Forms.Label lblUnit;
         private System.Windows.Forms.Label lblQuantity;
         private System.Windows.Forms.Label lblSellPrice;
+        private System.Windows.Forms.Label lblImportPrice;
         private System.Windows.Forms.Label lblCategory;
         private System.Windows.Forms.Label lblBarcode;
         private System.Windows.Forms.Label lvlProductName;
         private System.Windows.Forms.TextBox txtUnit;
         private System.Windows.Forms.NumericUpDown nudQuantity;
         private System.Windows.Forms.NumericUpDown nudSellPrice;
+        private System.Windows.Forms.NumericUpDown nudImportPrice;
         private System.Windows.Forms.ComboBox cboCategory;
         private System.Windows.Forms.TextBox txtBarcode;
         private System.Windows.Forms.TextBox txtProductName;
