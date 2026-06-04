@@ -43,13 +43,6 @@
             this.btnXoa = new System.Windows.Forms.Button();
             this.dgvSanPham = new System.Windows.Forms.DataGridView();
             this.btnThemSP = new System.Windows.Forms.Button();
-            this.panelLoc = new System.Windows.Forms.Panel();
-            this.cboLoai = new System.Windows.Forms.ComboBox();
-            this.nudGiaMin = new System.Windows.Forms.NumericUpDown();
-            this.nudGiaMax = new System.Windows.Forms.NumericUpDown();
-            this.cboTonKho = new System.Windows.Forms.ComboBox();
-            this.btnLoc = new System.Windows.Forms.Button();
-            this.btnXoaLoc = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnTimSP = new System.Windows.Forms.Button();
             this.lblUnit = new System.Windows.Forms.Label();
@@ -69,10 +62,7 @@
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
-            this.panelLoc.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSanPham)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudGiaMin)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudGiaMax)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudQuantity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudSellPrice)).BeginInit();
@@ -248,7 +238,6 @@
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.panelLoc);
             this.panel4.Controls.Add(this.btnXoa);
             this.panel4.Controls.Add(this.dgvSanPham);
             this.panel4.Controls.Add(this.btnThemSP);
@@ -276,13 +265,13 @@
             this.dgvSanPham.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvSanPham.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvSanPham.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSanPham.Location = new System.Drawing.Point(0, 54);
+            this.dgvSanPham.Location = new System.Drawing.Point(0, 9);
             this.dgvSanPham.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvSanPham.Name = "dgvSanPham";
             this.dgvSanPham.RowHeadersVisible = false;
             this.dgvSanPham.RowHeadersWidth = 51;
             this.dgvSanPham.RowTemplate.Height = 24;
-            this.dgvSanPham.Size = new System.Drawing.Size(880, 217);
+            this.dgvSanPham.Size = new System.Drawing.Size(880, 263);
             this.dgvSanPham.TabIndex = 0;
             this.dgvSanPham.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSanPham_CellContentClick);
             // 
@@ -298,88 +287,9 @@
             this.btnThemSP.Text = "Thêm SP";
             this.btnThemSP.UseVisualStyleBackColor = true;
             this.btnThemSP.Click += new System.EventHandler(this.btnThemSP_Click);
-            //
-            // panelLoc
-            //
-            this.panelLoc.Controls.Add(this.btnXoaLoc);
-            this.panelLoc.Controls.Add(this.btnLoc);
-            this.panelLoc.Controls.Add(this.cboTonKho);
-            this.panelLoc.Controls.Add(this.nudGiaMax);
-            this.panelLoc.Controls.Add(this.nudGiaMin);
-            this.panelLoc.Controls.Add(this.cboLoai);
-            this.panelLoc.Location = new System.Drawing.Point(0, 5);
-            this.panelLoc.Name = "panelLoc";
-            this.panelLoc.Size = new System.Drawing.Size(880, 44);
-            this.panelLoc.TabIndex = 64;
-            //
-            // cboLoai
-            //
-            this.cboLoai.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboLoai.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.cboLoai.Location = new System.Drawing.Point(3, 10);
-            this.cboLoai.Name = "cboLoai";
-            this.cboLoai.Size = new System.Drawing.Size(120, 24);
-            this.cboLoai.TabIndex = 39;
-            //
-            // nudGiaMin
-            //
-            this.nudGiaMin.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.nudGiaMin.Location = new System.Drawing.Point(128, 10);
-            this.nudGiaMin.Maximum = new decimal(new int[] { 100000000, 0, 0, 0 });
-            this.nudGiaMin.Increment = new decimal(new int[] { 1000, 0, 0, 0 });
-            this.nudGiaMin.Name = "nudGiaMin";
-            this.nudGiaMin.Size = new System.Drawing.Size(70, 23);
-            this.nudGiaMin.TabIndex = 40;
-            this.nudGiaMin.ThousandsSeparator = true;
-            //
-            // nudGiaMax
-            //
-            this.nudGiaMax.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.nudGiaMax.Location = new System.Drawing.Point(203, 10);
-            this.nudGiaMax.Maximum = new decimal(new int[] { 100000000, 0, 0, 0 });
-            this.nudGiaMax.Increment = new decimal(new int[] { 1000, 0, 0, 0 });
-            this.nudGiaMax.Name = "nudGiaMax";
-            this.nudGiaMax.Size = new System.Drawing.Size(70, 23);
-            this.nudGiaMax.TabIndex = 41;
-            this.nudGiaMax.ThousandsSeparator = true;
-            //
-            // cboTonKho
-            //
-            this.cboTonKho.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboTonKho.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.cboTonKho.Location = new System.Drawing.Point(278, 10);
-            this.cboTonKho.Name = "cboTonKho";
-            this.cboTonKho.Size = new System.Drawing.Size(105, 24);
-            this.cboTonKho.TabIndex = 42;
-            //
-            // btnLoc
-            //
-            this.btnLoc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
-            this.btnLoc.FlatAppearance.BorderSize = 0;
-            this.btnLoc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLoc.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnLoc.ForeColor = System.Drawing.Color.White;
-            this.btnLoc.Location = new System.Drawing.Point(388, 9);
-            this.btnLoc.Name = "btnLoc";
-            this.btnLoc.Size = new System.Drawing.Size(60, 26);
-            this.btnLoc.TabIndex = 43;
-            this.btnLoc.Text = "Lọc";
-            this.btnLoc.UseVisualStyleBackColor = false;
-            //
-            // btnXoaLoc
-            //
-            this.btnXoaLoc.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(228)))), ((int)(((byte)(234)))));
-            this.btnXoaLoc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnXoaLoc.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnXoaLoc.Location = new System.Drawing.Point(452, 9);
-            this.btnXoaLoc.Name = "btnXoaLoc";
-            this.btnXoaLoc.Size = new System.Drawing.Size(68, 26);
-            this.btnXoaLoc.TabIndex = 44;
-            this.btnXoaLoc.Text = "Xóa lọc";
-            this.btnXoaLoc.UseVisualStyleBackColor = true;
-            //
+            // 
             // panel3
-            //
+            // 
             this.panel3.Controls.Add(this.btnTimSP);
             this.panel3.Controls.Add(this.lblUnit);
             this.panel3.Controls.Add(this.lblQuantity);
@@ -556,10 +466,7 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel4.ResumeLayout(false);
-            this.panelLoc.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSanPham)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudGiaMin)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudGiaMax)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudQuantity)).EndInit();
@@ -583,7 +490,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label lblMiniPOSInventory;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.DataGridView dgvSanPham;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label lblUnit;
         private System.Windows.Forms.Label lblQuantity;
@@ -602,12 +508,6 @@
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnThemSP;
         private System.Windows.Forms.Button btnTimSP;
-        private System.Windows.Forms.Panel panelLoc;
-        private System.Windows.Forms.ComboBox cboLoai;
-        private System.Windows.Forms.NumericUpDown nudGiaMin;
-        private System.Windows.Forms.NumericUpDown nudGiaMax;
-        private System.Windows.Forms.ComboBox cboTonKho;
-        private System.Windows.Forms.Button btnLoc;
-        private System.Windows.Forms.Button btnXoaLoc;
+        public System.Windows.Forms.DataGridView dgvSanPham;
     }
 }

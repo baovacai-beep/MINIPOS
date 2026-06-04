@@ -16,7 +16,6 @@ namespace MINIPOS
     public partial class InventoryForManager : Form
     {
         private SanPhamBUS spBUS = new SanPhamBUS();
-        private readonly LoaiSanPhamBUS _loaiBUS = new LoaiSanPhamBUS();
 
         public InventoryForManager()
         {
@@ -35,69 +34,21 @@ namespace MINIPOS
             dgvSanPham.DataSource = sanPhamBUS.GetAllProducts();
         }
 
-        private void EnsureEditColumn()
-        {
-            if (!dgvSanPham.Columns.Contains("Edit"))
-            {
-                var btnEdit = new DataGridViewButtonColumn { Name = "Edit", HeaderText = "Chỉnh sửa", Text = "Chỉnh sửa", UseColumnTextForButtonValue = true };
-                dgvSanPham.Columns.Add(btnEdit);
-            }
-        }
-
         private void InventoryForManager_Load(object sender, EventArgs e)
         {
             LoadProducts();
-            EnsureEditColumn();
-            NapComboLoai();
-            WireLoc();
-            btnKhachHang.Click += (s, ev) => { using (var frmKH = new CustomerManagement()) frmKH.ShowDialog(); };
-        }
 
-        // ── Tìm kiếm nâng cao ──────────────────────────────────────
-        private void NapComboLoai()
-        {
-            var dt = _loaiBUS.GetAll();
-            var row = dt.NewRow();
-            row["MaLoai"] = DBNull.Value;
-            row["TenLoai"] = "— Tất cả loại —";
-            dt.Rows.InsertAt(row, 0);
-            cboLoai.DisplayMember = "TenLoai";
-            cboLoai.ValueMember = "MaLoai";
-            cboLoai.DataSource = dt;
-
-            cboTonKho.Items.Clear();
-            cboTonKho.Items.AddRange(new object[] { "Tất cả tồn kho", "Còn hàng", "Sắp hết", "Hết hàng" });
-            cboTonKho.SelectedIndex = 0;
-        }
-
-        private void WireLoc()
-        {
-            btnLoc.Click    += (s, e) => ApDungLoc();
-            btnXoaLoc.Click += (s, e) => XoaLoc();
-        }
-
-        private void ApDungLoc()
-        {
-            var f = new SanPhamFilterDTO
+            if (!dgvSanPham.Columns.Contains("Edit"))
             {
-                TuKhoa = "",
-                MaLoai = (cboLoai.SelectedValue != null && cboLoai.SelectedValue != DBNull.Value) ? Convert.ToInt32(cboLoai.SelectedValue) : (int?)null,
-                GiaMin = nudGiaMin.Value > 0 ? nudGiaMin.Value : (decimal?)null,
-                GiaMax = nudGiaMax.Value > 0 ? nudGiaMax.Value : (decimal?)null,
-                TonKho = (TrangThaiKhoFilter)cboTonKho.SelectedIndex
-            };
-            dgvSanPham.DataSource = sanPhamBUS.TimKiem(f);
-            EnsureEditColumn();
-        }
+                DataGridViewButtonColumn btnEdit = new DataGridViewButtonColumn();
 
-        private void XoaLoc()
-        {
-            if (cboLoai.Items.Count > 0) cboLoai.SelectedIndex = 0;
-            cboTonKho.SelectedIndex = 0;
-            nudGiaMin.Value = 0;
-            nudGiaMax.Value = 0;
-            LoadProducts();
-            EnsureEditColumn();
+                btnEdit.Name = "Edit";
+                btnEdit.HeaderText = "Chỉnh sửa";
+                btnEdit.Text = "Chỉnh sửa";
+                btnEdit.UseColumnTextForButtonValue = true;
+
+                dgvSanPham.Columns.Add(btnEdit);
+            }
         }
 
         private void btnSell_Click(object sender, EventArgs e)
