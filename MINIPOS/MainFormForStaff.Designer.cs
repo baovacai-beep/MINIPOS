@@ -44,7 +44,7 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.btnXoaHang = new System.Windows.Forms.Button();
             this.dgvGioHang = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnLuuTam = new System.Windows.Forms.Button();
             this.btnThanhToan = new System.Windows.Forms.Button();
             this.btnVoucher = new System.Windows.Forms.Button();
             this.txtTongTien = new System.Windows.Forms.TextBox();
@@ -60,7 +60,7 @@
             this.btnXoaLoc = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnCaiDat = new FontAwesome.Sharp.IconButton();
-            this.btnHoaDonNhap = new FontAwesome.Sharp.IconButton();
+            this.btnXemHDNhap = new FontAwesome.Sharp.IconButton();
             this.btnKhachHang = new FontAwesome.Sharp.IconButton();
             this.btnKho = new FontAwesome.Sharp.IconButton();
             this.btnBanHang = new FontAwesome.Sharp.IconButton();
@@ -246,7 +246,7 @@
             // 
             this.panel5.Controls.Add(this.btnXoaHang);
             this.panel5.Controls.Add(this.dgvGioHang);
-            this.panel5.Controls.Add(this.button1);
+            this.panel5.Controls.Add(this.btnLuuTam);
             this.panel5.Controls.Add(this.btnThanhToan);
             this.panel5.Controls.Add(this.btnVoucher);
             this.panel5.Controls.Add(this.txtTongTien);
@@ -288,16 +288,17 @@
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.Plum;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(243, 331);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(109, 55);
-            this.button1.TabIndex = 40;
-            this.button1.Text = "Lưu HĐ";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnLuuTam.BackColor = System.Drawing.Color.Plum;
+            this.btnLuuTam.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnLuuTam.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLuuTam.Location = new System.Drawing.Point(243, 331);
+            this.btnLuuTam.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnLuuTam.Name = "btnLuuTam";
+            this.btnLuuTam.Size = new System.Drawing.Size(109, 55);
+            this.btnLuuTam.TabIndex = 40;
+            this.btnLuuTam.Text = "Lưu HĐ";
+            this.btnLuuTam.UseVisualStyleBackColor = false;
+            this.btnLuuTam.Click += new System.EventHandler(this.btnLuuTam_Click);
             // 
             // btnThanhToan
             // 
@@ -345,87 +346,15 @@
             this.panel6.TabIndex = 35;
             // 
             // panel3
-            //
-            this.panel3.Controls.Add(this.btnXoaLoc);
-            this.panel3.Controls.Add(this.btnLoc);
-            this.panel3.Controls.Add(this.cboTonKho);
-            this.panel3.Controls.Add(this.nudGiaMax);
-            this.panel3.Controls.Add(this.nudGiaMin);
-            this.panel3.Controls.Add(this.cboLoai);
+            // 
             this.panel3.Controls.Add(this.btnTimKiem);
             this.panel3.Controls.Add(this.txtTimKiem);
             this.panel3.Location = new System.Drawing.Point(171, 86);
             this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(524, 88);
+            this.panel3.Size = new System.Drawing.Size(524, 47);
             this.panel3.TabIndex = 42;
-            //
-            // cboLoai
-            //
-            this.cboLoai.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboLoai.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.cboLoai.Location = new System.Drawing.Point(3, 50);
-            this.cboLoai.Name = "cboLoai";
-            this.cboLoai.Size = new System.Drawing.Size(120, 24);
-            this.cboLoai.TabIndex = 39;
-            //
-            // nudGiaMin
-            //
-            this.nudGiaMin.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.nudGiaMin.Location = new System.Drawing.Point(128, 50);
-            this.nudGiaMin.Maximum = new decimal(new int[] { 100000000, 0, 0, 0 });
-            this.nudGiaMin.Increment = new decimal(new int[] { 1000, 0, 0, 0 });
-            this.nudGiaMin.Name = "nudGiaMin";
-            this.nudGiaMin.Size = new System.Drawing.Size(70, 23);
-            this.nudGiaMin.TabIndex = 40;
-            this.nudGiaMin.ThousandsSeparator = true;
-            //
-            // nudGiaMax
-            //
-            this.nudGiaMax.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.nudGiaMax.Location = new System.Drawing.Point(203, 50);
-            this.nudGiaMax.Maximum = new decimal(new int[] { 100000000, 0, 0, 0 });
-            this.nudGiaMax.Increment = new decimal(new int[] { 1000, 0, 0, 0 });
-            this.nudGiaMax.Name = "nudGiaMax";
-            this.nudGiaMax.Size = new System.Drawing.Size(70, 23);
-            this.nudGiaMax.TabIndex = 41;
-            this.nudGiaMax.ThousandsSeparator = true;
-            //
-            // cboTonKho
-            //
-            this.cboTonKho.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboTonKho.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.cboTonKho.Location = new System.Drawing.Point(278, 50);
-            this.cboTonKho.Name = "cboTonKho";
-            this.cboTonKho.Size = new System.Drawing.Size(105, 24);
-            this.cboTonKho.TabIndex = 42;
-            //
-            // btnLoc
-            //
-            this.btnLoc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
-            this.btnLoc.FlatAppearance.BorderSize = 0;
-            this.btnLoc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLoc.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnLoc.ForeColor = System.Drawing.Color.White;
-            this.btnLoc.Location = new System.Drawing.Point(388, 49);
-            this.btnLoc.Name = "btnLoc";
-            this.btnLoc.Size = new System.Drawing.Size(60, 26);
-            this.btnLoc.TabIndex = 43;
-            this.btnLoc.Text = "Lọc";
-            this.btnLoc.UseVisualStyleBackColor = false;
-            //
-            // btnXoaLoc
-            //
-            this.btnXoaLoc.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(228)))), ((int)(((byte)(234)))));
-            this.btnXoaLoc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnXoaLoc.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnXoaLoc.Location = new System.Drawing.Point(452, 49);
-            this.btnXoaLoc.Name = "btnXoaLoc";
-            this.btnXoaLoc.Size = new System.Drawing.Size(68, 26);
-            this.btnXoaLoc.TabIndex = 44;
-            this.btnXoaLoc.Text = "Xóa lọc";
-            this.btnXoaLoc.UseVisualStyleBackColor = true;
-            //
+            // 
             // btnTimKiem
             // 
             this.btnTimKiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -451,7 +380,7 @@
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Control;
             this.panel1.Controls.Add(this.btnCaiDat);
-            this.panel1.Controls.Add(this.btnHoaDonNhap);
+            this.panel1.Controls.Add(this.btnXemHDNhap);
             this.panel1.Controls.Add(this.btnKhachHang);
             this.panel1.Controls.Add(this.btnKho);
             this.panel1.Controls.Add(this.btnBanHang);
@@ -469,7 +398,7 @@
             this.btnCaiDat.IconSize = 33;
             this.btnCaiDat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCaiDat.Location = new System.Drawing.Point(-1, 271);
-            this.btnCaiDat.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCaiDat.Margin = new System.Windows.Forms.Padding(4);
             this.btnCaiDat.Name = "btnCaiDat";
             this.btnCaiDat.Size = new System.Drawing.Size(140, 55);
             this.btnCaiDat.TabIndex = 19;
@@ -477,21 +406,22 @@
             this.btnCaiDat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCaiDat.UseVisualStyleBackColor = true;
             // 
-            // btnHoaDonNhap
+            // btnXemHDNhap
             // 
-            this.btnHoaDonNhap.IconChar = FontAwesome.Sharp.IconChar.Receipt;
-            this.btnHoaDonNhap.IconColor = System.Drawing.Color.IndianRed;
-            this.btnHoaDonNhap.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnHoaDonNhap.IconSize = 33;
-            this.btnHoaDonNhap.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHoaDonNhap.Location = new System.Drawing.Point(-1, 208);
-            this.btnHoaDonNhap.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnHoaDonNhap.Name = "btnHoaDonNhap";
-            this.btnHoaDonNhap.Size = new System.Drawing.Size(140, 55);
-            this.btnHoaDonNhap.TabIndex = 17;
-            this.btnHoaDonNhap.Text = "Hóa đơn nháp";
-            this.btnHoaDonNhap.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnHoaDonNhap.UseVisualStyleBackColor = true;
+            this.btnXemHDNhap.IconChar = FontAwesome.Sharp.IconChar.Receipt;
+            this.btnXemHDNhap.IconColor = System.Drawing.Color.IndianRed;
+            this.btnXemHDNhap.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnXemHDNhap.IconSize = 33;
+            this.btnXemHDNhap.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnXemHDNhap.Location = new System.Drawing.Point(-1, 208);
+            this.btnXemHDNhap.Margin = new System.Windows.Forms.Padding(4);
+            this.btnXemHDNhap.Name = "btnXemHDNhap";
+            this.btnXemHDNhap.Size = new System.Drawing.Size(140, 55);
+            this.btnXemHDNhap.TabIndex = 17;
+            this.btnXemHDNhap.Text = "Hóa đơn nháp";
+            this.btnXemHDNhap.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnXemHDNhap.UseVisualStyleBackColor = true;
+            this.btnXemHDNhap.Click += new System.EventHandler(this.btnXemHDNhap_Click);
             // 
             // btnKhachHang
             // 
