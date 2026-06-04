@@ -37,9 +37,6 @@ namespace MINIPOS
                 btnLogin.Text    = "Đang xử lý...";
 
                 TaiKhoanDTO tk = _bus.DangNhap(txtUsername.Text, txtPassword.Text);
-                
-                //Ghi nhận thời gian login hiện tại vào đối tượng DTO trong RAM
-                tk.LanDangNhapCuoi = DateTime.Now;
 
                 // Lưu vào biến tĩnh để dùng toàn app
                 TaiKhoanDangNhap = tk;
