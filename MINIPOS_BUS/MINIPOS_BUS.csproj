@@ -49,10 +49,9 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaoCaoBUS.cs" />
     <Compile Include="HoaDonBUS.cs" />
-    <Compile Include="HoaDonNhapBUS.cs" />
     <Compile Include="KhachHangBUS.cs" />
+    <Compile Include="LoaiSanPhamBUS.cs" />
     <Compile Include="SanPhamBUS.cs" />
     <Compile Include="TaiKhoanBUS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
+using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using MINIPOS_DTO;
@@ -19,6 +21,58 @@ namespace MINIPOS_DAO
             da.Fill(dt);
 
             return dt;
+        }
+
+        // Xây mệnh đề WHERE động + tham số dùng chung cho các kiểu tìm kiếm
+        private static string BuildWhere(SanPhamFilterDTO f, List<SqlParameter> ps)
+        {
+            var sql = new StringBuilder(" WHERE TrangThai = 1");
+            if (!string.IsNullOrWhiteSpace(f.TuKhoa))
+            {
+                sql.Append(" AND (TenSanPham LIKE @kw OR Barcode LIKE @kw)");
+                ps.Add(new SqlParameter("@kw", "%" + f.TuKhoa.Trim() + "%"));
+            }
+            if (f.MaLoai.HasValue)
+            {
+                sql.Append(" AND MaLoai = @maLoai");
+                ps.Add(new SqlParameter("@maLoai", f.MaLoai.Value));
+            }
+            if (f.GiaMin.HasValue && f.GiaMin.Value > 0)
+            {
+                sql.Append(" AND DonGiaBan >= @giaMin");
+                ps.Add(new SqlParameter("@giaMin", f.GiaMin.Value));
+            }
+            if (f.GiaMax.HasValue && f.GiaMax.Value > 0)
+            {
+                sql.Append(" AND DonGiaBan <= @giaMax");
+                ps.Add(new SqlParameter("@giaMax", f.GiaMax.Value));
+            }
+            switch (f.TonKho)
+            {
+                case TrangThaiKhoFilter.ConHang: sql.Append(" AND SoLuongTon > 0"); break;
+                case TrangThaiKhoFilter.SapHet:  sql.Append(" AND SoLuongTon > 0 AND SoLuongTon <= SoLuongTonToiThieu"); break;
+                case TrangThaiKhoFilter.HetHang: sql.Append(" AND SoLuongTon = 0"); break;
+            }
+            return sql.ToString();
+        }
+
+        // Tìm kiếm nâng cao cho form KHO (cột thô v_SanPham)
+        public DataTable TimKiem(SanPhamFilterDTO f)
+        {
+            var ps = new List<SqlParameter>();
+            string sql = "SELECT * FROM v_SanPham" + BuildWhere(f, ps) + " ORDER BY TenSanPham";
+            return SQLConnection.ExecuteQuery(sql, ps.ToArray());
+        }
+
+        // Tìm kiếm nâng cao cho form BÁN HÀNG (giữ đúng cột alias mà giỏ hàng dùng)
+        public DataTable TimKiemBanHang(SanPhamFilterDTO f)
+        {
+            var ps = new List<SqlParameter>();
+            string sql =
+                "SELECT MaSanPham AS [Mã SP], TenSanPham AS [Tên SP], TenLoai AS [Loại SP], " +
+                "DonGiaBan AS [Đơn giá], DonViTinh AS [Đơn vị], SoLuongTon AS [Tồn kho] " +
+                "FROM v_SanPham" + BuildWhere(f, ps) + " ORDER BY TenSanPham";
+            return SQLConnection.ExecuteQuery(sql, ps.ToArray());
         }
 
         public SanPhamDTO GetProductById(int maSP)

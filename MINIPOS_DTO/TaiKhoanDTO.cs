@@ -6,7 +6,7 @@ namespace MINIPOS_DTO
     {
         public int    MaTaiKhoan      { get; set; }
         public string TenDangNhap     { get; set; }
-        public string MatKhau         { get; set; }   // MD5 hash
+        public string MatKhau         { get; set; }   // hash PBKDF2
         public int    MaVaiTro        { get; set; }
         public string TenVaiTro       { get; set; }   // 'NhanVien' | 'QuanLy'
         public bool   TrangThai       { get; set; }   // true = hoạt động
