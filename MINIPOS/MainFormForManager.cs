@@ -415,22 +415,138 @@ namespace MINIPOS
                 try
                 {
                     int maHD = _hoaDonBUS.ThanhToan(hd);
-                    MessageBox.Show("Thanh toán thành công ✔", "Thông báo",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Thanh toán thành công ✔", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    // Reset giỏ hàng
+                    // ============================================================
+                    // ĐOẠN ĐỔ DỮ LIỆU ĐỘNG VÀO DATASET ĐỂ GỌI BIỂU MẪU IN RDLC
+                    // ============================================================
+
+                    // 1. SỬA LẠI: Khởi tạo bảng Master chuẩn từ dsHoaDon
+                    var dtMaster = new dsHoaDon.DataTableMasterDataTable();
+
+                    // SỬA LẠI: Tạo dòng mới dựa trên cấu trúc chuẩn cấu hình sẵn
+                    var rowMaster = dtMaster.NewRow();
+                    rowMaster["MaHoaDon"] = maHD;
+                    rowMaster["NgayLap"] = DateTime.Now;
+                    rowMaster["TenNhanVien"] = Login.TaiKhoanDangNhap?.HoTen ?? "Nhân viên";
+                    rowMaster["TenKhachHang"] = _khachHang != null ? _khachHang.HoTen : "Khách vãng lai";
+                    rowMaster["HangThanhVien"] = _khachHang != null ? _khachHang.HangThanhVienID.ToString() : "Không có";
+                    rowMaster["TongTien"] = hd.TongTien;
+                    rowMaster["TienNhan"] = dlg.TienKhachDua; // Biến nhận từ form tiền mặt của nhóm bạn
+                    rowMaster["TienThoi"] = dlg.TienThoi;
+
+                    // Add dòng vừa tạo vào bảng Master
+                    dtMaster.Rows.Add(rowMaster);
+
+
+                    // 2. SỬA LẠI: Khởi tạo bảng Detail chuẩn từ dsHoaDon
+                    var dtDetail = new dsHoaDon.DataTableDetailDataTable();
+
+                    // Trích xuất danh sách sản phẩm hiện có trong GridView giỏ hàng để in chi tiết
+                    foreach (DataGridViewRow row in dgvGioHang.Rows)
+                    {
+                        if (row.Cells[COL_MASP].Value != null)
+                        {
+                            // SỬA LẠI: Tạo dòng mới dựa trên cấu trúc chuẩn của bảng Detail
+                            var rowDetail = dtDetail.NewRow();
+                            rowDetail["TenSanPham"] = row.Cells[COL_TENSP].Value.ToString();
+                            rowDetail["SoLuong"] = Convert.ToInt32(row.Cells[COL_SOLUONG].Value);
+                            rowDetail["DonGia"] = Convert.ToDecimal(row.Cells[COL_DONGIA].Value);
+                            rowDetail["ThanhTien"] = Convert.ToDecimal(row.Cells[COL_THANHTIEN].Value);
+                            rowDetail["MaHoaDon"] = maHD; // Liên kết khóa ngoại nếu phôi cần sử dụng
+
+                            // Add dòng chi tiết vào bảng Detail
+                            dtDetail.Rows.Add(rowDetail);
+                        }
+                    }
+
+                    // Khởi tạo cửa sổ xem trước hóa đơn và kích hoạt lệnh in (Truyền dtMaster và dtDetail chuẩn vào)
+                    FrmInHoaDon frmPrint = new FrmInHoaDon(dtMaster, dtDetail);
+                    frmPrint.ShowDialog();
+
+                    // Reset dọn dẹp giỏ hàng bán hàng như cũ
                     dgvGioHang.Rows.Clear();
                     _khachHang = null;
                     CapNhatHienThiKhachHang();
                     TinhTongTien();
-                    LoadSanPham(); // Refresh tồn kho
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Lỗi thanh toán:\n" + ex.Message, "Lỗi",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Lỗi thanh toán hoặc lỗi kết xuất bản in:\n" + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        // Khai báo lớp nghiệp vụ ở vùng biến cục bộ của Form chính
+        private readonly HoaDonNhapBUS _hdNhapBUS = new HoaDonNhapBUS();
+
+        // SỰ KIỆN 1: BẤM NÚT LƯU TẠM HÓA ĐƠN
+        private void btnLuuTam_Click(object sender, EventArgs e)
+        {
+            if (dgvGioHang.Rows.Count == 0)
+            {
+                MessageBox.Show("Giỏ hàng hiện tại đang trống, không thể tiến hành lưu nháp!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Hiển thị hộp thoại nhập tên gợi nhớ danh tính nhanh
+            string ghiChu = Microsoft.VisualBasic.Interaction.InputBox("Nhập tên khách hàng hoặc ghi chú nhận diện hóa đơn tạm:", "Hệ thống treo hóa đơn", "Khách chờ...");
+            if (string.IsNullOrWhiteSpace(ghiChu)) return;
+
+            // Khởi tạo cấu trúc DataTable để chuyển đổi dữ liệu từ DataGridView giỏ hàng hiện hành
+            DataTable dtTemp = new DataTable();
+            dtTemp.Columns.Add("MaSanPham", typeof(int));
+            dtTemp.Columns.Add("SoLuong", typeof(int));
+
+            foreach (DataGridViewRow row in dgvGioHang.Rows)
+            {
+                if (row.Cells[COL_MASP].Value != null)
+                {
+                    dtTemp.Rows.Add(Convert.ToInt32(row.Cells[COL_MASP].Value), Convert.ToInt32(row.Cells[COL_SOLUONG].Value));
+                }
+            }
+
+            int maNVDangNhap = Login.TaiKhoanDangNhap.MaNhanVien;
+
+            if (_hdNhapBUS.LuuTamHoaDon(maNVDangNhap, ghiChu, dtTemp))
+            {
+                MessageBox.Show("Hóa đơn đã được treo tạm thời vào hệ thống thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                dgvGioHang.Rows.Clear();
+                TinhTongTien(); // Cập nhật lại nhãn tiền tổng về 0 trên màn hình của bạn
+            }
+        }
+
+        // SỰ KIỆN 2: BẤM NÚT XEM DANH SÁCH HOÁ ĐƠN NHÁP ĐÃ LƯU
+        private void btnXemHDNhap_Click(object sender, EventArgs e)
+        {
+            FrmHoaDonNhap frm = new FrmHoaDonNhap();
+            if (frm.ShowDialog() == DialogResult.OK && frm.DataRestore != null)
+            {
+                dgvGioHang.Rows.Clear();
+                foreach (DataRow row in frm.DataRestore.Rows)
+                {
+                    int maSP = Convert.ToInt32(row["MaSanPham"]);
+                    string tenSP = row["TenSanPham"].ToString();
+                    int soLuong = Convert.ToInt32(row["SoLuong"]);
+                    decimal donGia = Convert.ToDecimal(row["DonGiaBan"]);
+                    decimal thanhTien = soLuong * donGia;
+
+                    // Đưa ngược dữ liệu hóa đơn nháp được chọn vào lại dgvGioHang
+                    int rowIndex = dgvGioHang.Rows.Add();
+                    dgvGioHang.Rows[rowIndex].Cells[COL_MASP].Value = maSP;
+                    dgvGioHang.Rows[rowIndex].Cells[COL_STT].Value = rowIndex + 1;
+                    dgvGioHang.Rows[rowIndex].Cells[COL_TENSP].Value = tenSP;
+                    dgvGioHang.Rows[rowIndex].Cells[COL_DONGIA].Value = donGia;
+                    dgvGioHang.Rows[rowIndex].Cells[COL_SOLUONG].Value = soLuong;
+                    dgvGioHang.Rows[rowIndex].Cells[COL_THANHTIEN].Value = thanhTien;
+                }
+                TinhTongTien();
+            }
+        }
+
+        private void btnThanhToan_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }
