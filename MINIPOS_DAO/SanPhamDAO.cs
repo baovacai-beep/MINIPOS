@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
+using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using MINIPOS_DTO;
@@ -19,6 +21,62 @@ namespace MINIPOS_DAO
             da.Fill(dt);
 
             return dt;
+        }
+
+        // tao cau WHERE theo cac dieu kien loc, dung chung cho 2 ham tim kiem
+        private string BuildWhere(SanPhamFilterDTO f, List<SqlParameter> ps)
+        {
+            StringBuilder sql = new StringBuilder(" WHERE TrangThai = 1");
+
+            if (!string.IsNullOrWhiteSpace(f.TuKhoa))
+            {
+                sql.Append(" AND (TenSanPham LIKE @kw OR Barcode LIKE @kw)");
+                ps.Add(new SqlParameter("@kw", "%" + f.TuKhoa.Trim() + "%"));
+            }
+            if (f.MaLoai.HasValue)
+            {
+                sql.Append(" AND MaLoai = @maLoai");
+                ps.Add(new SqlParameter("@maLoai", f.MaLoai.Value));
+            }
+            if (f.GiaMin.HasValue && f.GiaMin.Value > 0)
+            {
+                sql.Append(" AND DonGiaBan >= @giaMin");
+                ps.Add(new SqlParameter("@giaMin", f.GiaMin.Value));
+            }
+            if (f.GiaMax.HasValue && f.GiaMax.Value > 0)
+            {
+                sql.Append(" AND DonGiaBan <= @giaMax");
+                ps.Add(new SqlParameter("@giaMax", f.GiaMax.Value));
+            }
+
+            // loc theo tinh trang ton kho
+            if (f.TonKho == TrangThaiKhoFilter.ConHang)
+                sql.Append(" AND SoLuongTon > 0");
+            else if (f.TonKho == TrangThaiKhoFilter.SapHet)
+                sql.Append(" AND SoLuongTon > 0 AND SoLuongTon <= SoLuongTonToiThieu");
+            else if (f.TonKho == TrangThaiKhoFilter.HetHang)
+                sql.Append(" AND SoLuongTon = 0");
+
+            return sql.ToString();
+        }
+
+        // tim kiem nang cao cho form Kho (lay het cot cua v_SanPham)
+        public DataTable TimKiem(SanPhamFilterDTO f)
+        {
+            List<SqlParameter> ps = new List<SqlParameter>();
+            string sql = "SELECT * FROM v_SanPham" + BuildWhere(f, ps) + " ORDER BY TenSanPham";
+            return SQLConnection.ExecuteQuery(sql, ps.ToArray());
+        }
+
+        // tim kiem nang cao cho form Ban hang (dat ten cot giong gio hang dung)
+        public DataTable TimKiemBanHang(SanPhamFilterDTO f)
+        {
+            List<SqlParameter> ps = new List<SqlParameter>();
+            string sql =
+                "SELECT MaSanPham AS [Mã SP], TenSanPham AS [Tên SP], TenLoai AS [Loại SP], " +
+                "DonGiaBan AS [Đơn giá], DonViTinh AS [Đơn vị], SoLuongTon AS [Tồn kho] " +
+                "FROM v_SanPham" + BuildWhere(f, ps) + " ORDER BY TenSanPham";
+            return SQLConnection.ExecuteQuery(sql, ps.ToArray());
         }
 
         public SanPhamDTO GetProductById(int maSP)

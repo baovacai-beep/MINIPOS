@@ -43,6 +43,14 @@ namespace MINIPOS
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnTimKiem = new System.Windows.Forms.Button();
             this.txtTimKiem = new System.Windows.Forms.TextBox();
+            this.cboLoai = new System.Windows.Forms.ComboBox();
+            this.lblGia = new System.Windows.Forms.Label();
+            this.nudGiaMin = new System.Windows.Forms.NumericUpDown();
+            this.lblGach = new System.Windows.Forms.Label();
+            this.nudGiaMax = new System.Windows.Forms.NumericUpDown();
+            this.cboTonKho = new System.Windows.Forms.ComboBox();
+            this.btnLoc = new System.Windows.Forms.Button();
+            this.btnXoaLoc = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
             this.btnXoaHang = new System.Windows.Forms.Button();
             this.dgvGioHang = new System.Windows.Forms.DataGridView();
@@ -74,6 +82,8 @@ namespace MINIPOS
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudGiaMin)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudGiaMax)).BeginInit();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGioHang)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
@@ -260,10 +270,18 @@ namespace MINIPOS
             // 
             this.panel3.Controls.Add(this.btnTimKiem);
             this.panel3.Controls.Add(this.txtTimKiem);
+            this.panel3.Controls.Add(this.cboLoai);
+            this.panel3.Controls.Add(this.lblGia);
+            this.panel3.Controls.Add(this.nudGiaMin);
+            this.panel3.Controls.Add(this.lblGach);
+            this.panel3.Controls.Add(this.nudGiaMax);
+            this.panel3.Controls.Add(this.cboTonKho);
+            this.panel3.Controls.Add(this.btnLoc);
+            this.panel3.Controls.Add(this.btnXoaLoc);
             this.panel3.Location = new System.Drawing.Point(157, 94);
             this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(524, 47);
+            this.panel3.Size = new System.Drawing.Size(524, 130);
             this.panel3.TabIndex = 34;
             // 
             // btnTimKiem
@@ -287,6 +305,101 @@ namespace MINIPOS
             this.txtTimKiem.Name = "txtTimKiem";
             this.txtTimKiem.Size = new System.Drawing.Size(409, 26);
             this.txtTimKiem.TabIndex = 38;
+            // 
+            // cboLoai
+            // 
+            this.cboLoai.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboLoai.FormattingEnabled = true;
+            this.cboLoai.Location = new System.Drawing.Point(3, 50);
+            this.cboLoai.Name = "cboLoai";
+            this.cboLoai.Size = new System.Drawing.Size(150, 24);
+            this.cboLoai.TabIndex = 39;
+            // 
+            // lblGia
+            // 
+            this.lblGia.AutoSize = true;
+            this.lblGia.Location = new System.Drawing.Point(160, 54);
+            this.lblGia.Name = "lblGia";
+            this.lblGia.Size = new System.Drawing.Size(31, 16);
+            this.lblGia.TabIndex = 40;
+            this.lblGia.Text = "Giá:";
+            // 
+            // nudGiaMin
+            // 
+            this.nudGiaMin.Increment = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.nudGiaMin.Location = new System.Drawing.Point(196, 51);
+            this.nudGiaMin.Maximum = new decimal(new int[] {
+            100000000,
+            0,
+            0,
+            0});
+            this.nudGiaMin.Name = "nudGiaMin";
+            this.nudGiaMin.Size = new System.Drawing.Size(90, 22);
+            this.nudGiaMin.TabIndex = 41;
+            this.nudGiaMin.ThousandsSeparator = true;
+            // 
+            // lblGach
+            // 
+            this.lblGach.AutoSize = true;
+            this.lblGach.Location = new System.Drawing.Point(290, 54);
+            this.lblGach.Name = "lblGach";
+            this.lblGach.Size = new System.Drawing.Size(11, 16);
+            this.lblGach.TabIndex = 42;
+            this.lblGach.Text = "-";
+            // 
+            // nudGiaMax
+            // 
+            this.nudGiaMax.Increment = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.nudGiaMax.Location = new System.Drawing.Point(304, 51);
+            this.nudGiaMax.Maximum = new decimal(new int[] {
+            100000000,
+            0,
+            0,
+            0});
+            this.nudGiaMax.Name = "nudGiaMax";
+            this.nudGiaMax.Size = new System.Drawing.Size(90, 22);
+            this.nudGiaMax.TabIndex = 43;
+            this.nudGiaMax.ThousandsSeparator = true;
+            // 
+            // cboTonKho
+            // 
+            this.cboTonKho.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboTonKho.FormattingEnabled = true;
+            this.cboTonKho.Location = new System.Drawing.Point(3, 90);
+            this.cboTonKho.Name = "cboTonKho";
+            this.cboTonKho.Size = new System.Drawing.Size(150, 24);
+            this.cboTonKho.TabIndex = 44;
+            // 
+            // btnLoc
+            // 
+            this.btnLoc.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnLoc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLoc.ForeColor = System.Drawing.Color.White;
+            this.btnLoc.Location = new System.Drawing.Point(175, 88);
+            this.btnLoc.Name = "btnLoc";
+            this.btnLoc.Size = new System.Drawing.Size(90, 28);
+            this.btnLoc.TabIndex = 45;
+            this.btnLoc.Text = "Lọc";
+            this.btnLoc.UseVisualStyleBackColor = false;
+            // 
+            // btnXoaLoc
+            // 
+            this.btnXoaLoc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnXoaLoc.Location = new System.Drawing.Point(271, 88);
+            this.btnXoaLoc.Name = "btnXoaLoc";
+            this.btnXoaLoc.Size = new System.Drawing.Size(100, 28);
+            this.btnXoaLoc.TabIndex = 46;
+            this.btnXoaLoc.Text = "Xóa lọc";
+            this.btnXoaLoc.UseVisualStyleBackColor = true;
             // 
             // panel5
             // 
@@ -479,7 +592,7 @@ namespace MINIPOS
             this.flowLayoutPanel1.Controls.Add(this.btnVPP);
             this.flowLayoutPanel1.Controls.Add(this.btnMyPham);
             this.flowLayoutPanel1.Controls.Add(this.btnGiaVi);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(157, 143);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(157, 228);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(520, 48);
@@ -584,10 +697,10 @@ namespace MINIPOS
             // panel4
             // 
             this.panel4.Controls.Add(this.dgvSanPham);
-            this.panel4.Location = new System.Drawing.Point(157, 198);
+            this.panel4.Location = new System.Drawing.Point(157, 280);
             this.panel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(521, 407);
+            this.panel4.Size = new System.Drawing.Size(521, 325);
             this.panel4.TabIndex = 37;
             // 
             // dgvSanPham
@@ -604,7 +717,7 @@ namespace MINIPOS
             this.dgvSanPham.RowHeadersVisible = false;
             this.dgvSanPham.RowHeadersWidth = 51;
             this.dgvSanPham.RowTemplate.Height = 24;
-            this.dgvSanPham.Size = new System.Drawing.Size(515, 329);
+            this.dgvSanPham.Size = new System.Drawing.Size(515, 318);
             this.dgvSanPham.TabIndex = 0;
             this.dgvSanPham.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSanPham_CellDoubleClick);
             // 
@@ -653,6 +766,8 @@ namespace MINIPOS
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudGiaMin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudGiaMax)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGioHang)).EndInit();
@@ -672,6 +787,14 @@ namespace MINIPOS
         private System.Windows.Forms.Label lblMiniPOSInventory;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.TextBox txtTimKiem;
+        private System.Windows.Forms.ComboBox cboLoai;
+        private System.Windows.Forms.NumericUpDown nudGiaMin;
+        private System.Windows.Forms.NumericUpDown nudGiaMax;
+        private System.Windows.Forms.ComboBox cboTonKho;
+        private System.Windows.Forms.Button btnLoc;
+        private System.Windows.Forms.Button btnXoaLoc;
+        private System.Windows.Forms.Label lblGia;
+        private System.Windows.Forms.Label lblGach;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Button btnTimKiem;

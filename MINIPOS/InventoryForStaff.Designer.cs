@@ -52,6 +52,14 @@
             this.cboCategory = new System.Windows.Forms.ComboBox();
             this.txtBarcode = new System.Windows.Forms.TextBox();
             this.txtProductName = new System.Windows.Forms.TextBox();
+            this.cboLoai = new System.Windows.Forms.ComboBox();
+            this.nudGiaMin = new System.Windows.Forms.NumericUpDown();
+            this.nudGiaMax = new System.Windows.Forms.NumericUpDown();
+            this.cboTonKho = new System.Windows.Forms.ComboBox();
+            this.btnLoc = new System.Windows.Forms.Button();
+            this.btnXoaLoc = new System.Windows.Forms.Button();
+            this.lblGia = new System.Windows.Forms.Label();
+            this.lblGach = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -59,6 +67,8 @@
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudQuantity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudSellPrice)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudGiaMin)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudGiaMax)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -178,6 +188,14 @@
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.cboLoai);
+            this.panel4.Controls.Add(this.lblGia);
+            this.panel4.Controls.Add(this.nudGiaMin);
+            this.panel4.Controls.Add(this.lblGach);
+            this.panel4.Controls.Add(this.nudGiaMax);
+            this.panel4.Controls.Add(this.cboTonKho);
+            this.panel4.Controls.Add(this.btnLoc);
+            this.panel4.Controls.Add(this.btnXoaLoc);
             this.panel4.Controls.Add(this.dgvSanPham);
             this.panel4.Location = new System.Drawing.Point(157, 257);
             this.panel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -192,14 +210,14 @@
             this.dgvSanPham.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvSanPham.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvSanPham.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSanPham.Location = new System.Drawing.Point(0, 9);
+            this.dgvSanPham.Location = new System.Drawing.Point(0, 44);
             this.dgvSanPham.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvSanPham.Name = "dgvSanPham";
             this.dgvSanPham.ReadOnly = true;
             this.dgvSanPham.RowHeadersVisible = false;
             this.dgvSanPham.RowHeadersWidth = 51;
             this.dgvSanPham.RowTemplate.Height = 24;
-            this.dgvSanPham.Size = new System.Drawing.Size(880, 263);
+            this.dgvSanPham.Size = new System.Drawing.Size(880, 285);
             this.dgvSanPham.TabIndex = 0;
             // 
             // panel3
@@ -341,9 +359,88 @@
             this.txtProductName.Name = "txtProductName";
             this.txtProductName.Size = new System.Drawing.Size(467, 22);
             this.txtProductName.TabIndex = 47;
-            // 
+            //
+            // cboLoai
+            //
+            this.cboLoai.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboLoai.FormattingEnabled = true;
+            this.cboLoai.Location = new System.Drawing.Point(0, 10);
+            this.cboLoai.Name = "cboLoai";
+            this.cboLoai.Size = new System.Drawing.Size(160, 24);
+            this.cboLoai.TabIndex = 70;
+            //
+            // lblGia
+            //
+            this.lblGia.AutoSize = true;
+            this.lblGia.Location = new System.Drawing.Point(170, 14);
+            this.lblGia.Name = "lblGia";
+            this.lblGia.Size = new System.Drawing.Size(34, 16);
+            this.lblGia.TabIndex = 71;
+            this.lblGia.Text = "Giá:";
+            //
+            // nudGiaMin
+            //
+            this.nudGiaMin.Location = new System.Drawing.Point(205, 11);
+            this.nudGiaMin.Maximum = new decimal(new int[] { 100000000, 0, 0, 0});
+            this.nudGiaMin.Name = "nudGiaMin";
+            this.nudGiaMin.Size = new System.Drawing.Size(95, 22);
+            this.nudGiaMin.TabIndex = 72;
+            this.nudGiaMin.ThousandsSeparator = true;
+            this.nudGiaMin.Increment = new decimal(new int[] { 1000, 0, 0, 0});
+            //
+            // lblGach
+            //
+            this.lblGach.AutoSize = true;
+            this.lblGach.Location = new System.Drawing.Point(304, 14);
+            this.lblGach.Name = "lblGach";
+            this.lblGach.Size = new System.Drawing.Size(12, 16);
+            this.lblGach.TabIndex = 73;
+            this.lblGach.Text = "-";
+            //
+            // nudGiaMax
+            //
+            this.nudGiaMax.Location = new System.Drawing.Point(318, 11);
+            this.nudGiaMax.Maximum = new decimal(new int[] { 100000000, 0, 0, 0});
+            this.nudGiaMax.Name = "nudGiaMax";
+            this.nudGiaMax.Size = new System.Drawing.Size(95, 22);
+            this.nudGiaMax.TabIndex = 74;
+            this.nudGiaMax.ThousandsSeparator = true;
+            this.nudGiaMax.Increment = new decimal(new int[] { 1000, 0, 0, 0});
+            //
+            // cboTonKho
+            //
+            this.cboTonKho.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboTonKho.FormattingEnabled = true;
+            this.cboTonKho.Location = new System.Drawing.Point(420, 10);
+            this.cboTonKho.Name = "cboTonKho";
+            this.cboTonKho.Size = new System.Drawing.Size(150, 24);
+            this.cboTonKho.TabIndex = 75;
+            //
+            // btnLoc
+            //
+            this.btnLoc.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnLoc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLoc.ForeColor = System.Drawing.Color.White;
+            this.btnLoc.Location = new System.Drawing.Point(580, 8);
+            this.btnLoc.Name = "btnLoc";
+            this.btnLoc.Size = new System.Drawing.Size(90, 28);
+            this.btnLoc.TabIndex = 76;
+            this.btnLoc.Text = "Lọc";
+            this.btnLoc.UseVisualStyleBackColor = false;
+            //
+            // btnXoaLoc
+            //
+            this.btnXoaLoc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnXoaLoc.Location = new System.Drawing.Point(676, 8);
+            this.btnXoaLoc.Name = "btnXoaLoc";
+            this.btnXoaLoc.Size = new System.Drawing.Size(100, 28);
+            this.btnXoaLoc.TabIndex = 77;
+            this.btnXoaLoc.Text = "Xóa lọc";
+            this.btnXoaLoc.UseVisualStyleBackColor = true;
+            //
             // InventoryForStaff
-            // 
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1141, 626);
@@ -364,6 +461,8 @@
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudQuantity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudSellPrice)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudGiaMin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudGiaMax)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -393,5 +492,13 @@
         private System.Windows.Forms.ComboBox cboCategory;
         private System.Windows.Forms.TextBox txtBarcode;
         private System.Windows.Forms.TextBox txtProductName;
+        private System.Windows.Forms.ComboBox cboLoai;
+        private System.Windows.Forms.NumericUpDown nudGiaMin;
+        private System.Windows.Forms.NumericUpDown nudGiaMax;
+        private System.Windows.Forms.ComboBox cboTonKho;
+        private System.Windows.Forms.Button btnLoc;
+        private System.Windows.Forms.Button btnXoaLoc;
+        private System.Windows.Forms.Label lblGia;
+        private System.Windows.Forms.Label lblGach;
     }
 }
