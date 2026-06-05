@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -48,7 +49,7 @@ namespace MINIPOS
                 btnEdit.UseColumnTextForButtonValue = true;
 
                 dgvSanPham.Columns.Add(btnEdit);
-            }
+            }    
         }
 
         private void btnSell_Click(object sender, EventArgs e)
@@ -85,6 +86,7 @@ namespace MINIPOS
             if (e.RowIndex < 0)
                 return;
 
+            //Edit
             if (dgvSanPham.Columns[e.ColumnIndex].Name == "Edit")
             {
                 try

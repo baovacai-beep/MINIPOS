@@ -423,5 +423,15 @@ namespace MINIPOS
             frm.Show();
             this.Hide();
         }
+
+        private void btnBaoCao_Click(object sender, EventArgs e)
+        {
+            // Khởi tạo form báo cáo quản trị
+            frmBaoCao formBaoCao = new frmBaoCao();
+            formBaoCao.Show();
+
+            // Ẩn MainForm hiện tại đi thay vì đóng ứng dụng
+            this.Hide();
+        }
     }
 }
