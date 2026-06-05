@@ -334,17 +334,27 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="rptDoanhThu.rdlc" />
-    <EmbeddedResource Include="rptDSHoaDon.rdlc" />
+    <EmbeddedResource Include="rptDoanhThu.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptDSHoaDon.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="rptHoaDon.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="ReportForManager.resx">
       <DependentUpon>ReportForManager.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="rptKhachHang.rdlc" />
-    <EmbeddedResource Include="rptTonKho.rdlc" />
-    <EmbeddedResource Include="rptTopSanPham.rdlc" />
+    <EmbeddedResource Include="rptKhachHang.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptTonKho.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptTopSanPham.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="SettingsForManager.resx">
       <DependentUpon>SettingsForManager.cs</DependentUpon>
     </EmbeddedResource>

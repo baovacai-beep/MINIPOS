@@ -2,188 +2,239 @@
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
-using Microsoft.Reporting.WinForms;
-using MINIPOS_DAO; // Thư viện chứa lớp SQLConnection của hệ thống
+using Microsoft.Reporting.WinForms; // Đảm bảo đã cài Nuget Microsoft.ReportingServices.ReportViewerControl.Winforms
+using MINIPOS_DAO;
 
 namespace MINIPOS
 {
     public partial class frmBaoCao : Form
     {
-        // Khai báo đường dẫn Namespace chứa các file Resource RDLC của bạn
-        // Lưu ý: Đảm bảo các file .rdlc đã được chỉnh thuộc tính Build Action = Embedded Resource
-        private const string REPORT_NS = "MINIPOS.Reports";
+        // Namespace chứa các file RDLC trong project của bạn
+        private const string REPORT_NS = "MINIPOS";
 
         public frmBaoCao()
         {
             InitializeComponent();
+            this.Load += new System.EventHandler(this.frmBaoCao_Load);
+            this.btnXemBaoCao.Click += new System.EventHandler(this.btnXemBaoCao_Click);
         }
 
         private void frmBaoCao_Load(object sender, EventArgs e)
         {
-            // Nạp danh sách 5 loại báo cáo vào ComboBox khi mở Form
+            // Khởi tạo danh sách lựa chọn đúng thứ tự index
             cboLoaiBaoCao.Items.Clear();
             cboLoaiBaoCao.Items.Add("Báo cáo Doanh thu");
             cboLoaiBaoCao.Items.Add("Báo cáo Top sản phẩm");
             cboLoaiBaoCao.Items.Add("Báo cáo Tồn kho");
             cboLoaiBaoCao.Items.Add("Báo cáo Danh sách hóa đơn");
             cboLoaiBaoCao.Items.Add("Báo cáo Khách hàng");
-            cboLoaiBaoCao.SelectedIndex = 0; // Chọn mặc định loại đầu tiên
+            cboLoaiBaoCao.SelectedIndex = 0;
 
-            // Đặt mặc định khoảng thời gian xem từ đầu tháng đến ngày hiện tại
+            // Đặt thời gian mặc định: Đầu tháng đến ngày hiện tại
             dtpTuNgay.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
             dtpDenNgay.Value = DateTime.Now;
-
-            this.reportViewerCommon.RefreshReport();
         }
 
+        // SỰ KIỆN NÚT BẤM XEM BÁO CÁO
         private void btnXemBaoCao_Click(object sender, EventArgs e)
         {
-            DateTime tuNgay = dtpTuNgay.Value.Date;
-            DateTime denNgay = dtpDenNgay.Value.Date.AddDays(1).AddSeconds(-1); // Lấy đến cuối ngày được chọn
-
-            if (tuNgay > denNgay)
+            int loaiBaoCaoIdx = cboLoaiBaoCao.SelectedIndex;
+            if (loaiBaoCaoIdx < 0)
             {
-                MessageBox.Show("Ngày bắt đầu không được lớn hơn ngày kết thúc!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Vui lòng chọn loại báo cáo trước!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            Cursor = Cursors.WaitCursor;
             try
             {
-                int loaiBaoCaoIdx = cboLoaiBaoCao.SelectedIndex;
+                // 1. Làm sạch nguồn dữ liệu cũ bám trên ReportViewer để nạp mới hoàn toàn
+                reportViewerCommon.LocalReport.DataSources.Clear();
+
+                DataTable dtData = new DataTable();
+                string rdlcFileName = "";
+                string dataSetNameInRDLC = "";
+
+                // Lấy giá trị ngày lọc từ giao diện (Thêm giờ phút để quét trọn vẹn dữ liệu trong ngày)
+                DateTime tuNgay = dtpTuNgay.Value.Date;
+                DateTime denNgay = dtpDenNgay.Value.Date.AddDays(1).AddTicks(-1);
+
+                // 2. Phân loại truy vấn dựa theo ComboBox được chọn
                 switch (loaiBaoCaoIdx)
                 {
-                    case 0: // Doanh thu
-                        HienThiReport(REPORT_NS + ".rptDoanhThu.rdlc", "dsDoanhThu", LayDuLieuDoanhThu(tuNgay, denNgay));
+                    case 0: // Báo cáo Doanh thu
+                        rdlcFileName = "rptDoanhThu.rdlc";
+                        dataSetNameInRDLC = "dsDoanhThu";
+                        dtData = LayDuLieuDoanhThu(tuNgay, denNgay);
                         break;
-                    case 1: // Top sản phẩm
-                        HienThiReport(REPORT_NS + ".rptTopSanPham.rdlc", "dsTopSanPham", LayDuLieuTopSanPham(tuNgay, denNgay));
+
+                    case 1: // Báo cáo Top sản phẩm (Sẽ hiển thị dạng Bar Chart)
+                        rdlcFileName = "rptTopSanPham.rdlc";
+                        dataSetNameInRDLC = "dsTopSanPham";
+                        dtData = LayDuLieuTopSanPham(tuNgay, denNgay);
                         break;
-                    case 2: // Tồn kho
-                        HienThiReport(REPORT_NS + ".rptTonKho.rdlc", "dsTonKho", LayDuLieuTonKho());
+
+                    case 2: // Báo cáo Tồn kho
+                        rdlcFileName = "rptTonKho.rdlc";
+                        dataSetNameInRDLC = "dsTonKho";
+                        dtData = LayDuLieuTonKho();
                         break;
-                    case 3: // Danh sách hóa đơn
-                        HienThiReport(REPORT_NS + ".rptDSHoaDon.rdlc", "dsDSHoaDon", LayDuLieuDSHoaDon(tuNgay, denNgay));
+
+                    case 3: // Báo cáo Danh sách hóa đơn
+                        rdlcFileName = "rptDSHoaDon.rdlc";
+                        dataSetNameInRDLC = "dsDSHoaDon";
+                        dtData = LayDuLieuDSHoaDon(tuNgay, denNgay);
                         break;
-                    case 4: // Khách hàng
-                        HienThiReport(REPORT_NS + ".rptKhachHang.rdlc", "dsKhachHang", LayDuLieuKhachHang());
+
+                    case 4: // Báo cáo Khách hàng
+                        rdlcFileName = "rptKhachHang.rdlc";
+                        dataSetNameInRDLC = "dsKhachHang";
+                        dtData = LayDuLieuKhachHang(tuNgay, denNgay);
                         break;
                 }
+
+                // 3. Liên kết file phôi rdlc vào ReportViewer
+                // Sử dụng ReportPath nếu bạn để file rdlc ở ngoài thư mục ứng dụng, 
+                // Hoặc dùng ReportEmbeddedResource nếu bạn nhúng file rdlc thẳng vào Project Assembly
+                string fullResourcePath = $"{REPORT_NS}.{rdlcFileName}";
+                reportViewerCommon.LocalReport.ReportEmbeddedResource = fullResourcePath;
+
+                // Dự phòng trường hợp bạn không Build Embedded Resource thì dùng đường dẫn File vật lý:
+                if (!TraCuuResourceTonTai(fullResourcePath))
+                {
+                    reportViewerCommon.LocalReport.ReportEmbeddedResource = null;
+                    reportViewerCommon.LocalReport.ReportPath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, rdlcFileName);
+                }
+
+                // 4. Bơm dữ liệu chuẩn từ Database vào Phôi báo cáo
+                ReportDataSource rds = new ReportDataSource(dataSetNameInRDLC, dtData);
+                reportViewerCommon.LocalReport.DataSources.Add(rds);
+
+                // 5. Làm mới và hiển thị
+                reportViewerCommon.RefreshReport();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi khi tải dữ liệu báo cáo:\n" + ex.Message, "Lỗi hệ thống", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                Cursor = Cursors.Default;
+                MessageBox.Show($"Xảy ra lỗi khi kết xuất báo cáo:\n{ex.Message}", "Lỗi Hệ Thống", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        /// <summary>
-        /// Hàm dùng chung để đẩy DataTable lên ReportViewer
-        /// </summary>
-        private void HienThiReport(string resourceName, string dataSetName, DataTable dt)
-        {
-            reportViewerCommon.Reset();
-            reportViewerCommon.ProcessingMode = ProcessingMode.Local;
-            reportViewerCommon.LocalReport.ReportEmbeddedResource = resourceName;
-            reportViewerCommon.LocalReport.DataSources.Clear();
-            reportViewerCommon.LocalReport.DataSources.Add(new ReportDataSource(dataSetName, dt));
-            reportViewerCommon.RefreshReport();
-        }
-
-        #region CÁC HÀM LẤY DỮ LIỆU TỪ DATABASE MINI POS
+        #region CÁC HÀM TRUY VẤN DỮ LIỆU CHUẨN ĐỒNG BỘ SQL SERVER
 
         private DataTable LayDuLieuDoanhThu(DateTime tuNgay, DateTime denNgay)
-        {
-            string sql = "SELECT CAST(NgayLap AS DATE) AS Ngay, COUNT(MaHoaDon) AS SoHoaDon, SUM(ThanhTien) AS DoanhThu " +
-                         "FROM HoaDon WHERE NgayLap BETWEEN @TuNgay AND @DenNgay AND TrangThai = N'Hoàn thành' " +
-                         "GROUP BY CAST(NgayLap AS DATE) ORDER BY Ngay";
-            return ExecQuery(sql, new SqlParameter("@TuNgay", tuNgay), new SqlParameter("@DenNgay", denNgay));
-        }
-
-        private DataTable LayDuLieuTopSanPham(DateTime tuNgay, DateTime denNgay)
-        {
-            string sql = "SELECT TOP 10 sp.TenSanPham, SUM(ct.SoLuong) AS SoLuongDaBan, SUM(ct.ThanhTien) AS DoanhThuThuVe " +
-                         "FROM ChiTietHoaDon ct INNER JOIN SanPham sp ON ct.MaSanPham = sp.MaSanPham " +
-                         "INNER JOIN HoaDon hd ON ct.MaHoaDon = hd.MaHoaDon " +
-                         "WHERE hd.NgayLap BETWEEN @TuNgay AND @DenNgay AND hd.TrangThai = N'Hoàn thành' " +
-                         "GROUP BY sp.TenSanPham ORDER BY SoLuongDaBan DESC";
-            return ExecQuery(sql, new SqlParameter("@TuNgay", tuNgay), new SqlParameter("@DenNgay", denNgay));
-        }
-
-        private DataTable LayDuLieuTonKho()
-        {
-            // Lấy danh sách sản phẩm và số lượng tồn kho hiện hành
-            string sql = "SELECT MaSanPham, TenSanPham, SoLuongTon, DonGiaBan, DonViTinh FROM SanPham WHERE TrangThai = 1";
-            return ExecQuery(sql);
-        }
-
-        private DataTable LayDuLieuDSHoaDon(DateTime tuNgay, DateTime denNgay)
-        {
-            string sql = "SELECT MaHoaDon, NgayLap, TongTien, GhiChu, TrangThai FROM HoaDon " +
-                         "WHERE NgayLap BETWEEN @TuNgay AND @DenNgay ORDER BY NgayLap DESC";
-            return ExecQuery(sql, new SqlParameter("@TuNgay", tuNgay), new SqlParameter("@DenNgay", denNgay));
-        }
-
-        private DataTable LayDuLieuKhachHang()
-        {
-            string sql = "SELECT MaKhachHang, TenKhachHang, DienThoai, TongChiTieu FROM KhachHang";
-            return ExecQuery(sql);
-        }
-
-        private DataTable ExecQuery(string query, params SqlParameter[] parameters)
         {
             DataTable dt = new DataTable();
             using (SqlConnection conn = SQLConnection.GetConnection())
             {
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                // Sử dụng SqlParameter để truyền ngày tháng an toàn, không lo lỗi định dạng hệ thống
+                string sql = @"SELECT CAST(NgayLap AS DATE) AS Ngay, 
+                              COUNT(MaHoaDon) AS SoHoaDon, 
+                              SUM(ThanhTien) AS DoanhThu 
+                       FROM HoaDon 
+                       WHERE NgayLap >= @TuNgay AND NgayLap <= @DenNgay
+                       GROUP BY CAST(NgayLap AS DATE)";
+
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
                 {
-                    if (parameters != null) cmd.Parameters.AddRange(parameters);
-                    using (SqlDataAdapter da = new SqlDataAdapter(cmd))
-                    {
-                        da.Fill(dt);
-                    }
+                    cmd.Parameters.AddWithValue("@TuNgay", tuNgay);
+                    cmd.Parameters.AddWithValue("@DenNgay", denNgay);
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    da.Fill(dt);
                 }
             }
             return dt;
         }
+
+        private DataTable LayDuLieuTopSanPham(DateTime tuNgay, DateTime denNgay)
+        {
+            DataTable dt = new DataTable();
+            using (SqlConnection conn = SQLConnection.GetConnection())
+            {
+                string sql = @"SELECT TOP 10 sp.TenSanPham, 
+                              SUM(ct.SoLuong) AS SoLuongDaBan, 
+                              SUM(ct.ThanhTien) AS DoanhThuThuVe
+                       FROM ChiTietHoaDon ct
+                       JOIN SanPham sp ON ct.MaSanPham = sp.MaSanPham
+                       JOIN HoaDon hd ON ct.MaHoaDon = hd.MaHoaDon
+                       WHERE hd.NgayLap >= @TuNgay AND hd.NgayLap <= @DenNgay
+                       GROUP BY sp.TenSanPham
+                       ORDER BY SoLuongDaBan DESC";
+
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@TuNgay", tuNgay);
+                    cmd.Parameters.AddWithValue("@DenNgay", denNgay);
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    da.Fill(dt);
+                }
+            }
+            return dt;
+        }
+
+        private DataTable LayDuLieuTonKho()
+        {
+            DataTable dt = new DataTable();
+            using (SqlConnection conn = SQLConnection.GetConnection())
+            {
+                string sql = "SELECT MaSanPham, TenSanPham, SoLuongTon, DonGiaBan, DonViTinh FROM SanPham WHERE TrangThai = 1";
+                SqlDataAdapter da = new SqlDataAdapter(sql, conn);
+                da.Fill(dt);
+            }
+            return dt;
+        }
+
+        private DataTable LayDuLieuDSHoaDon(DateTime tuNgay, DateTime denNgay)
+        {
+            DataTable dt = new DataTable();
+            using (SqlConnection conn = SQLConnection.GetConnection())
+            {
+                string sql = "SELECT MaHoaDon, NgayLap, TongTien, GhiChu FROM HoaDon WHERE NgayLap BETWEEN @TuNgay AND @DenNgay";
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@TuNgay", tuNgay);
+                    cmd.Parameters.AddWithValue("@DenNgay", denNgay);
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    da.Fill(dt);
+                }
+            }
+            return dt;
+        }
+
+        private DataTable LayDuLieuKhachHang(DateTime tuNgay, DateTime denNgay)
+        {
+            DataTable dt = new DataTable();
+            using (SqlConnection conn = SQLConnection.GetConnection())
+            {
+                // Lấy danh sách khách hàng và tổng chi tiêu thực tế từ bảng KhachHang trong DB của bạn
+                string sql = "SELECT MaKhachHang, TenKhachHang, TongChiTieu FROM KhachHang ORDER BY TongChiTieu DESC";
+                SqlDataAdapter da = new SqlDataAdapter(sql, conn);
+                da.Fill(dt);
+            }
+            return dt;
+        }
+
+        private bool TraCuuResourceTonTai(string resourceName)
+        {
+            var assembly = System.Reflection.Assembly.GetExecutingAssembly();
+            return assembly.GetManifestResourceInfo(resourceName) != null;
+        }
         #endregion
 
-        // NÚT BẤM BACK VỀ FORM QUẢN LÝ
         private void btnBack_Click(object sender, EventArgs e)
         {
-            // Khởi tạo hoặc tìm lại MainForm của quản lý đang mở
-            MainFormForManager frmManager = (MainFormForManager)Application.OpenForms["MainFormForManager"];
-            if (frmManager != null)
-            {
-                frmManager.Show(); // Hiện lại form chính
-            }
-            else
-            {
-                frmManager = new MainFormForManager();
-                frmManager.Show();
-            }
-            this.Close(); // Đóng hẳn form báo cáo hiện tại để giải phóng bộ nhớ
+            MainFormForManager frmManager = (MainFormForManager)Application.OpenForms["MainFormForManager"] ?? new MainFormForManager();
+            frmManager.Show();
+            this.Close();
         }
-
-        // Sự kiện phòng hờ trường hợp người dùng nhấn nút X đỏ góc Windows của Form Báo Cáo
-        protected override void OnFormClosed(FormClosedEventArgs e)
-        {
-            base.OnFormClosed(e);
-            MainFormForManager frmManager = (MainFormForManager)Application.OpenForms["MainFormForManager"];
-            if (frmManager != null && !frmManager.Visible)
-            {
-                frmManager.Show();
-            }
-        }
-
         // NÚT BẤM XEM LỊCH SỬ HOÁ ĐƠN
         private void btnLichSuHoaDon_Click(object sender, EventArgs e)
         {
             FrmLichSuBaoCao frm = new FrmLichSuBaoCao();
             frm.ShowDialog();
+        }
+
+        private void frmBaoCao_Load_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

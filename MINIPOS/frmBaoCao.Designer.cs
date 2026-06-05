@@ -41,31 +41,33 @@
             // 
             // cboLoaiBaoCao
             // 
+            this.cboLoaiBaoCao.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboLoaiBaoCao.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.cboLoaiBaoCao.FormattingEnabled = true;
-            this.cboLoaiBaoCao.Location = new System.Drawing.Point(188, 49);
+            this.cboLoaiBaoCao.Location = new System.Drawing.Point(197, 48);
             this.cboLoaiBaoCao.Name = "cboLoaiBaoCao";
-            this.cboLoaiBaoCao.Size = new System.Drawing.Size(397, 24);
+            this.cboLoaiBaoCao.Size = new System.Drawing.Size(465, 30);
             this.cboLoaiBaoCao.TabIndex = 0;
             // 
             // dtpTuNgay
             // 
-            this.dtpTuNgay.Location = new System.Drawing.Point(89, 15);
+            this.dtpTuNgay.Location = new System.Drawing.Point(98, 14);
             this.dtpTuNgay.Name = "dtpTuNgay";
-            this.dtpTuNgay.Size = new System.Drawing.Size(215, 22);
+            this.dtpTuNgay.Size = new System.Drawing.Size(269, 22);
             this.dtpTuNgay.TabIndex = 1;
             // 
             // dtpDenNgay
             // 
-            this.dtpDenNgay.Location = new System.Drawing.Point(519, 15);
+            this.dtpDenNgay.Location = new System.Drawing.Point(565, 15);
             this.dtpDenNgay.Name = "dtpDenNgay";
-            this.dtpDenNgay.Size = new System.Drawing.Size(192, 22);
+            this.dtpDenNgay.Size = new System.Drawing.Size(246, 22);
             this.dtpDenNgay.TabIndex = 2;
             // 
             // btnXemBaoCao
             // 
-            this.btnXemBaoCao.Location = new System.Drawing.Point(174, 89);
+            this.btnXemBaoCao.Location = new System.Drawing.Point(183, 87);
             this.btnXemBaoCao.Name = "btnXemBaoCao";
-            this.btnXemBaoCao.Size = new System.Drawing.Size(78, 43);
+            this.btnXemBaoCao.Size = new System.Drawing.Size(91, 34);
             this.btnXemBaoCao.TabIndex = 3;
             this.btnXemBaoCao.Text = "Xem";
             this.btnXemBaoCao.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
@@ -74,9 +76,9 @@
             // 
             // btnBack
             // 
-            this.btnBack.Location = new System.Drawing.Point(348, 89);
+            this.btnBack.Location = new System.Drawing.Point(385, 87);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(78, 43);
+            this.btnBack.Size = new System.Drawing.Size(89, 34);
             this.btnBack.TabIndex = 4;
             this.btnBack.Text = "Về";
             this.btnBack.UseVisualStyleBackColor = true;
@@ -84,9 +86,9 @@
             // 
             // btnLichSuHoaDon
             // 
-            this.btnLichSuHoaDon.Location = new System.Drawing.Point(556, 89);
+            this.btnLichSuHoaDon.Location = new System.Drawing.Point(578, 87);
             this.btnLichSuHoaDon.Name = "btnLichSuHoaDon";
-            this.btnLichSuHoaDon.Size = new System.Drawing.Size(110, 43);
+            this.btnLichSuHoaDon.Size = new System.Drawing.Size(110, 34);
             this.btnLichSuHoaDon.TabIndex = 5;
             this.btnLichSuHoaDon.Text = "Lịch sử HĐ";
             this.btnLichSuHoaDon.UseVisualStyleBackColor = true;
@@ -95,35 +97,39 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(472, 15);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.label1.Location = new System.Drawing.Point(508, 12);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(31, 16);
+            this.label1.Size = new System.Drawing.Size(51, 25);
             this.label1.TabIndex = 7;
             this.label1.Text = "Đến";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(45, 15);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.label2.Location = new System.Drawing.Point(54, 11);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(23, 16);
+            this.label2.Size = new System.Drawing.Size(38, 25);
             this.label2.TabIndex = 8;
             this.label2.Text = "Từ";
             // 
             // reportViewerCommon
             // 
             this.reportViewerCommon.LocalReport.ReportEmbeddedResource = "MINIPOS.rptHoaDon.rdlc";
-            this.reportViewerCommon.Location = new System.Drawing.Point(0, 138);
+            this.reportViewerCommon.Location = new System.Drawing.Point(0, 128);
             this.reportViewerCommon.Name = "reportViewerCommon";
             this.reportViewerCommon.ServerReport.BearerToken = null;
-            this.reportViewerCommon.Size = new System.Drawing.Size(802, 459);
+            this.reportViewerCommon.Size = new System.Drawing.Size(885, 536);
             this.reportViewerCommon.TabIndex = 9;
             // 
             // frmBaoCao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 591);
+            this.ClientSize = new System.Drawing.Size(885, 622);
             this.Controls.Add(this.reportViewerCommon);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -135,6 +141,7 @@
             this.Controls.Add(this.cboLoaiBaoCao);
             this.Name = "frmBaoCao";
             this.Text = "frmBaoCao";
+            this.Load += new System.EventHandler(this.frmBaoCao_Load_1);
             this.ResumeLayout(false);
             this.PerformLayout();
 
