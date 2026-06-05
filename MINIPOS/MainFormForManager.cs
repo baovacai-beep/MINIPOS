@@ -383,14 +383,25 @@ namespace MINIPOS
                     var dtMaster = new dsHoaDon.DataTableMasterDataTable();
 
                     // SỬA LẠI: Tạo dòng mới dựa trên cấu trúc chuẩn cấu hình sẵn
+                    // SỬA LẠI: Tạo dòng mới dựa trên cấu trúc chuẩn cấu hình sẵn
+                    // SỬA LẠI: Tạo dòng mới dựa trên cấu trúc chuẩn cấu hình sẵn
                     var rowMaster = dtMaster.NewRow();
                     rowMaster["MaHoaDon"] = maHD;
                     rowMaster["NgayLap"] = DateTime.Now;
                     rowMaster["TenNhanVien"] = Login.TaiKhoanDangNhap?.HoTen ?? "Nhân viên";
-                    rowMaster["TenKhachHang"] = _khachHang != null ? _khachHang.HoTen : "Khách vãng lai";
-                    rowMaster["HangThanhVien"] = _khachHang != null ? _khachHang.HangThanhVienID.ToString() : "Không có";
+
+                    // ĐÃ SỬA: Thay _khachHang.HoTen thành _khachHang.TenKhachHang
+                    rowMaster["TenKhachHang"] = (_khachHang != null && !string.IsNullOrEmpty(_khachHang.TenKhachHang))
+                                                ? _khachHang.TenKhachHang
+                                                : "Khách vãng lai";
+
+                    // ĐÃ SỬA: Thay _khachHang.HangThanhVienID thành _khachHang.TenHang
+                    rowMaster["HangThanhVien"] = (_khachHang != null && !string.IsNullOrEmpty(_khachHang.TenHang))
+                                                 ? _khachHang.TenHang
+                                                 : "Không có";
+
                     rowMaster["TongTien"] = hd.TongTien;
-                    rowMaster["TienNhan"] = dlg.TienKhachDua; // Biến nhận từ form tiền mặt của nhóm bạn
+                    rowMaster["TienNhan"] = dlg.TienKhachDua;
                     rowMaster["TienThoi"] = dlg.TienThoi;
 
                     // Add dòng vừa tạo vào bảng Master
