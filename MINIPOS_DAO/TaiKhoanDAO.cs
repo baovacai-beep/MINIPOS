@@ -94,5 +94,35 @@ namespace MINIPOS_DAO
                 cmd.ExecuteNonQuery();
             }
         }
+
+        // lay mat khau (da ma hoa) cua 1 tai khoan, dung khi doi mat khau
+        public string LayMatKhauHash(int maTaiKhoan)
+        {
+            string sql = "SELECT MatKhau FROM TaiKhoan WHERE MaTaiKhoan = @MaTaiKhoan";
+
+            using (SqlConnection conn = SQLConnection.GetConnection())
+            using (SqlCommand cmd = new SqlCommand(sql, conn))
+            {
+                cmd.Parameters.AddWithValue("@MaTaiKhoan", maTaiKhoan);
+                conn.Open();
+                object kq = cmd.ExecuteScalar();
+                return kq == null ? null : kq.ToString();
+            }
+        }
+
+        // cap nhat mat khau moi
+        public void CapNhatMatKhau(int maTaiKhoan, string matKhauMD5)
+        {
+            string sql = "UPDATE TaiKhoan SET MatKhau = @MatKhau WHERE MaTaiKhoan = @MaTaiKhoan";
+
+            using (SqlConnection conn = SQLConnection.GetConnection())
+            using (SqlCommand cmd = new SqlCommand(sql, conn))
+            {
+                cmd.Parameters.AddWithValue("@MatKhau", matKhauMD5);
+                cmd.Parameters.AddWithValue("@MaTaiKhoan", maTaiKhoan);
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
     }
 }

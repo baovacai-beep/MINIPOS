@@ -31,5 +31,43 @@ namespace MINIPOS_DAO
                 return dt;
             }
         }
+
+        // chay query co tham so
+        public static DataTable ExecuteQuery(string query, params SqlParameter[] ps)
+        {
+            using (SqlConnection conn = GetConnection())
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                if (ps != null && ps.Length > 0) cmd.Parameters.AddRange(ps);
+                using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                {
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    return dt;
+                }
+            }
+        }
+
+        public static int ExecuteNonQuery(string query, params SqlParameter[] ps)
+        {
+            using (SqlConnection conn = GetConnection())
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                if (ps != null && ps.Length > 0) cmd.Parameters.AddRange(ps);
+                conn.Open();
+                return cmd.ExecuteNonQuery();
+            }
+        }
+
+        public static object ExecuteScalar(string query, params SqlParameter[] ps)
+        {
+            using (SqlConnection conn = GetConnection())
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                if (ps != null && ps.Length > 0) cmd.Parameters.AddRange(ps);
+                conn.Open();
+                return cmd.ExecuteScalar();
+            }
+        }
     }
 }

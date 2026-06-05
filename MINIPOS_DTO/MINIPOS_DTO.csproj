@@ -55,6 +55,7 @@
     <Compile Include="KhachHangDTO.cs" />
     <Compile Include="KhuyenMaiDTO.cs" />
     <Compile Include="SanPhamDTO.cs" />
+    <Compile Include="SanPhamFilterDTO.cs" />
     <Compile Include="TaiKhoanDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

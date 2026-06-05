@@ -26,9 +26,13 @@ namespace MINIPOS
         // ── BUS layer ──────────────────────────────────────────────
         private readonly HoaDonBUS    _hoaDonBUS    = new HoaDonBUS();
         private readonly KhachHangBUS _khachHangBUS = new KhachHangBUS();
+        private readonly LoaiSanPhamBUS _loaiBUS    = new LoaiSanPhamBUS();
 
         // ── Trạng thái khách hàng đang chọn ───────────────────────
         private KhachHangDTO _khachHang = null;   // null = khách vãng lai
+
+        // true khi nguoi dung bam dang xuat (de Login hien lai thay vi thoat app)
+        public bool DangXuat = false;
 
         // ── Cột ẩn lưu MaSanPham trong dgvGioHang ─────────────────
         private const int COL_MASP      = 0;  // ẩn
@@ -47,7 +51,9 @@ namespace MINIPOS
 
         private void MainFormForManager_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+            // neu khong phai dang xuat thi thoat han ung dung
+            if (!DangXuat)
+                Application.Exit();
         }
 
         private void btnKho_Click(object sender, EventArgs e)
@@ -78,6 +84,79 @@ namespace MINIPOS
 
         private void MainFormForManager_Load(object sender, EventArgs e)
         {
+            LoadSanPham();
+
+            NapComboLoai();
+            WireLoc();
+
+            // nut Khach hang mo form quan ly khach hang
+            btnKhachHang.Click += (s, ev) =>
+            {
+                using (var frmKH = new CustomerManagement())
+                    frmKH.ShowDialog();
+            };
+        }
+
+        // nap combo loai san pham va combo tinh trang ton kho
+        private void NapComboLoai()
+        {
+            var dt = _loaiBUS.GetAll();
+            var row = dt.NewRow();
+            row["MaLoai"] = DBNull.Value;
+            row["TenLoai"] = "— Tất cả loại —";
+            dt.Rows.InsertAt(row, 0);
+            cboLoai.DisplayMember = "TenLoai";
+            cboLoai.ValueMember = "MaLoai";
+            cboLoai.DataSource = dt;
+
+            cboTonKho.Items.Clear();
+            cboTonKho.Items.AddRange(new object[] { "Tất cả tồn kho", "Còn hàng", "Sắp hết", "Hết hàng" });
+            cboTonKho.SelectedIndex = 0;
+        }
+
+        private void WireLoc()
+        {
+            btnLoc.Click += (s, e) => ApDungLoc();
+            btnXoaLoc.Click += (s, e) => XoaLoc();
+        }
+
+        // tim kiem nang cao: ghep dieu kien loc thanh menh de WHERE roi goi LoadSanPham
+        // (van giu nguyen cot grid + logic gio hang cua MainForm)
+        private void ApDungLoc()
+        {
+            var dieuKien = new System.Collections.Generic.List<string>();
+
+            string tuKhoa = txtTimKiem.Text.Trim().Replace("'", "''");
+            if (!string.IsNullOrEmpty(tuKhoa))
+                dieuKien.Add($"(TenSanPham LIKE N'%{tuKhoa}%' OR Barcode LIKE N'%{tuKhoa}%')");
+
+            if (cboLoai.SelectedValue != null && cboLoai.SelectedValue != DBNull.Value)
+                dieuKien.Add("MaLoai = " + Convert.ToInt32(cboLoai.SelectedValue));
+
+            if (nudGiaMin.Value > 0)
+                dieuKien.Add("DonGiaBan >= " + (long)nudGiaMin.Value);
+
+            if (nudGiaMax.Value > 0)
+                dieuKien.Add("DonGiaBan <= " + (long)nudGiaMax.Value);
+
+            if (cboTonKho.SelectedIndex == 1)
+                dieuKien.Add("SoLuongTon > 0");
+            else if (cboTonKho.SelectedIndex == 2)
+                dieuKien.Add("SoLuongTon > 0 AND SoLuongTon <= SoLuongTonToiThieu");
+            else if (cboTonKho.SelectedIndex == 3)
+                dieuKien.Add("SoLuongTon = 0");
+
+            LoadSanPham(string.Join(" AND ", dieuKien));
+        }
+
+        // xoa bo loc, tai lai tat ca san pham
+        private void XoaLoc()
+        {
+            txtTimKiem.Clear();
+            if (cboLoai.Items.Count > 0) cboLoai.SelectedIndex = 0;
+            cboTonKho.SelectedIndex = 0;
+            nudGiaMin.Value = 0;
+            nudGiaMax.Value = 0;
             LoadSanPham();
         }
         //tim kiem SP theo ten
@@ -431,9 +510,37 @@ namespace MINIPOS
 
         private void btnCaiDat_Click(object sender, EventArgs e)
         {
+            // mo menu nho: cai dat / doi mat khau / dang xuat
+            var menu = new ContextMenuStrip();
+            menu.Items.Add("Cài đặt", null, (s, ev) => MoCaiDat());
+            menu.Items.Add("Đổi mật khẩu", null, (s, ev) => MoDoiMatKhau());
+            menu.Items.Add("Đăng xuất", null, (s, ev) => DangXuatTaiKhoan());
+            menu.Show(btnCaiDat, new Point(0, btnCaiDat.Height));
+        }
+
+        private void MoCaiDat()
+        {
             var frm = new SettingsForManager();
             frm.Show();
             this.Hide();
+        }
+
+        private void MoDoiMatKhau()
+        {
+            int ma = Login.TaiKhoanDangNhap?.MaTaiKhoan ?? 0;
+            if (ma == 0) return;
+            using (var f = new ChangePasswordDialog(ma))
+                f.ShowDialog();
+        }
+
+        private void DangXuatTaiKhoan()
+        {
+            if (MessageBox.Show("Bạn có chắc muốn đăng xuất?", "Xác nhận",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                DangXuat = true;
+                this.Close();
+            }
         }
 
         private void btnBaoCao_Click(object sender, EventArgs e)
