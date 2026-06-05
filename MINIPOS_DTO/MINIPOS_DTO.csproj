@@ -53,6 +53,7 @@
     <Compile Include="HoaDonDTO.cs" />
     <Compile Include="HoaDonNhapDTO.cs" />
     <Compile Include="KhachHangDTO.cs" />
+    <Compile Include="KhuyenMaiDTO.cs" />
     <Compile Include="SanPhamDTO.cs" />
     <Compile Include="TaiKhoanDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -310,8 +310,24 @@ namespace MINIPOS
             decimal soTienGiam   = Math.Round(tongTien * tyLeGiam / 100, 0);
             decimal thanhTien    = tongTien - soTienGiam;
 
+            // Thu thập giỏ hàng trước khi hiển thị dialog thanh toán
+            var gioHang = new List<ChiTietHoaDonDTO>();
+            foreach (DataGridViewRow row in dgvGioHang.Rows)
+            {
+                if (row.Cells[COL_MASP].Value != null)
+                {
+                    gioHang.Add(new ChiTietHoaDonDTO
+                    {
+                        MaSanPham  = Convert.ToInt32(row.Cells[COL_MASP].Value),
+                        TenSanPham = row.Cells[COL_TENSP].Value.ToString(),
+                        DonGia     = Convert.ToDecimal(row.Cells[COL_DONGIA].Value),
+                        SoLuong    = Convert.ToInt32(row.Cells[COL_SOLUONG].Value)
+                    });
+                }
+            }
+
             // Hiển thị dialog thanh toán
-            using (var dlg = new ThanhToanDialog(tongTien, tyLeGiam, soTienGiam, thanhTien, _khachHang))
+            using (var dlg = new ThanhToanDialog(tongTien, tyLeGiam, soTienGiam, thanhTien, _khachHang, gioHang))
             {
                 if (dlg.ShowDialog() != DialogResult.OK) return;
 
@@ -322,29 +338,25 @@ namespace MINIPOS
                     MaKhachHang         = _khachHang?.MaKhachHang,
                     TongTien            = tongTien,
                     TyLeGiamGia         = tyLeGiam,
-                    SoTienGiam          = soTienGiam,
-                    ThanhTien           = thanhTien,
+                    SoTienGiam          = tongTien - dlg.FinalThanhTien,
+                    ThanhTien           = dlg.FinalThanhTien,
                     TienKhachDua        = dlg.TienKhachDua,
                     TienThoi            = dlg.TienThoi,
                     PhuongThucThanhToan = dlg.PhuongThuc,
-                    GhiChu              = null
+                    GhiChu              = dlg.VoucherApDung != null ? $"Áp dụng mã KM: {dlg.VoucherApDung.Code}" : null,
+                    ChiTiet             = gioHang
                 };
-
-                // Thêm chi tiết từ giỏ hàng
-                foreach (DataGridViewRow row in dgvGioHang.Rows)
-                {
-                    hd.ChiTiet.Add(new ChiTietHoaDonDTO
-                    {
-                        MaSanPham  = Convert.ToInt32(row.Cells[COL_MASP].Value),
-                        TenSanPham = row.Cells[COL_TENSP].Value.ToString(),
-                        DonGia     = Convert.ToDecimal(row.Cells[COL_DONGIA].Value),
-                        SoLuong    = Convert.ToInt32(row.Cells[COL_SOLUONG].Value)
-                    });
-                }
 
                 try
                 {
                     int maHD = _hoaDonBUS.ThanhToan(hd);
+
+                    // Cập nhật số lượt sử dụng voucher nếu có
+                    if (dlg.VoucherApDung != null)
+                    {
+                        new KhuyenMaiBUS().TangSoLuongDaDung(dlg.VoucherApDung.MaKhuyenMai);
+                    }
+
                     MessageBox.Show("Thanh toán thành công ✔", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     // ============================================================

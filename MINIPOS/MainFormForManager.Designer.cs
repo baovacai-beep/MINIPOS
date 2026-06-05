@@ -1,4 +1,4 @@
-﻿namespace MINIPOS
+namespace MINIPOS
 {
     partial class MainFormForManager
     {
@@ -165,6 +165,7 @@
             this.btnKhuyenMai.Text = "Khuyến mãi";
             this.btnKhuyenMai.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnKhuyenMai.UseVisualStyleBackColor = true;
+            this.btnKhuyenMai.Click += new System.EventHandler(this.btnKhuyenMai_Click);
             // 
             // btnNhanVien
             // 
