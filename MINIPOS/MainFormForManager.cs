@@ -45,10 +45,16 @@ namespace MINIPOS
         public MainFormForManager()
         {
             InitializeComponent();
-
+            btnNhanVien.Click += btnNhanVien_Click;
             this.FormClosed += MainFormForManager_FormClosed;
         }
-
+        private void btnNhanVien_Click(object sender, EventArgs e)
+        {
+            StaffManagementForManager frm = new StaffManagementForManager();
+            frm.FormClosed += (s, args) => this.Show();
+            frm.Show();
+            this.Hide();
+        }
         private void MainFormForManager_FormClosed(object sender, FormClosedEventArgs e)
         {
             // neu khong phai dang xuat thi thoat han ung dung
