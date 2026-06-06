@@ -32,7 +32,7 @@
             this.dtpDenNgay = new System.Windows.Forms.DateTimePicker();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnLoc = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnSua = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.dgvLichSu = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
@@ -73,19 +73,19 @@
             this.btnLoc.TabIndex = 3;
             this.btnLoc.Text = "Lọc";
             this.btnLoc.UseVisualStyleBackColor = false;
-            this.btnLoc.Click += new System.EventHandler(this.button1_Click);
+            
             // 
-            // button2
+            // btnSua
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.button2.Location = new System.Drawing.Point(343, 106);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(140, 33);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Sửa";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnSua.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSua.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnSua.Location = new System.Drawing.Point(343, 106);
+            this.btnSua.Name = "btnSua";
+            this.btnSua.Size = new System.Drawing.Size(140, 33);
+            this.btnSua.TabIndex = 4;
+            this.btnSua.Text = "Sửa";
+            this.btnSua.UseVisualStyleBackColor = true;
+
             // 
             // btnXoa
             // 
@@ -117,7 +117,7 @@
             this.label1.Size = new System.Drawing.Size(58, 25);
             this.label1.TabIndex = 7;
             this.label1.Text = "Đến:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+           
             // 
             // label2
             // 
@@ -128,7 +128,7 @@
             this.label2.Size = new System.Drawing.Size(45, 25);
             this.label2.TabIndex = 8;
             this.label2.Text = "Từ:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+           
             // 
             // FrmLichSuBaoCao
             // 
@@ -139,7 +139,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvLichSu);
             this.Controls.Add(this.btnXoa);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnSua);
             this.Controls.Add(this.btnLoc);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.dtpDenNgay);
@@ -158,7 +158,7 @@
         private System.Windows.Forms.DateTimePicker dtpDenNgay;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Button btnLoc;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.DataGridView dgvLichSu;
         private System.Windows.Forms.Label label1;
