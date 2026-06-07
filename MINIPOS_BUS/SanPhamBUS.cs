@@ -8,6 +8,8 @@ namespace MINIPOS_BUS
     {
         SanPhamDAO dao = new SanPhamDAO();
 
+        private SanPhamDAO sanPhamDAO = new SanPhamDAO();
+
         public DataTable GetAllProducts()
         {
             return dao.GetAllProducts();
@@ -32,22 +34,17 @@ namespace MINIPOS_BUS
 
         public bool InsertProduct(SanPhamDTO sp)
         {
-            return dao.InsertProduct(sp);
+            return sanPhamDAO.InsertProduct(sp);
         }
-
-        private SanPhamDAO sanPhamDAO = new SanPhamDAO();
 
         public bool UpdateSanPham(SanPhamDTO sp)
         {
             return sanPhamDAO.UpdateSanPham(sp);
         }
 
-        public bool XoaSanPham(int maSanPham)
+        public bool DeleteProduct(int maSanPham)
         {
-            if (maSanPham <= 0)
-                return false;
-
-            return dao.XoaSanPham(maSanPham);
+            return sanPhamDAO.DeleteProduct(maSanPham);
         }
     }
 }
