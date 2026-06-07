@@ -163,9 +163,12 @@ namespace MINIPOS_DAO
                     MaLoai,
                     DonGiaBan,
                     SoLuongTon,
+                    SoLuongTonToiThieu,
                     Barcode,
+                    HinhAnh,
                     DonViTinh,
-                    MoTa
+                    MoTa,
+                    TrangThai
                 )
                 VALUES
                 (
@@ -173,45 +176,58 @@ namespace MINIPOS_DAO
                     @MaLoai,
                     @DonGiaBan,
                     @SoLuongTon,
+                    @SoLuongTonToiThieu,
                     @Barcode,
+                    @HinhAnh,
                     @DonViTinh,
-                    @MoTa
+                    @MoTa,
+                    @TrangThai
                 )";
 
                 SqlCommand cmd = new SqlCommand(sql, conn);
 
                 cmd.Parameters.AddWithValue("@TenSanPham", sp.TenSanPham);
-
                 cmd.Parameters.AddWithValue("@MaLoai", sp.MaLoai);
-
                 cmd.Parameters.AddWithValue("@DonGiaBan", sp.DonGiaBan);
-
                 cmd.Parameters.AddWithValue("@SoLuongTon", sp.SoLuongTon);
+                cmd.Parameters.AddWithValue("@SoLuongTonToiThieu", sp.SoLuongTonToiThieu);
 
-                cmd.Parameters.AddWithValue("@Barcode", sp.Barcode);
+                cmd.Parameters.AddWithValue("@Barcode",
+                    string.IsNullOrWhiteSpace(sp.Barcode)
+                    ? (object)DBNull.Value
+                    : sp.Barcode);
+
+                cmd.Parameters.AddWithValue("@HinhAnh",
+                    string.IsNullOrWhiteSpace(sp.HinhAnh)
+                    ? (object)DBNull.Value
+                    : sp.HinhAnh);
 
                 cmd.Parameters.AddWithValue("@DonViTinh", sp.DonViTinh);
 
-                cmd.Parameters.AddWithValue("@MoTa", sp.MoTa);
+                cmd.Parameters.AddWithValue("@MoTa",
+                    string.IsNullOrWhiteSpace(sp.MoTa)
+                    ? (object)DBNull.Value
+                    : sp.MoTa);
+
+                cmd.Parameters.AddWithValue("@TrangThai", sp.TrangThai);
 
                 return cmd.ExecuteNonQuery() > 0;
             }
         }
 
-        public bool XoaSanPham(int maSanPham)
+        public bool DeleteProduct(int maSanPham)
         {
-            string query = "DELETE FROM SanPham WHERE MaSanPham = @MaSanPham";
-
             using (SqlConnection conn = SQLConnection.GetConnection())
             {
                 conn.Open();
 
-                using (SqlCommand cmd = new SqlCommand(query, conn))
-                {
-                    cmd.Parameters.AddWithValue("@MaSanPham", maSanPham);
+                string sql = "DELETE FROM SanPham WHERE MaSanPham = @MaSanPham";
 
-                    return cmd.ExecuteNonQuery() > 0;
-                }
+                SqlCommand cmd = new SqlCommand(sql, conn);
+
+                cmd.Parameters.AddWithValue("@MaSanPham", maSanPham);
+
+                return cmd.ExecuteNonQuery() > 0;
             }
         }
     }

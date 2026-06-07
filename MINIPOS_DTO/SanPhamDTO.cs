@@ -20,6 +20,8 @@ namespace MINIPOS_DTO
 
         public int SoLuongTon { get; set; }
 
+        public int SoLuongTonToiThieu { get; set; }
+
         public string Barcode { get; set; }
 
         public string DonViTinh { get; set; }
