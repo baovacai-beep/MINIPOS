@@ -227,7 +227,7 @@ namespace MINIPOS
                 Size = new Size(200, 26),
                 DropDownStyle = ComboBoxStyle.DropDownList
             };
-            cboPhuongThuc.Items.AddRange(new[] { "Tiền mặt", "Chuyển khoản MoMo", "Thẻ", "Chuyển khoản khác" });
+            cboPhuongThuc.Items.AddRange(new[] { "Tiền mặt", "Chuyển khoản",});
             cboPhuongThuc.SelectedIndex = 0;
             y += 34;
 
@@ -449,14 +449,14 @@ namespace MINIPOS
             }
 
             // 3. XỬ LÝ PHÂN LOẠI PHƯƠNG THỨC VÀ GÁN DỮ LIỆU ĐẦU RA (OUTPUT)
-            if (phuongThucChon == "Chuyển khoản MoMo")
+            if (phuongThucChon == "Chuyển khoản")
             {
                 string maHDTam = "POS" + DateTime.Now.ToString("MMddHHmmss");
 
                 // Mở giao diện quét mã QR MoMo bất đồng bộ
-                using (FrmQuetQR frmMomo = new FrmQuetQR(_currentThanhTien, maHDTam))
+                using (FrmQuetQR frmChuyenKhoan = new FrmQuetQR(_currentThanhTien, maHDTam))
                 {
-                    if (frmMomo.ShowDialog() != DialogResult.OK)
+                    if (frmChuyenKhoan.ShowDialog() != DialogResult.OK)
                     {
                         return; // Khách hủy giao dịch MoMo giữa chừng -> Không cho đóng form thanh toán
                     }
@@ -464,27 +464,13 @@ namespace MINIPOS
 
                 kd = _currentThanhTien;         // MoMo luôn nhận chính xác số tiền cần trả
                 TienThoi = 0;
-                PhuongThuc = "Momo";            // Trả về đúng từ khoá Database quy định
+                PhuongThuc = "ChuyenKhoan";            // Trả về đúng từ khoá Database quy định
             }
             else if (laTienMat)
             {
                 // Giữ nguyên giá trị thực tế khách đưa để Form hóa đơn hiển thị đúng
                 TienThoi = kd - _currentThanhTien;
                 PhuongThuc = "Tiền mặt";
-            }
-            else if (phuongThucChon == "Thẻ")
-            {
-                // BỔ SUNG RIÊNG CHO PHƯƠNG THỨC THẺ
-                kd = _currentThanhTien;
-                TienThoi = 0;
-                PhuongThuc = "Thẻ";             // Trả về giá trị quy định lưu trong CSDL cho thẻ ngân hàng
-            }
-            else if (phuongThucChon == "Chuyển khoản khác")
-            {
-                // BỔ SUNG RIÊNG CHO PHƯƠNG THỨC CHUYỂN KHOẢN KHÁC
-                kd = _currentThanhTien;
-                TienThoi = 0;
-                PhuongThuc = "Chuyển khoản";    // Trả về từ khóa "Chuyển khoản" để đồng bộ với Database cũ
             }
 
             // Gán giá trị kết quả cuối cùng cho các thuộc tính Public của Form
