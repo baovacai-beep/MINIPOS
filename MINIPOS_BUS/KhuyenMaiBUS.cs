@@ -1,7 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using MINIPOS_DAO;
+﻿using MINIPOS_DAO;
 using MINIPOS_DTO;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
+using System.Windows.Interop;
 
 namespace MINIPOS_BUS
 {
@@ -139,7 +141,7 @@ namespace MINIPOS_BUS
             {
                 if (km.LoaiGiamGia == "PhanTram")
                 {
-                    soTienGiam = tongTien * km.GiaTriGiam / 100;
+                    soTienGiam = tongTien * ((decimal)km.GiaTriGiam / 100);
                     if (km.GiamToiDa.HasValue && soTienGiam > km.GiamToiDa.Value)
                     {
                         soTienGiam = km.GiamToiDa.Value;
@@ -153,18 +155,20 @@ namespace MINIPOS_BUS
             else if (km.LoaiKhuyenMai == "NhomSanPham")
             {
                 decimal tongTienGiamNhom = 0;
+                int maLoaiYeuCau = km.MaLoai.GetValueOrDefault();
+
                 foreach (var item in gioHang)
                 {
-                    if (KiemTraSanPhamThuocLoai(item.MaSanPham, km.MaLoai.GetValueOrDefault()))
+                    if (item.MaLoai == maLoaiYeuCau)
                     {
                         decimal giamDongSP = 0;
                         if (km.LoaiGiamGia == "PhanTram")
                         {
-                            giamDongSP = item.SoLuong * item.DonGia * km.GiaTriGiam / 100;
+                            giamDongSP = (decimal)item.SoLuong * (decimal)item.DonGia * ((decimal)km.GiaTriGiam / 100);
                         }
                         else if (km.LoaiGiamGia == "TienMat")
                         {
-                            giamDongSP = item.SoLuong * km.GiaTriGiam;
+                            giamDongSP = (decimal)item.SoLuong * (decimal)km.GiaTriGiam;
                         }
                         tongTienGiamNhom += giamDongSP;
                     }
@@ -177,17 +181,18 @@ namespace MINIPOS_BUS
             }
             else if (km.LoaiKhuyenMai == "SanPham")
             {
+                int maSPYeuCau = km.MaSanPham.GetValueOrDefault();
                 foreach (var item in gioHang)
                 {
-                    if (item.MaSanPham == km.MaSanPham.GetValueOrDefault())
+                    if (item.MaSanPham == maSPYeuCau)
                     {
                         if (km.LoaiGiamGia == "PhanTram")
                         {
-                            soTienGiam = item.SoLuong * item.DonGia * km.GiaTriGiam / 100;
+                            soTienGiam = (decimal)item.SoLuong * (decimal)item.DonGia * ((decimal)km.GiaTriGiam / 100);
                         }
                         else if (km.LoaiGiamGia == "TienMat")
                         {
-                            soTienGiam = item.SoLuong * km.GiaTriGiam;
+                            soTienGiam = (decimal)item.SoLuong * (decimal)km.GiaTriGiam;
                         }
                         break;
                     }

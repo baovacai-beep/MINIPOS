@@ -45,6 +45,7 @@
             this.ClientSize = new System.Drawing.Size(802, 682);
             this.Controls.Add(this.reportViewer1);
             this.Name = "FrmInHoaDon";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.ResumeLayout(false);
 
         }

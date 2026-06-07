@@ -13,9 +13,6 @@ namespace MINIPOS
 {
     public partial class FrmCaiDatChoQuanLy : Form
     {
-        // Đường dẫn lưu file cấu hình MoMo trong thư mục cài đặt phần mềm
-        private string pathConfig = Path.Combine(Application.StartupPath, "momo_config.txt");
-
         public FrmCaiDatChoQuanLy()
         {
             InitializeComponent();
@@ -43,49 +40,7 @@ namespace MINIPOS
             if (tk?.LanDangNhapCuoi != null)
                 lblTDLogin.Text = tk.LanDangNhapCuoi.Value.ToString("HH:mm:ss dd/MM/yyyy");
 
-            // ═════════════════════════════════════════════════════════════
-            // ĐỌC FILE CẤU HÌNH MOMO (BỔ SUNG MỚI)
-            // ═════════════════════════════════════════════════════════════
-            if (File.Exists(pathConfig))
-            {
-                var lines = File.ReadAllLines(pathConfig);
-                if (lines.Length >= 2)
-                {
-                    txtMomoSDT.Text = lines[0].Trim();
-                    txtMomoTen.Text = lines[1].Trim();
-                }
-            }
         }
-
-        // ═════════════════════════════════════════════════════════════
-        // NÚT LƯU CẤU HÌNH MOMO (BỔ SUNG MỚI - Hãy double click vào nút Lưu trên giao diện để tạo sự kiện này)
-        // ═════════════════════════════════════════════════════════════
-        private void btnLuuMomo_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string sdt = txtMomoSDT.Text.Trim();
-                string ten = txtMomoTen.Text.Trim().ToUpper(); // Tự động viết hoa tên tài khoản
-
-                if (string.IsNullOrEmpty(sdt) || string.IsNullOrEmpty(ten))
-                {
-                    MessageBox.Show("Vui lòng nhập đầy đủ Số điện thoại và Tên tài khoản MoMo!",
-                                    "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                // Ghi đè thông tin mới vào file txt để các form khác đọc lại
-                File.WriteAllLines(pathConfig, new string[] { sdt, ten });
-
-                MessageBox.Show("Đã cập nhật tài khoản nhận tiền MoMo của quản lý thành công!",
-                                "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Không thể lưu cấu hình: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
         // --- Các hàm chuyển Form giữ nguyên của bạn ---
         private void btnBanHang_Click(object sender, EventArgs e)
         {

@@ -10,6 +10,7 @@ namespace MINIPOS_DTO
         public decimal DonGia     { get; set; }
         public int     SoLuong    { get; set; }
         public decimal ThanhTien  => DonGia * SoLuong;
+        public int MaLoai { get; set; }
     }
 
     public class HoaDonDTO

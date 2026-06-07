@@ -28,7 +28,7 @@ namespace MINIPOS
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnCaiDat = new FontAwesome.Sharp.IconButton();
             this.btnBaoCao = new FontAwesome.Sharp.IconButton();
@@ -539,9 +539,9 @@ namespace MINIPOS
             // 
             // colTT
             // 
-            dataGridViewCellStyle6.Format = "N0";
-            dataGridViewCellStyle6.NullValue = null;
-            this.colTT.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.Format = "N0";
+            dataGridViewCellStyle1.NullValue = null;
+            this.colTT.DefaultCellStyle = dataGridViewCellStyle1;
             this.colTT.FillWeight = 267.3796F;
             this.colTT.HeaderText = "Thành tiền";
             this.colTT.MinimumWidth = 6;
@@ -689,7 +689,7 @@ namespace MINIPOS
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FrmBanHangChoQuanLy";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Bán Hàng (dành cho quản lý)";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainFormForManager_FormClosed);
             this.Load += new System.EventHandler(this.MainFormForManager_Load);

@@ -87,11 +87,11 @@
     <Compile Include="FrmHoaDonNhapChoNhanVien.Designer.cs">
       <DependentUpon>FrmHoaDonNhapChoNhanVien.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmQuetMomo.cs">
+    <Compile Include="FrmQuetQR.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmQuetMomo.Designer.cs">
-      <DependentUpon>FrmQuetMomo.cs</DependentUpon>
+    <Compile Include="FrmQuetQR.Designer.cs">
+      <DependentUpon>FrmQuetQR.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmThemSanPhamChoQuanLy.cs">
       <SubType>Form</SubType>
@@ -196,7 +196,7 @@
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
-    <Compile Include="ThanhToanDialog.cs">
+    <Compile Include="FrmThanhToan.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -279,8 +279,14 @@
     <EmbeddedResource Include="FrmHoaDonNhapChoNhanVien.resx">
       <DependentUpon>FrmHoaDonNhapChoNhanVien.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmQuetMomo.resx">
-      <DependentUpon>FrmQuetMomo.cs</DependentUpon>
+    <EmbeddedResource Include="FrmQuetQR.resx">
+      <DependentUpon>FrmQuetQR.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmThanhToan.resx">
+      <DependentUpon>FrmThanhToan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmThayDoiMatKhau.resx">
+      <DependentUpon>FrmThayDoiMatKhau.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmThemSanPhamChoQuanLy.resx">
       <DependentUpon>FrmThemSanPhamChoQuanLy.cs</DependentUpon>

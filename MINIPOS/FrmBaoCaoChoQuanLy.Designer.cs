@@ -62,7 +62,7 @@
             this.cboLoaiBaoCao.Location = new System.Drawing.Point(99, 46);
             this.cboLoaiBaoCao.Margin = new System.Windows.Forms.Padding(2);
             this.cboLoaiBaoCao.Name = "cboLoaiBaoCao";
-            this.cboLoaiBaoCao.Size = new System.Drawing.Size(309, 33);
+            this.cboLoaiBaoCao.Size = new System.Drawing.Size(309, 28);
             this.cboLoaiBaoCao.TabIndex = 0;
             // 
             // dtpTuNgay
@@ -70,7 +70,7 @@
             this.dtpTuNgay.Location = new System.Drawing.Point(38, 14);
             this.dtpTuNgay.Margin = new System.Windows.Forms.Padding(2);
             this.dtpTuNgay.Name = "dtpTuNgay";
-            this.dtpTuNgay.Size = new System.Drawing.Size(163, 26);
+            this.dtpTuNgay.Size = new System.Drawing.Size(163, 22);
             this.dtpTuNgay.TabIndex = 1;
             // 
             // dtpDenNgay
@@ -78,7 +78,7 @@
             this.dtpDenNgay.Location = new System.Drawing.Point(245, 14);
             this.dtpDenNgay.Margin = new System.Windows.Forms.Padding(2);
             this.dtpDenNgay.Name = "dtpDenNgay";
-            this.dtpDenNgay.Size = new System.Drawing.Size(163, 26);
+            this.dtpDenNgay.Size = new System.Drawing.Size(163, 22);
             this.dtpDenNgay.TabIndex = 2;
             // 
             // btnXemBaoCao
@@ -116,7 +116,7 @@
             this.label1.Location = new System.Drawing.Point(210, 18);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 23);
+            this.label1.Size = new System.Drawing.Size(31, 17);
             this.label1.TabIndex = 7;
             this.label1.Text = "Đến";
             // 
@@ -128,7 +128,7 @@
             this.label2.Location = new System.Drawing.Point(11, 18);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(29, 23);
+            this.label2.Size = new System.Drawing.Size(23, 17);
             this.label2.TabIndex = 8;
             this.label2.Text = "Từ";
             // 
@@ -160,7 +160,7 @@
             this.lblMiniPOSInventory.Location = new System.Drawing.Point(2, 15);
             this.lblMiniPOSInventory.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblMiniPOSInventory.Name = "lblMiniPOSInventory";
-            this.lblMiniPOSInventory.Size = new System.Drawing.Size(360, 29);
+            this.lblMiniPOSInventory.Size = new System.Drawing.Size(289, 25);
             this.lblMiniPOSInventory.TabIndex = 2;
             this.lblMiniPOSInventory.Text = "MiniPOS - Cửa hàng Tiện lợi";
             // 
@@ -380,13 +380,13 @@
             this.label3.Location = new System.Drawing.Point(11, 51);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(107, 23);
+            this.label3.Size = new System.Drawing.Size(84, 17);
             this.label3.TabIndex = 9;
             this.label3.Text = "Loại báo cáo";
             // 
             // frmBaoCao
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(242)))), ((int)(((byte)(247)))));
             this.ClientSize = new System.Drawing.Size(771, 424);
@@ -397,6 +397,7 @@
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmBaoCao";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Báo Cáo (dành cho quản lý)";
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
