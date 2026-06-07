@@ -365,7 +365,7 @@ namespace MINIPOS
             }
 
             // Hiển thị dialog thanh toán
-            using (var dlg = new ThanhToanDialog(tongTien, tyLeGiam, soTienGiam, thanhTien, _khachHang, gioHang))
+            using (var dlg = new FrmThanhToan(tongTien, tyLeGiam, soTienGiam, thanhTien, _khachHang, gioHang))
             {
                 if (dlg.ShowDialog() != DialogResult.OK) return;
 

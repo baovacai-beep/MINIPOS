@@ -162,7 +162,7 @@
             this.txtTimKiem.Location = new System.Drawing.Point(2, 8);
             this.txtTimKiem.Margin = new System.Windows.Forms.Padding(2);
             this.txtTimKiem.Name = "txtTimKiem";
-            this.txtTimKiem.Size = new System.Drawing.Size(432, 26);
+            this.txtTimKiem.Size = new System.Drawing.Size(432, 22);
             this.txtTimKiem.TabIndex = 38;
             // 
             // cboLoai
@@ -172,7 +172,7 @@
             this.cboLoai.Location = new System.Drawing.Point(2, 41);
             this.cboLoai.Margin = new System.Windows.Forms.Padding(2);
             this.cboLoai.Name = "cboLoai";
-            this.cboLoai.Size = new System.Drawing.Size(148, 27);
+            this.cboLoai.Size = new System.Drawing.Size(148, 21);
             this.cboLoai.TabIndex = 39;
             // 
             // lblGia
@@ -181,7 +181,7 @@
             this.lblGia.Location = new System.Drawing.Point(186, 44);
             this.lblGia.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblGia.Name = "lblGia";
-            this.lblGia.Size = new System.Drawing.Size(33, 19);
+            this.lblGia.Size = new System.Drawing.Size(27, 13);
             this.lblGia.TabIndex = 40;
             this.lblGia.Text = "Giá:";
             // 
@@ -200,7 +200,7 @@
             0,
             0});
             this.nudGiaMin.Name = "nudGiaMin";
-            this.nudGiaMin.Size = new System.Drawing.Size(93, 26);
+            this.nudGiaMin.Size = new System.Drawing.Size(93, 22);
             this.nudGiaMin.TabIndex = 41;
             this.nudGiaMin.ThousandsSeparator = true;
             // 
@@ -210,7 +210,7 @@
             this.lblGach.Location = new System.Drawing.Point(218, 44);
             this.lblGach.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblGach.Name = "lblGach";
-            this.lblGach.Size = new System.Drawing.Size(15, 19);
+            this.lblGach.Size = new System.Drawing.Size(11, 13);
             this.lblGach.TabIndex = 42;
             this.lblGach.Text = "-";
             // 
@@ -229,7 +229,7 @@
             0,
             0});
             this.nudGiaMax.Name = "nudGiaMax";
-            this.nudGiaMax.Size = new System.Drawing.Size(97, 26);
+            this.nudGiaMax.Size = new System.Drawing.Size(97, 22);
             this.nudGiaMax.TabIndex = 43;
             this.nudGiaMax.ThousandsSeparator = true;
             // 
@@ -240,7 +240,7 @@
             this.cboTonKho.Location = new System.Drawing.Point(2, 73);
             this.cboTonKho.Margin = new System.Windows.Forms.Padding(2);
             this.cboTonKho.Name = "cboTonKho";
-            this.cboTonKho.Size = new System.Drawing.Size(432, 27);
+            this.cboTonKho.Size = new System.Drawing.Size(432, 21);
             this.cboTonKho.TabIndex = 44;
             // 
             // btnLoc
@@ -287,7 +287,7 @@
             this.lblMiniPOSInventory.Location = new System.Drawing.Point(2, 15);
             this.lblMiniPOSInventory.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblMiniPOSInventory.Name = "lblMiniPOSInventory";
-            this.lblMiniPOSInventory.Size = new System.Drawing.Size(360, 29);
+            this.lblMiniPOSInventory.Size = new System.Drawing.Size(289, 25);
             this.lblMiniPOSInventory.TabIndex = 2;
             this.lblMiniPOSInventory.Text = "MiniPOS - Cửa hàng Tiện lợi";
             // 
@@ -485,7 +485,7 @@
             // 
             // FrmKhoChoQuanLy
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(242)))), ((int)(((byte)(247)))));
             this.ClientSize = new System.Drawing.Size(771, 424);
@@ -496,6 +496,7 @@
             this.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FrmKhoChoQuanLy";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản Lý Kho (dành cho quản lý)";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmKhoChoQuanLy_FormClosed);
             this.Load += new System.EventHandler(this.FrmKhoChoQuanLy_Load);

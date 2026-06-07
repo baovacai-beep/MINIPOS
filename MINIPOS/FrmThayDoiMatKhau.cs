@@ -116,5 +116,18 @@ namespace MINIPOS
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // FrmThayDoiMatKhau
+            // 
+            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Name = "FrmThayDoiMatKhau";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.ResumeLayout(false);
+
+        }
     }
 }

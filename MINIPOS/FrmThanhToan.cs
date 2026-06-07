@@ -12,7 +12,7 @@ namespace MINIPOS
     /// Kết quả: DialogResult.OK → đọc TienKhachDua, TienThoi, PhuongThuc,
     ///          VoucherApDung, VoucherSoTienGiam, FinalThanhTien.
     /// </summary>
-    public class ThanhToanDialog : Form
+    public class FrmThanhToan : Form
     {
         // ── Outputs ───────────────────────────────────────────────────
         public decimal TienKhachDua { get; private set; }
@@ -64,14 +64,14 @@ namespace MINIPOS
         /// <summary>
         /// Constructor tương thích ngược (không có giỏ hàng).
         /// </summary>
-        public ThanhToanDialog(decimal tongTien, decimal tyLeGiam, decimal soTienGiam,
+        public FrmThanhToan(decimal tongTien, decimal tyLeGiam, decimal soTienGiam,
                                decimal thanhTien, KhachHangDTO khachHang)
             : this(tongTien, tyLeGiam, soTienGiam, thanhTien, khachHang, null) { }
 
         /// <summary>
         /// Constructor đầy đủ (có giỏ hàng → validate voucher theo nhóm / sản phẩm chính xác).
         /// </summary>
-        public ThanhToanDialog(decimal tongTien, decimal tyLeGiam, decimal soTienGiam,
+        public FrmThanhToan(decimal tongTien, decimal tyLeGiam, decimal soTienGiam,
                                decimal thanhTien, KhachHangDTO khachHang,
                                List<ChiTietHoaDonDTO> gioHang)
         {
@@ -331,20 +331,20 @@ namespace MINIPOS
             }
 
             string msg;
-            KhuyenMaiDTO km = _kmBUS.ValidateVoucher(code, _tongTien, _gioHang, out msg);
+            KhuyenMaiDTO km = _kmBUS.ValidateVoucher(code, _thanhTien, _gioHang, out msg);
 
             if (km == null)
             {
-                HienThiKetQuaVoucher(msg, false);
+                MessageBox.Show(msg, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 XoaVoucher();
                 return;
             }
 
-            decimal soTienGiamKM = _kmBUS.TinhTienGiam(km, _thanhTien, _gioHang);
+            decimal soTienGiamKM = _kmBUS.TinhTienGiam(km, _tongTien, _gioHang);
 
             VoucherApDung = km;
             VoucherSoTienGiam = soTienGiamKM;
-            _currentThanhTien = Math.Max(0, _thanhTien - soTienGiamKM);
+            _currentThanhTien = _tongTien - _soTienGiam - soTienGiamKM;
             FinalThanhTien = _currentThanhTien;
 
             HienThiKetQuaVoucher($"✔ {msg}", true);
@@ -354,15 +354,12 @@ namespace MINIPOS
             lblThanhToanSau.Visible = true;
 
             // Cập nhật lại số tiền hiển thị tương ứng với phương thức được chọn
-            if (cboPhuongThuc.SelectedItem?.ToString() != "Tiền mặt")
-            {
-                txtTienKhachDua.Text = _currentThanhTien.ToString("0");
-            }
+            txtTienKhachDua.Text = _currentThanhTien.ToString("0");
             OnTienKhachDuaChanged(null, null);
 
             txtVoucherCode.ReadOnly = true;
             btnApVoucher.Text = "Xóa mã";
-            btnApVoucher.BackColor = Color.DarkOrange;
+            btnApVoucher.BackColor = Color.IndianRed;
             btnApVoucher.Click -= BtnApVoucher_Click;
             btnApVoucher.Click += BtnXoaVoucher_Click;
         }
@@ -395,10 +392,7 @@ namespace MINIPOS
             lblVoucherResult.Text = "";
             lblVoucherResult.ForeColor = Color.Gray;
 
-            if (cboPhuongThuc.SelectedItem?.ToString() != "Tiền mặt")
-            {
-                txtTienKhachDua.Text = _currentThanhTien.ToString("0");
-            }
+            txtTienKhachDua.Text = _currentThanhTien.ToString("0");
             OnTienKhachDuaChanged(null, null);
         }
 
@@ -460,7 +454,7 @@ namespace MINIPOS
                 string maHDTam = "POS" + DateTime.Now.ToString("MMddHHmmss");
 
                 // Mở giao diện quét mã QR MoMo bất đồng bộ
-                using (FrmQuetMomo frmMomo = new FrmQuetMomo(_currentThanhTien, maHDTam))
+                using (FrmQuetQR frmMomo = new FrmQuetQR(_currentThanhTien, maHDTam))
                 {
                     if (frmMomo.ShowDialog() != DialogResult.OK)
                     {
@@ -500,5 +494,20 @@ namespace MINIPOS
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
+
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // FrmThanhToan
+            // 
+            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Name = "FrmThanhToan";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.ResumeLayout(false);
+
+        }
     }
 }
+
+    

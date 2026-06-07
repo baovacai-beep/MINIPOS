@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnCaiDat = new FontAwesome.Sharp.IconButton();
             this.btnXemHDNhap = new FontAwesome.Sharp.IconButton();
@@ -81,6 +81,8 @@
             // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(107)))), ((int)(((byte)(154)))));
             this.panel1.Controls.Add(this.btnCaiDat);
             this.panel1.Controls.Add(this.btnXemHDNhap);
@@ -88,7 +90,7 @@
             this.panel1.Controls.Add(this.btnKho);
             this.panel1.Controls.Add(this.btnBanHang);
             this.panel1.Location = new System.Drawing.Point(0, 50);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(105, 371);
             this.panel1.TabIndex = 41;
@@ -190,6 +192,8 @@
             // 
             // panel2
             // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(107)))), ((int)(((byte)(154)))));
             this.panel2.Controls.Add(this.lblMiniPOSInventory);
             this.panel2.Location = new System.Drawing.Point(0, 0);
@@ -212,6 +216,8 @@
             // 
             // panel3
             // 
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.Controls.Add(this.btnTimKiem);
             this.panel3.Controls.Add(this.txtTimKiem);
             this.panel3.Controls.Add(this.cboLoai);
@@ -245,6 +251,8 @@
             // 
             // txtTimKiem
             // 
+            this.txtTimKiem.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtTimKiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTimKiem.Location = new System.Drawing.Point(2, 8);
             this.txtTimKiem.Margin = new System.Windows.Forms.Padding(2);
@@ -254,6 +262,8 @@
             // 
             // cboLoai
             // 
+            this.cboLoai.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cboLoai.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboLoai.FormattingEnabled = true;
             this.cboLoai.Location = new System.Drawing.Point(2, 41);
@@ -264,6 +274,8 @@
             // 
             // lblGia
             // 
+            this.lblGia.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblGia.AutoSize = true;
             this.lblGia.Location = new System.Drawing.Point(120, 44);
             this.lblGia.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -274,6 +286,8 @@
             // 
             // nudGiaMin
             // 
+            this.nudGiaMin.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.nudGiaMin.Increment = new decimal(new int[] {
             1000,
             0,
@@ -293,6 +307,8 @@
             // 
             // lblGach
             // 
+            this.lblGach.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblGach.AutoSize = true;
             this.lblGach.Location = new System.Drawing.Point(218, 44);
             this.lblGach.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -303,6 +319,8 @@
             // 
             // nudGiaMax
             // 
+            this.nudGiaMax.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.nudGiaMax.Increment = new decimal(new int[] {
             1000,
             0,
@@ -322,6 +340,8 @@
             // 
             // cboTonKho
             // 
+            this.cboTonKho.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cboTonKho.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTonKho.FormattingEnabled = true;
             this.cboTonKho.Location = new System.Drawing.Point(2, 73);
@@ -370,6 +390,8 @@
             // 
             this.dgvSanPham.AllowUserToAddRows = false;
             this.dgvSanPham.AllowUserToDeleteRows = false;
+            this.dgvSanPham.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvSanPham.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvSanPham.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvSanPham.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -386,6 +408,8 @@
             // 
             // panel7
             // 
+            this.panel7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(76)))), ((int)(((byte)(116)))));
             this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel7.Controls.Add(this.label1);
@@ -504,9 +528,9 @@
             // 
             // colTT
             // 
-            dataGridViewCellStyle12.Format = "N0";
-            dataGridViewCellStyle12.NullValue = null;
-            this.colTT.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle1.Format = "N0";
+            dataGridViewCellStyle1.NullValue = null;
+            this.colTT.DefaultCellStyle = dataGridViewCellStyle1;
             this.colTT.FillWeight = 267.3796F;
             this.colTT.HeaderText = "Thành tiền";
             this.colTT.MinimumWidth = 6;
@@ -572,6 +596,8 @@
             // 
             // txtTongTien
             // 
+            this.txtTongTien.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtTongTien.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTongTien.Location = new System.Drawing.Point(2, 243);
             this.txtTongTien.Margin = new System.Windows.Forms.Padding(2);
@@ -602,7 +628,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FrmBanHangChoNhanVien";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Bán Hàng (dành cho nhân viên)";
