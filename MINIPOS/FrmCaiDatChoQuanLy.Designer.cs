@@ -29,6 +29,12 @@
         private void InitializeComponent()
         {
             this.panel3 = new System.Windows.Forms.Panel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnLuuMomo = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtMomoTen = new System.Windows.Forms.TextBox();
+            this.txtMomoSDT = new System.Windows.Forms.TextBox();
             this.btnDangXuat = new System.Windows.Forms.Button();
             this.lblTDLogin = new System.Windows.Forms.Label();
             this.txtVaiTro = new System.Windows.Forms.TextBox();
@@ -58,6 +64,7 @@
             this.btnKho = new FontAwesome.Sharp.IconButton();
             this.btnBanHang = new FontAwesome.Sharp.IconButton();
             this.panel3.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -65,6 +72,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(244)))), ((int)(((byte)(248)))));
+            this.panel3.Controls.Add(this.groupBox1);
             this.panel3.Controls.Add(this.btnDangXuat);
             this.panel3.Controls.Add(this.lblTDLogin);
             this.panel3.Controls.Add(this.txtVaiTro);
@@ -88,6 +96,62 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(661, 367);
             this.panel3.TabIndex = 42;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.btnLuuMomo);
+            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.txtMomoTen);
+            this.groupBox1.Controls.Add(this.txtMomoSDT);
+            this.groupBox1.Location = new System.Drawing.Point(26, 168);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(578, 148);
+            this.groupBox1.TabIndex = 44;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Cấu hình thanh toán MoMo";
+            // 
+            // btnLuuMomo
+            // 
+            this.btnLuuMomo.Location = new System.Drawing.Point(436, 106);
+            this.btnLuuMomo.Name = "btnLuuMomo";
+            this.btnLuuMomo.Size = new System.Drawing.Size(126, 37);
+            this.btnLuuMomo.TabIndex = 4;
+            this.btnLuuMomo.Text = "Lưu TK";
+            this.btnLuuMomo.UseVisualStyleBackColor = true;
+            this.btnLuuMomo.Click += new System.EventHandler(this.btnLuuMomo_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(10, 74);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(78, 19);
+            this.label8.TabIndex = 3;
+            this.label8.Text = "Tên Chủ TK";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(10, 32);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(76, 19);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "STK Momo";
+            // 
+            // txtMomoTen
+            // 
+            this.txtMomoTen.Location = new System.Drawing.Point(104, 71);
+            this.txtMomoTen.Name = "txtMomoTen";
+            this.txtMomoTen.Size = new System.Drawing.Size(458, 26);
+            this.txtMomoTen.TabIndex = 1;
+            // 
+            // txtMomoSDT
+            // 
+            this.txtMomoSDT.Location = new System.Drawing.Point(104, 29);
+            this.txtMomoSDT.Name = "txtMomoSDT";
+            this.txtMomoSDT.Size = new System.Drawing.Size(458, 26);
+            this.txtMomoSDT.TabIndex = 0;
             // 
             // btnDangXuat
             // 
@@ -511,6 +575,8 @@
             this.Load += new System.EventHandler(this.SettingsForManager_Load);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -548,5 +614,11 @@
         private FontAwesome.Sharp.IconButton btnKhachHang;
         private FontAwesome.Sharp.IconButton btnKho;
         private FontAwesome.Sharp.IconButton btnBanHang;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button btnLuuMomo;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtMomoTen;
+        private System.Windows.Forms.TextBox txtMomoSDT;
     }
 }

@@ -15,22 +15,22 @@ namespace MINIPOS
     public class ThanhToanDialog : Form
     {
         // ── Outputs ───────────────────────────────────────────────────
-        public decimal      TienKhachDua      { get; private set; }
-        public decimal      TienThoi          { get; private set; }
-        public string       PhuongThuc        { get; private set; }
+        public decimal TienKhachDua { get; private set; }
+        public decimal TienThoi { get; private set; }
+        public string PhuongThuc { get; private set; }
         /// <summary>Voucher đã được áp dụng (null nếu không dùng).</summary>
-        public KhuyenMaiDTO VoucherApDung     { get; private set; }
+        public KhuyenMaiDTO VoucherApDung { get; private set; }
         /// <summary>Số tiền giảm từ voucher.</summary>
-        public decimal      VoucherSoTienGiam { get; private set; }
+        public decimal VoucherSoTienGiam { get; private set; }
         /// <summary>Thành tiền cuối cùng sau tất cả giảm giá (hạng KH + voucher).</summary>
-        public decimal      FinalThanhTien    { get; private set; }
+        public decimal FinalThanhTien { get; private set; }
 
         // ── Inputs ────────────────────────────────────────────────────
-        private readonly decimal               _tongTien;
-        private readonly decimal               _tyLeGiam;
-        private readonly decimal               _soTienGiam;
-        private readonly decimal               _thanhTien;     // sau giảm hạng KH
-        private readonly KhachHangDTO          _khachHang;
+        private readonly decimal _tongTien;
+        private readonly decimal _tyLeGiam;
+        private readonly decimal _soTienGiam;
+        private readonly decimal _thanhTien;     // sau giảm hạng KH
+        private readonly KhachHangDTO _khachHang;
         private readonly List<ChiTietHoaDonDTO> _gioHang;
 
         // ── Trạng thái nội bộ ─────────────────────────────────────────
@@ -40,22 +40,22 @@ namespace MINIPOS
         private readonly KhuyenMaiBUS _kmBUS = new KhuyenMaiBUS();
 
         // ── Controls ──────────────────────────────────────────────────
-        private Label    lblInfo;
-        private Label    lblGiamKH;
-        private Label    lblThanhToan;
-        private Label    lblKH;
-        private TextBox  txtVoucherCode;
-        private Button   btnApVoucher;
-        private Label    lblVoucherResult;
-        private Label    lblGiamVoucher;     // dòng hiển thị mức giảm voucher
-        private Label    lblThanhToanSau;    // dòng thành tiền sau voucher
-        private Label    lblPhuong;
+        private Label lblInfo;
+        private Label lblGiamKH;
+        private Label lblThanhToan;
+        private Label lblKH;
+        private TextBox txtVoucherCode;
+        private Button btnApVoucher;
+        private Label lblVoucherResult;
+        private Label lblGiamVoucher;     // dòng hiển thị mức giảm voucher
+        private Label lblThanhToanSau;    // dòng thành tiền sau voucher
+        private Label lblPhuong;
         private ComboBox cboPhuongThuc;
-        private Label    lblNhapTien;
-        private TextBox  txtTienKhachDua;
-        private Label    lblTienThoi;
-        private Button   btnOK;
-        private Button   btnHuy;
+        private Label lblNhapTien;
+        private TextBox txtTienKhachDua;
+        private Label lblTienThoi;
+        private Button btnOK;
+        private Button btnHuy;
 
         // ═════════════════════════════════════════════════════════════
         //  CONSTRUCTORS
@@ -63,8 +63,6 @@ namespace MINIPOS
 
         /// <summary>
         /// Constructor tương thích ngược (không có giỏ hàng).
-        /// Voucher kiểu "ToanBoHoaDon" hoạt động đầy đủ;
-        /// kiểu "NhomSanPham" / "SanPham" sẽ không qua được bước kiểm tra giỏ hàng.
         /// </summary>
         public ThanhToanDialog(decimal tongTien, decimal tyLeGiam, decimal soTienGiam,
                                decimal thanhTien, KhachHangDTO khachHang)
@@ -77,14 +75,14 @@ namespace MINIPOS
                                decimal thanhTien, KhachHangDTO khachHang,
                                List<ChiTietHoaDonDTO> gioHang)
         {
-            _tongTien         = tongTien;
-            _tyLeGiam         = tyLeGiam;
-            _soTienGiam       = soTienGiam;
-            _thanhTien        = thanhTien;
-            _khachHang        = khachHang;
-            _gioHang          = gioHang ?? new List<ChiTietHoaDonDTO>();
+            _tongTien = tongTien;
+            _tyLeGiam = tyLeGiam;
+            _soTienGiam = soTienGiam;
+            _thanhTien = thanhTien;
+            _khachHang = khachHang;
+            _gioHang = gioHang ?? new List<ChiTietHoaDonDTO>();
             _currentThanhTien = thanhTien;
-            FinalThanhTien    = thanhTien;
+            FinalThanhTien = thanhTien;
             InitUI();
         }
 
@@ -93,24 +91,24 @@ namespace MINIPOS
         // ═════════════════════════════════════════════════════════════
         private void InitUI()
         {
-            this.Text            = "Thanh Toán";
-            this.StartPosition   = FormStartPosition.CenterParent;
+            this.Text = "Thanh Toán Hóa Đơn";
+            this.StartPosition = FormStartPosition.CenterParent;
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
-            this.MaximizeBox     = false;
-            this.MinimizeBox     = false;
-            this.Font            = new Font("Segoe UI", 10F);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Font = new Font("Segoe UI", 10F);
 
             int y = 12;
             const int LEFT = 14;
-            const int W    = 340;
+            const int W = 340;
 
             // ── Tổng tiền hàng ──────────────────────────────────────
             lblInfo = new Label
             {
-                Text     = $"Tổng tiền hàng :  {_tongTien:N0} đ",
+                Text = $"Tổng tiền hàng :  {_tongTien:N0} đ",
                 Location = new Point(LEFT, y),
                 AutoSize = true,
-                Font     = new Font("Segoe UI", 10F)
+                Font = new Font("Segoe UI", 10F)
             };
             y += 26;
 
@@ -119,10 +117,10 @@ namespace MINIPOS
             {
                 lblGiamKH = new Label
                 {
-                    Text      = $"Giảm hạng KH ({_tyLeGiam:0}%) :  -{_soTienGiam:N0} đ",
-                    Location  = new Point(LEFT, y),
-                    AutoSize  = true,
-                    ForeColor = Color.ForestGreen
+                    Text = $"Giảm hạng KH ({_tyLeGiam:0}%) :  -{_soTienGiam:N0} đ",
+                    Location = new Point(LEFT, y),
+                    AutoSize = true,
+                    ForeColor = Color.DarkGreen
                 };
                 this.Controls.Add(lblGiamKH);
                 y += 26;
@@ -131,10 +129,10 @@ namespace MINIPOS
             // ── Cần thanh toán (trước voucher) ──────────────────────
             lblThanhToan = new Label
             {
-                Text      = $"Cần thanh toán :  {_thanhTien:N0} đ",
-                Location  = new Point(LEFT, y),
-                AutoSize  = true,
-                Font      = new Font("Segoe UI", 11F, FontStyle.Bold),
+                Text = $"Cần thanh toán :  {_thanhTien:N0} đ",
+                Location = new Point(LEFT, y),
+                AutoSize = true,
+                Font = new Font("Segoe UI", 11F, FontStyle.Bold),
                 ForeColor = Color.DarkRed
             };
             y += 30;
@@ -142,12 +140,12 @@ namespace MINIPOS
             // ── Thông tin khách hàng ─────────────────────────────────
             string khInfo = _khachHang != null
                 ? $"KH: {_khachHang.TenKhachHang}  [{_khachHang.TenHang}]  Điểm: {_khachHang.DiemTichLuy}"
-                : "Khách: Vãng lai";
+                : "Khách hàng: Khách vãng lai";
             lblKH = new Label
             {
-                Text      = khInfo,
-                Location  = new Point(LEFT, y),
-                AutoSize  = true,
+                Text = khInfo,
+                Location = new Point(LEFT, y),
+                AutoSize = true,
                 ForeColor = _khachHang != null ? Color.DarkBlue : Color.Gray
             };
             y += 32;
@@ -157,66 +155,64 @@ namespace MINIPOS
             // ────────────────────────────────────────────────────────
             var sep = new Label
             {
-                Text      = "─── Mã khuyến mãi ──────────────────────",
-                Location  = new Point(LEFT, y),
-                AutoSize  = true,
+                Text = "─── Mã khuyến mãi ──────────────────────",
+                Location = new Point(LEFT, y),
+                AutoSize = true,
                 ForeColor = Color.Gray,
-                Font      = new Font("Segoe UI", 8.5F)
+                Font = new Font("Segoe UI", 8.5F)
             };
             y += 20;
 
             txtVoucherCode = new TextBox
             {
-                Location        = new Point(LEFT, y),
-                Size            = new Size(200, 26),
+                Location = new Point(LEFT, y),
+                Size = new Size(200, 26),
                 CharacterCasing = CharacterCasing.Upper,
-                Font            = new Font("Segoe UI", 10F, FontStyle.Bold)
+                Font = new Font("Segoe UI", 10F, FontStyle.Bold)
             };
 
             btnApVoucher = new Button
             {
-                Text      = "Áp dụng",
-                Location  = new Point(LEFT + 208, y),
-                Size      = new Size(90, 26),
+                Text = "Áp dụng",
+                Location = new Point(LEFT + 208, y),
+                Size = new Size(90, 26),
                 BackColor = Color.SteelBlue,
                 ForeColor = Color.White,
                 FlatStyle = FlatStyle.Popup,
-                Font      = new Font("Segoe UI", 9F, FontStyle.Bold)
+                Font = new Font("Segoe UI", 9F, FontStyle.Bold)
             };
             btnApVoucher.Click += BtnApVoucher_Click;
             y += 32;
 
             lblVoucherResult = new Label
             {
-                Location  = new Point(LEFT, y),
-                AutoSize  = true,
-                Font      = new Font("Segoe UI", 9F),
+                Location = new Point(LEFT, y),
+                AutoSize = true,
+                Font = new Font("Segoe UI", 9F),
                 ForeColor = Color.Gray,
-                Text      = ""
+                Text = ""
             };
             y += 22;
 
-            // Dòng hiển thị mức giảm voucher (ẩn ban đầu)
             lblGiamVoucher = new Label
             {
-                Location  = new Point(LEFT, y),
-                AutoSize  = true,
-                Font      = new Font("Segoe UI", 10F),
+                Location = new Point(LEFT, y),
+                AutoSize = true,
+                Font = new Font("Segoe UI", 10F),
                 ForeColor = Color.DarkGreen,
-                Text      = "",
-                Visible   = false
+                Text = "",
+                Visible = false
             };
             y += 24;
 
-            // Thành tiền sau voucher (ẩn ban đầu)
             lblThanhToanSau = new Label
             {
-                Location  = new Point(LEFT, y),
-                AutoSize  = true,
-                Font      = new Font("Segoe UI", 11F, FontStyle.Bold),
+                Location = new Point(LEFT, y),
+                AutoSize = true,
+                Font = new Font("Segoe UI", 11F, FontStyle.Bold),
                 ForeColor = Color.DarkRed,
-                Text      = "",
-                Visible   = false
+                Text = "",
+                Visible = false
             };
             y += 30;
 
@@ -227,11 +223,11 @@ namespace MINIPOS
             y += 24;
             cboPhuongThuc = new ComboBox
             {
-                Location      = new Point(LEFT, y),
-                Size          = new Size(200, 26),
+                Location = new Point(LEFT, y),
+                Size = new Size(200, 26),
                 DropDownStyle = ComboBoxStyle.DropDownList
             };
-            cboPhuongThuc.Items.AddRange(new[] { "Tiền mặt", "Chuyển khoản", "Thẻ", "QR Code" });
+            cboPhuongThuc.Items.AddRange(new[] { "Tiền mặt", "Chuyển khoản MoMo", "Thẻ", "Chuyển khoản khác" });
             cboPhuongThuc.SelectedIndex = 0;
             y += 34;
 
@@ -241,8 +237,8 @@ namespace MINIPOS
             txtTienKhachDua = new TextBox
             {
                 Location = new Point(LEFT, y),
-                Size     = new Size(200, 26),
-                Text     = _currentThanhTien.ToString("0")
+                Size = new Size(200, 26),
+                Text = _currentThanhTien.ToString("0")
             };
             txtTienKhachDua.TextChanged += OnTienKhachDuaChanged;
             y += 32;
@@ -250,10 +246,10 @@ namespace MINIPOS
             // ── Tiền thối ────────────────────────────────────────────
             lblTienThoi = new Label
             {
-                Text      = "Tiền thối: 0 đ",
-                Location  = new Point(LEFT, y),
-                AutoSize  = true,
-                Font      = new Font("Segoe UI", 10F, FontStyle.Bold),
+                Text = "Tiền thối: 0 đ",
+                Location = new Point(LEFT, y),
+                AutoSize = true,
+                Font = new Font("Segoe UI", 10F, FontStyle.Bold),
                 ForeColor = Color.DarkGreen
             };
             y += 30;
@@ -261,35 +257,47 @@ namespace MINIPOS
             // ── Nút OK / Hủy ─────────────────────────────────────────
             btnOK = new Button
             {
-                Text      = "✔  Xác nhận",
-                Location  = new Point(LEFT, y),
-                Size      = new Size(130, 34),
+                Text = "✔  Xác nhận",
+                Location = new Point(LEFT, y),
+                Size = new Size(130, 34),
                 BackColor = Color.LimeGreen,
                 FlatStyle = FlatStyle.Popup,
-                Font      = new Font("Segoe UI", 10F, FontStyle.Bold)
+                Font = new Font("Segoe UI", 10F, FontStyle.Bold)
             };
             btnHuy = new Button
             {
-                Text      = "✖  Hủy",
-                Location  = new Point(LEFT + 138, y),
-                Size      = new Size(100, 34),
+                Text = "✖  Hủy",
+                Location = new Point(LEFT + 138, y),
+                Size = new Size(100, 34),
                 BackColor = Color.IndianRed,
                 FlatStyle = FlatStyle.Popup,
-                Font      = new Font("Segoe UI", 10F, FontStyle.Bold),
+                Font = new Font("Segoe UI", 10F, FontStyle.Bold),
                 ForeColor = Color.White
             };
 
-            btnOK.Click  += BtnOK_Click;
+            btnOK.Click += BtnOK_Click;
             btnHuy.Click += (s, ev) => { this.DialogResult = DialogResult.Cancel; this.Close(); };
 
+            // BẮT SỰ KIỆN THAY ĐỔI COMBOBOX ĐỂ ĐỒNG BỘ HIỂN THỊ
             cboPhuongThuc.SelectedIndexChanged += (s, ev) =>
             {
-                bool laTienMat = (cboPhuongThuc.SelectedItem?.ToString() ?? "") == "Tiền mặt";
+                string phuongThucChon = cboPhuongThuc.SelectedItem?.ToString() ?? "";
+                bool laTienMat = phuongThucChon == "Tiền mặt";
+
+                // Chỉ cho phép nhập số tiền khách đưa nếu hình thức là Tiền mặt
                 txtTienKhachDua.Enabled = laTienMat;
+
                 if (!laTienMat)
                 {
+                    // Nếu là quẹt thẻ/chuyển khoản thì hiển thị mặc định bằng số tiền cần thanh toán
                     txtTienKhachDua.Text = _currentThanhTien.ToString("0");
-                    lblTienThoi.Text     = "Tiền thối: 0 đ";
+                    lblTienThoi.Text = "Tiền thối: 0 đ";
+                    lblTienThoi.ForeColor = Color.DarkGreen;
+                }
+                else
+                {
+                    // Trở lại Tiền mặt -> kích hoạt tính toán lại lập tức
+                    OnTienKhachDuaChanged(null, null);
                 }
             };
 
@@ -306,7 +314,7 @@ namespace MINIPOS
             });
 
             this.AcceptButton = btnOK;
-            this.ClientSize   = new Size(W + 28, y + 50);
+            this.ClientSize = new Size(W + 28, y + 50);
             OnTienKhachDuaChanged(null, null);
         }
 
@@ -322,44 +330,41 @@ namespace MINIPOS
                 return;
             }
 
-            // Validate voucher qua BUS (dùng tongTien gốc trước hạng KH để check đơn tối thiểu)
             string msg;
             KhuyenMaiDTO km = _kmBUS.ValidateVoucher(code, _tongTien, _gioHang, out msg);
 
             if (km == null)
             {
-                // Voucher không hợp lệ – hiện thông báo lỗi, giữ nguyên giá
                 HienThiKetQuaVoucher(msg, false);
                 XoaVoucher();
                 return;
             }
 
-            // Tính tiền giảm từ voucher (áp lên phần sau giảm hạng KH)
             decimal soTienGiamKM = _kmBUS.TinhTienGiam(km, _thanhTien, _gioHang);
 
-            // Lưu kết quả
-            VoucherApDung     = km;
+            VoucherApDung = km;
             VoucherSoTienGiam = soTienGiamKM;
             _currentThanhTien = Math.Max(0, _thanhTien - soTienGiamKM);
-            FinalThanhTien    = _currentThanhTien;
+            FinalThanhTien = _currentThanhTien;
 
-            // Cập nhật UI
             HienThiKetQuaVoucher($"✔ {msg}", true);
-            lblGiamVoucher.Text    = $"Giảm KM ({km.TenKhuyenMai}) :  -{soTienGiamKM:N0} đ";
+            lblGiamVoucher.Text = $"Giảm KM ({km.TenKhuyenMai}) :  -{soTienGiamKM:N0} đ";
             lblGiamVoucher.Visible = true;
-            lblThanhToanSau.Text   = $"Thanh toán sau KM :  {_currentThanhTien:N0} đ";
+            lblThanhToanSau.Text = $"Thanh toán sau KM :  {_currentThanhTien:N0} đ";
             lblThanhToanSau.Visible = true;
 
-            // Cập nhật ô tiền khách đưa theo giá mới
-            txtTienKhachDua.Text = _currentThanhTien.ToString("0");
+            // Cập nhật lại số tiền hiển thị tương ứng với phương thức được chọn
+            if (cboPhuongThuc.SelectedItem?.ToString() != "Tiền mặt")
+            {
+                txtTienKhachDua.Text = _currentThanhTien.ToString("0");
+            }
             OnTienKhachDuaChanged(null, null);
 
-            // Khoá ô code để tránh thay đổi sau khi đã áp
             txtVoucherCode.ReadOnly = true;
-            btnApVoucher.Text       = "Xóa mã";
-            btnApVoucher.BackColor  = Color.DarkOrange;
-            btnApVoucher.Click     -= BtnApVoucher_Click;
-            btnApVoucher.Click     += BtnXoaVoucher_Click;
+            btnApVoucher.Text = "Xóa mã";
+            btnApVoucher.BackColor = Color.DarkOrange;
+            btnApVoucher.Click -= BtnApVoucher_Click;
+            btnApVoucher.Click += BtnXoaVoucher_Click;
         }
 
         private void BtnXoaVoucher_Click(object sender, EventArgs e)
@@ -369,82 +374,128 @@ namespace MINIPOS
 
         private void XoaVoucher()
         {
-            VoucherApDung          = null;
-            VoucherSoTienGiam      = 0;
-            _currentThanhTien      = _thanhTien;
-            FinalThanhTien         = _thanhTien;
+            VoucherApDung = null;
+            VoucherSoTienGiam = 0;
+            _currentThanhTien = _thanhTien;
+            FinalThanhTien = _thanhTien;
 
             txtVoucherCode.ReadOnly = false;
-            txtVoucherCode.Text     = "";
+            txtVoucherCode.Text = "";
 
-            lblGiamVoucher.Visible  = false;
-            lblGiamVoucher.Text     = "";
+            lblGiamVoucher.Visible = false;
+            lblGiamVoucher.Text = "";
             lblThanhToanSau.Visible = false;
-            lblThanhToanSau.Text    = "";
+            lblThanhToanSau.Text = "";
 
-            btnApVoucher.Text       = "Áp dụng";
-            btnApVoucher.BackColor  = Color.SteelBlue;
-            btnApVoucher.Click     -= BtnXoaVoucher_Click;
-            btnApVoucher.Click     += BtnApVoucher_Click;
+            btnApVoucher.Text = "Áp dụng";
+            btnApVoucher.BackColor = Color.SteelBlue;
+            btnApVoucher.Click -= BtnXoaVoucher_Click;
+            btnApVoucher.Click += BtnApVoucher_Click;
 
-            lblVoucherResult.Text      = "";
+            lblVoucherResult.Text = "";
             lblVoucherResult.ForeColor = Color.Gray;
 
-            txtTienKhachDua.Text = _currentThanhTien.ToString("0");
+            if (cboPhuongThuc.SelectedItem?.ToString() != "Tiền mặt")
+            {
+                txtTienKhachDua.Text = _currentThanhTien.ToString("0");
+            }
             OnTienKhachDuaChanged(null, null);
         }
 
         private void HienThiKetQuaVoucher(string text, bool thanh_cong)
         {
-            lblVoucherResult.Text      = text;
+            lblVoucherResult.Text = text;
             lblVoucherResult.ForeColor = thanh_cong ? Color.ForestGreen : Color.Crimson;
         }
 
         // ═════════════════════════════════════════════════════════════
-        //  TÍNH TIỀN THỐI
+        //  TÍNH TIỀN THỐI (KHI THAY ĐỔI TEXTBOX)
         // ═════════════════════════════════════════════════════════════
         private void OnTienKhachDuaChanged(object sender, EventArgs e)
         {
             if (decimal.TryParse(txtTienKhachDua.Text, out decimal kd))
             {
                 decimal thoi = kd - _currentThanhTien;
-                lblTienThoi.Text      = thoi >= 0
+                lblTienThoi.Text = thoi >= 0
                     ? $"Tiền thối: {thoi:N0} đ"
-                    : "⚠ Tiền đưa chưa đủ!";
+                    : "⚠ Tiền khách đưa chưa đủ!";
                 lblTienThoi.ForeColor = thoi >= 0 ? Color.DarkGreen : Color.Red;
             }
             else
             {
-                lblTienThoi.Text      = "⚠ Nhập số không hợp lệ";
+                lblTienThoi.Text = "⚠ Nhập số không hợp lệ";
                 lblTienThoi.ForeColor = Color.Red;
             }
         }
 
         // ═════════════════════════════════════════════════════════════
-        //  XÁC NHẬN THANH TOÁN
+        //  XÁC NHẬN THANH TOÁN (ĐÃ SỬA RIÊNG THẺ VÀ CK KHÁC)
         // ═════════════════════════════════════════════════════════════
         private void BtnOK_Click(object sender, EventArgs e)
         {
+            string phuongThucChon = cboPhuongThuc.SelectedItem?.ToString() ?? "";
+            bool laTienMat = phuongThucChon == "Tiền mặt";
+
+            // 1. Kiểm tra tính hợp lệ của số tiền trong TextBox nhập vào
             if (!decimal.TryParse(txtTienKhachDua.Text, out decimal kd) || kd < 0)
             {
-                MessageBox.Show("Vui lòng nhập số tiền hợp lệ.", "Lỗi",
+                MessageBox.Show("Vui lòng nhập số tiền khách đưa hợp lệ.", "Lỗi nhập liệu",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtTienKhachDua.Focus();
                 return;
             }
 
-            bool laTienMat = (cboPhuongThuc.SelectedItem?.ToString() ?? "") == "Tiền mặt";
+            // 2. Nếu là tiền mặt, bắt buộc phải đưa đủ tiền hàng
             if (laTienMat && kd < _currentThanhTien)
             {
-                MessageBox.Show("Tiền khách đưa chưa đủ để thanh toán!", "Lỗi",
+                MessageBox.Show("Tiền khách đưa chưa đủ để thanh toán!", "Thông báo",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtTienKhachDua.Focus();
                 return;
             }
 
+            // 3. XỬ LÝ PHÂN LOẠI PHƯƠNG THỨC VÀ GÁN DỮ LIỆU ĐẦU RA (OUTPUT)
+            if (phuongThucChon == "Chuyển khoản MoMo")
+            {
+                string maHDTam = "POS" + DateTime.Now.ToString("MMddHHmmss");
+
+                // Mở giao diện quét mã QR MoMo bất đồng bộ
+                using (FrmQuetMomo frmMomo = new FrmQuetMomo(_currentThanhTien, maHDTam))
+                {
+                    if (frmMomo.ShowDialog() != DialogResult.OK)
+                    {
+                        return; // Khách hủy giao dịch MoMo giữa chừng -> Không cho đóng form thanh toán
+                    }
+                }
+
+                kd = _currentThanhTien;         // MoMo luôn nhận chính xác số tiền cần trả
+                TienThoi = 0;
+                PhuongThuc = "Momo";            // Trả về đúng từ khoá Database quy định
+            }
+            else if (laTienMat)
+            {
+                // Giữ nguyên giá trị thực tế khách đưa để Form hóa đơn hiển thị đúng
+                TienThoi = kd - _currentThanhTien;
+                PhuongThuc = "Tiền mặt";
+            }
+            else if (phuongThucChon == "Thẻ")
+            {
+                // BỔ SUNG RIÊNG CHO PHƯƠNG THỨC THẺ
+                kd = _currentThanhTien;
+                TienThoi = 0;
+                PhuongThuc = "Thẻ";             // Trả về giá trị quy định lưu trong CSDL cho thẻ ngân hàng
+            }
+            else if (phuongThucChon == "Chuyển khoản khác")
+            {
+                // BỔ SUNG RIÊNG CHO PHƯƠNG THỨC CHUYỂN KHOẢN KHÁC
+                kd = _currentThanhTien;
+                TienThoi = 0;
+                PhuongThuc = "Chuyển khoản";    // Trả về từ khóa "Chuyển khoản" để đồng bộ với Database cũ
+            }
+
+            // Gán giá trị kết quả cuối cùng cho các thuộc tính Public của Form
             TienKhachDua = kd;
-            TienThoi     = laTienMat ? kd - _currentThanhTien : 0;
-            PhuongThuc   = cboPhuongThuc.SelectedItem?.ToString() ?? "Tiền mặt";
+            FinalThanhTien = _currentThanhTien;
 
             this.DialogResult = DialogResult.OK;
             this.Close();

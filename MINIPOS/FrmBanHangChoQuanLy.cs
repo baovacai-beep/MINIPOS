@@ -582,5 +582,76 @@ namespace MINIPOS
                 this.Hide();
             }
         }
+        // Hàm hiển thị cửa sổ quét mã QR MoMo động không cần file Designer
+        private bool HienThiCuaSoQuetMomo(decimal soTien, string maHD)
+        {
+            // 1. Cấu hình thông tin nhận tiền ví MoMo của cửa hàng các em
+            string sdtMomo = "0912345678";          // Số điện thoại đăng ký MoMo
+            string tenChuTaiKhoan = "NGUYEN VAN A"; // Tên chủ tài khoản (Viết hoa không dấu)
+            string noiDungChuyenKhoan = "Thanh toan " + maHD;
+
+            // 2. Sử dụng API VietQR miễn phí để tạo đường dẫn ảnh QR động
+            string urlVietQR = $"https://img.vietqr.io/image/MOMO-{sdtMomo}-compact.jpg" +
+                               $"?amount={soTien}" +
+                               $"&addInfo={Uri.EscapeDataString(noiDungChuyenKhoan)}" +
+                               $"&accountName={Uri.EscapeDataString(tenChuTaiKhoan)}";
+
+            // 3. Khởi tạo một Form ảo hoàn toàn bằng code
+            Form frmPopup = new Form();
+            frmPopup.Text = "CỔNG THANH TOÁN QUA VÍ MOMO";
+            frmPopup.Size = new Size(380, 500);
+            frmPopup.StartPosition = FormStartPosition.CenterScreen;
+            frmPopup.FormBorderStyle = FormBorderStyle.FixedDialog;
+            frmPopup.MaximizeBox = false;
+            frmPopup.MinimizeBox = false;
+            frmPopup.BackColor = Color.White;
+
+            // 4. Tạo PictureBox để hiển thị mã QR
+            PictureBox picQR = new PictureBox();
+            picQR.Size = new Size(280, 280);
+            picQR.Location = new Point(45, 20);
+            picQR.SizeMode = PictureBoxSizeMode.Zoom;
+            picQR.ImageLocation = urlVietQR; // Tự động tải ảnh từ API về hiển thị
+
+            // 5. Tạo Label hiển thị thông tin số tiền cho khách đối chiếu
+            Label lblInfo = new Label();
+            lblInfo.Text = string.Format("Số tiền: {0:N0} VNĐ\nNội dung: {1}", soTien, noiDungChuyenKhoan);
+            lblInfo.Font = new Font("Arial", 11, FontStyle.Bold);
+            lblInfo.ForeColor = Color.DarkSlateGray;
+            lblInfo.TextAlign = ContentAlignment.MiddleCenter;
+            lblInfo.Size = new Size(340, 50);
+            lblInfo.Location = new Point(15, 315);
+
+            // 6. Nút xác nhận khi khách đã chuyển khoản thành công
+            Button btnXacNhan = new Button();
+            btnXacNhan.Text = "Xác nhận Đã Nhận Tiền";
+            btnXacNhan.Size = new Size(160, 40);
+            btnXacNhan.Location = new Point(25, 385);
+            btnXacNhan.BackColor = Color.ForestGreen;
+            btnXacNhan.ForeColor = Color.White;
+            btnXacNhan.Font = new Font("Arial", 10, FontStyle.Bold);
+            btnXacNhan.FlatStyle = FlatStyle.Flat;
+            btnXacNhan.DialogResult = DialogResult.OK; // Trả về kết quả Thành công khi bấm
+
+            // 7. Nút hủy bỏ nếu giao dịch lỗi hoặc khách muốn đổi phương thức thanh toán
+            Button btnHuy = new Button();
+            btnHuy.Text = "Hủy giao dịch";
+            btnHuy.Size = new Size(140, 40);
+            btnHuy.Location = new Point(200, 385);
+            btnHuy.BackColor = Color.Crimson;
+            btnHuy.ForeColor = Color.White;
+            btnHuy.Font = new Font("Arial", 10, FontStyle.Bold);
+            btnHuy.FlatStyle = FlatStyle.Flat;
+            btnHuy.DialogResult = DialogResult.Cancel;
+
+            // Tích hợp các thành phần vào Form ảo
+            frmPopup.Controls.Add(picQR);
+            frmPopup.Controls.Add(lblInfo);
+            frmPopup.Controls.Add(btnXacNhan);
+            frmPopup.Controls.Add(btnHuy);
+
+            // Hiển thị hộp thoại và hứng kết quả trả về
+            return frmPopup.ShowDialog() == DialogResult.OK;
+        }
     }
 }

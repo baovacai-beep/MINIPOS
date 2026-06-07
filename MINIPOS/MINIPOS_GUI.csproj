@@ -87,6 +87,12 @@
     <Compile Include="FrmHoaDonNhapChoNhanVien.Designer.cs">
       <DependentUpon>FrmHoaDonNhapChoNhanVien.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmQuetMomo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmQuetMomo.Designer.cs">
+      <DependentUpon>FrmQuetMomo.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmThemSanPhamChoQuanLy.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -272,6 +278,9 @@
     <Content Include="fonts\fontawesome-webfont.svg" />
     <EmbeddedResource Include="FrmHoaDonNhapChoNhanVien.resx">
       <DependentUpon>FrmHoaDonNhapChoNhanVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmQuetMomo.resx">
+      <DependentUpon>FrmQuetMomo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmThemSanPhamChoQuanLy.resx">
       <DependentUpon>FrmThemSanPhamChoQuanLy.cs</DependentUpon>
