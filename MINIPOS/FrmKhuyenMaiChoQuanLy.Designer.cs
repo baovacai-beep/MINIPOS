@@ -88,10 +88,10 @@ namespace MINIPOS
             this.panel4.Controls.Add(this.dgvKhuyenMai);
             this.panel4.Controls.Add(this.btnThem);
             this.panel4.Controls.Add(this.btnSua);
-            this.panel4.Location = new System.Drawing.Point(108, 254);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2);
+            this.panel4.Location = new System.Drawing.Point(144, 313);
+            this.panel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(662, 167);
+            this.panel4.Size = new System.Drawing.Size(883, 206);
             this.panel4.TabIndex = 46;
             // 
             // btnLamMoi
@@ -99,9 +99,10 @@ namespace MINIPOS
             this.btnLamMoi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnLamMoi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLamMoi.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLamMoi.Location = new System.Drawing.Point(546, 130);
+            this.btnLamMoi.Location = new System.Drawing.Point(728, 160);
+            this.btnLamMoi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnLamMoi.Name = "btnLamMoi";
-            this.btnLamMoi.Size = new System.Drawing.Size(105, 35);
+            this.btnLamMoi.Size = new System.Drawing.Size(140, 43);
             this.btnLamMoi.TabIndex = 64;
             this.btnLamMoi.Text = "Làm mới";
             this.btnLamMoi.UseVisualStyleBackColor = false;
@@ -113,9 +114,10 @@ namespace MINIPOS
             this.btnXoa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnXoa.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnXoa.ForeColor = System.Drawing.Color.White;
-            this.btnXoa.Location = new System.Drawing.Point(546, 83);
+            this.btnXoa.Location = new System.Drawing.Point(728, 102);
+            this.btnXoa.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(105, 35);
+            this.btnXoa.Size = new System.Drawing.Size(140, 43);
             this.btnXoa.TabIndex = 63;
             this.btnXoa.Text = "Ngưng / Xóa";
             this.btnXoa.UseVisualStyleBackColor = false;
@@ -128,15 +130,15 @@ namespace MINIPOS
             this.dgvKhuyenMai.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvKhuyenMai.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvKhuyenMai.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvKhuyenMai.Location = new System.Drawing.Point(2, 0);
-            this.dgvKhuyenMai.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvKhuyenMai.Location = new System.Drawing.Point(3, 0);
+            this.dgvKhuyenMai.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvKhuyenMai.Name = "dgvKhuyenMai";
             this.dgvKhuyenMai.ReadOnly = true;
             this.dgvKhuyenMai.RowHeadersVisible = false;
             this.dgvKhuyenMai.RowHeadersWidth = 51;
             this.dgvKhuyenMai.RowTemplate.Height = 24;
             this.dgvKhuyenMai.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvKhuyenMai.Size = new System.Drawing.Size(539, 167);
+            this.dgvKhuyenMai.Size = new System.Drawing.Size(719, 206);
             this.dgvKhuyenMai.TabIndex = 0;
             this.dgvKhuyenMai.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvKhuyenMai_CellClick);
             // 
@@ -146,10 +148,11 @@ namespace MINIPOS
             this.btnThem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnThem.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThem.ForeColor = System.Drawing.Color.White;
-            this.btnThem.Location = new System.Drawing.Point(546, 1);
+            this.btnThem.Location = new System.Drawing.Point(728, 1);
+            this.btnThem.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnThem.Name = "btnThem";
             this.btnThem.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.btnThem.Size = new System.Drawing.Size(105, 35);
+            this.btnThem.Size = new System.Drawing.Size(140, 43);
             this.btnThem.TabIndex = 61;
             this.btnThem.Text = "Thêm mới";
             this.btnThem.UseVisualStyleBackColor = false;
@@ -161,9 +164,10 @@ namespace MINIPOS
             this.btnSua.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSua.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSua.ForeColor = System.Drawing.Color.White;
-            this.btnSua.Location = new System.Drawing.Point(546, 42);
+            this.btnSua.Location = new System.Drawing.Point(728, 52);
+            this.btnSua.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(105, 35);
+            this.btnSua.Size = new System.Drawing.Size(140, 43);
             this.btnSua.TabIndex = 62;
             this.btnSua.Text = "Cập nhật";
             this.btnSua.UseVisualStyleBackColor = false;
@@ -195,10 +199,10 @@ namespace MINIPOS
             this.panel3.Controls.Add(this.label1);
             this.panel3.Controls.Add(this.lblCategory);
             this.panel3.Controls.Add(this.lblBarcode);
-            this.panel3.Location = new System.Drawing.Point(108, 53);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2);
+            this.panel3.Location = new System.Drawing.Point(144, 65);
+            this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(660, 197);
+            this.panel3.Size = new System.Drawing.Size(880, 242);
             this.panel3.TabIndex = 45;
             // 
             // cboDoiTuong
@@ -206,20 +210,19 @@ namespace MINIPOS
             this.cboDoiTuong.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboDoiTuong.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cboDoiTuong.FormattingEnabled = true;
-            this.cboDoiTuong.Location = new System.Drawing.Point(131, 100);
-            this.cboDoiTuong.Margin = new System.Windows.Forms.Padding(2);
+            this.cboDoiTuong.Location = new System.Drawing.Point(175, 123);
+            this.cboDoiTuong.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cboDoiTuong.Name = "cboDoiTuong";
-            this.cboDoiTuong.Size = new System.Drawing.Size(170, 25);
+            this.cboDoiTuong.Size = new System.Drawing.Size(225, 31);
             this.cboDoiTuong.TabIndex = 81;
             // 
             // lblDoiTuong
             // 
             this.lblDoiTuong.AutoSize = true;
             this.lblDoiTuong.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDoiTuong.Location = new System.Drawing.Point(12, 103);
-            this.lblDoiTuong.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblDoiTuong.Location = new System.Drawing.Point(16, 127);
             this.lblDoiTuong.Name = "lblDoiTuong";
-            this.lblDoiTuong.Size = new System.Drawing.Size(114, 17);
+            this.lblDoiTuong.Size = new System.Drawing.Size(151, 23);
             this.lblDoiTuong.TabIndex = 80;
             this.lblDoiTuong.Text = "Sản phẩm/ Nhóm:";
             // 
@@ -230,10 +233,10 @@ namespace MINIPOS
             this.chkTrangThai.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkTrangThai.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.chkTrangThai.ForeColor = System.Drawing.Color.ForestGreen;
-            this.chkTrangThai.Location = new System.Drawing.Point(472, 162);
-            this.chkTrangThai.Margin = new System.Windows.Forms.Padding(2);
+            this.chkTrangThai.Location = new System.Drawing.Point(629, 199);
+            this.chkTrangThai.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chkTrangThai.Name = "chkTrangThai";
-            this.chkTrangThai.Size = new System.Drawing.Size(136, 23);
+            this.chkTrangThai.Size = new System.Drawing.Size(163, 27);
             this.chkTrangThai.TabIndex = 79;
             this.chkTrangThai.Text = "Đang hoạt động";
             this.chkTrangThai.UseVisualStyleBackColor = true;
@@ -241,15 +244,15 @@ namespace MINIPOS
             // nudSoLuong
             // 
             this.nudSoLuong.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.nudSoLuong.Location = new System.Drawing.Point(472, 129);
-            this.nudSoLuong.Margin = new System.Windows.Forms.Padding(2);
+            this.nudSoLuong.Location = new System.Drawing.Point(629, 159);
+            this.nudSoLuong.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.nudSoLuong.Maximum = new decimal(new int[] {
             1000000,
             0,
             0,
             0});
             this.nudSoLuong.Name = "nudSoLuong";
-            this.nudSoLuong.Size = new System.Drawing.Size(169, 25);
+            this.nudSoLuong.Size = new System.Drawing.Size(225, 30);
             this.nudSoLuong.TabIndex = 78;
             // 
             // dtpNgayKetThuc
@@ -257,10 +260,10 @@ namespace MINIPOS
             this.dtpNgayKetThuc.CustomFormat = "dd/MM/yyyy HH:mm";
             this.dtpNgayKetThuc.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.dtpNgayKetThuc.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpNgayKetThuc.Location = new System.Drawing.Point(472, 97);
-            this.dtpNgayKetThuc.Margin = new System.Windows.Forms.Padding(2);
+            this.dtpNgayKetThuc.Location = new System.Drawing.Point(629, 119);
+            this.dtpNgayKetThuc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpNgayKetThuc.Name = "dtpNgayKetThuc";
-            this.dtpNgayKetThuc.Size = new System.Drawing.Size(170, 25);
+            this.dtpNgayKetThuc.Size = new System.Drawing.Size(225, 30);
             this.dtpNgayKetThuc.TabIndex = 77;
             // 
             // dtpNgayBatDau
@@ -268,52 +271,52 @@ namespace MINIPOS
             this.dtpNgayBatDau.CustomFormat = "dd/MM/yyyy HH:mm";
             this.dtpNgayBatDau.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.dtpNgayBatDau.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpNgayBatDau.Location = new System.Drawing.Point(472, 65);
-            this.dtpNgayBatDau.Margin = new System.Windows.Forms.Padding(2);
+            this.dtpNgayBatDau.Location = new System.Drawing.Point(629, 80);
+            this.dtpNgayBatDau.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpNgayBatDau.Name = "dtpNgayBatDau";
-            this.dtpNgayBatDau.Size = new System.Drawing.Size(170, 25);
+            this.dtpNgayBatDau.Size = new System.Drawing.Size(225, 30);
             this.dtpNgayBatDau.TabIndex = 76;
             // 
             // nudGiamToiDa
             // 
             this.nudGiamToiDa.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.nudGiamToiDa.Location = new System.Drawing.Point(472, 34);
-            this.nudGiamToiDa.Margin = new System.Windows.Forms.Padding(2);
+            this.nudGiamToiDa.Location = new System.Drawing.Point(629, 42);
+            this.nudGiamToiDa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.nudGiamToiDa.Maximum = new decimal(new int[] {
             100000000,
             0,
             0,
             0});
             this.nudGiamToiDa.Name = "nudGiamToiDa";
-            this.nudGiamToiDa.Size = new System.Drawing.Size(169, 25);
+            this.nudGiamToiDa.Size = new System.Drawing.Size(225, 30);
             this.nudGiamToiDa.TabIndex = 75;
             // 
             // nudDonToiThieu
             // 
             this.nudDonToiThieu.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.nudDonToiThieu.Location = new System.Drawing.Point(472, 2);
-            this.nudDonToiThieu.Margin = new System.Windows.Forms.Padding(2);
+            this.nudDonToiThieu.Location = new System.Drawing.Point(629, 2);
+            this.nudDonToiThieu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.nudDonToiThieu.Maximum = new decimal(new int[] {
             100000000,
             0,
             0,
             0});
             this.nudDonToiThieu.Name = "nudDonToiThieu";
-            this.nudDonToiThieu.Size = new System.Drawing.Size(169, 25);
+            this.nudDonToiThieu.Size = new System.Drawing.Size(225, 30);
             this.nudDonToiThieu.TabIndex = 74;
             // 
             // nudGiaTriGiam
             // 
             this.nudGiaTriGiam.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.nudGiaTriGiam.Location = new System.Drawing.Point(131, 163);
-            this.nudGiaTriGiam.Margin = new System.Windows.Forms.Padding(2);
+            this.nudGiaTriGiam.Location = new System.Drawing.Point(175, 201);
+            this.nudGiaTriGiam.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.nudGiaTriGiam.Maximum = new decimal(new int[] {
             100000000,
             0,
             0,
             0});
             this.nudGiaTriGiam.Name = "nudGiaTriGiam";
-            this.nudGiaTriGiam.Size = new System.Drawing.Size(169, 25);
+            this.nudGiaTriGiam.Size = new System.Drawing.Size(225, 30);
             this.nudGiaTriGiam.TabIndex = 73;
             // 
             // cboLoaiGiamGia
@@ -321,10 +324,10 @@ namespace MINIPOS
             this.cboLoaiGiamGia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboLoaiGiamGia.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cboLoaiGiamGia.FormattingEnabled = true;
-            this.cboLoaiGiamGia.Location = new System.Drawing.Point(131, 130);
-            this.cboLoaiGiamGia.Margin = new System.Windows.Forms.Padding(2);
+            this.cboLoaiGiamGia.Location = new System.Drawing.Point(175, 160);
+            this.cboLoaiGiamGia.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cboLoaiGiamGia.Name = "cboLoaiGiamGia";
-            this.cboLoaiGiamGia.Size = new System.Drawing.Size(170, 25);
+            this.cboLoaiGiamGia.Size = new System.Drawing.Size(225, 31);
             this.cboLoaiGiamGia.TabIndex = 72;
             // 
             // cboLoaiKhuyenMai
@@ -332,39 +335,38 @@ namespace MINIPOS
             this.cboLoaiKhuyenMai.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboLoaiKhuyenMai.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cboLoaiKhuyenMai.FormattingEnabled = true;
-            this.cboLoaiKhuyenMai.Location = new System.Drawing.Point(131, 66);
-            this.cboLoaiKhuyenMai.Margin = new System.Windows.Forms.Padding(2);
+            this.cboLoaiKhuyenMai.Location = new System.Drawing.Point(175, 81);
+            this.cboLoaiKhuyenMai.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cboLoaiKhuyenMai.Name = "cboLoaiKhuyenMai";
-            this.cboLoaiKhuyenMai.Size = new System.Drawing.Size(170, 25);
+            this.cboLoaiKhuyenMai.Size = new System.Drawing.Size(225, 31);
             this.cboLoaiKhuyenMai.TabIndex = 71;
             this.cboLoaiKhuyenMai.SelectedIndexChanged += new System.EventHandler(this.cboLoaiKhuyenMai_SelectedIndexChanged);
             // 
             // txtTenKhuyenMai
             // 
             this.txtTenKhuyenMai.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtTenKhuyenMai.Location = new System.Drawing.Point(131, 35);
-            this.txtTenKhuyenMai.Margin = new System.Windows.Forms.Padding(2);
+            this.txtTenKhuyenMai.Location = new System.Drawing.Point(175, 43);
+            this.txtTenKhuyenMai.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTenKhuyenMai.Name = "txtTenKhuyenMai";
-            this.txtTenKhuyenMai.Size = new System.Drawing.Size(170, 25);
+            this.txtTenKhuyenMai.Size = new System.Drawing.Size(225, 30);
             this.txtTenKhuyenMai.TabIndex = 70;
             // 
             // txtCode
             // 
             this.txtCode.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.txtCode.Location = new System.Drawing.Point(131, 3);
-            this.txtCode.Margin = new System.Windows.Forms.Padding(2);
+            this.txtCode.Location = new System.Drawing.Point(175, 4);
+            this.txtCode.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtCode.Name = "txtCode";
-            this.txtCode.Size = new System.Drawing.Size(170, 25);
+            this.txtCode.Size = new System.Drawing.Size(225, 30);
             this.txtCode.TabIndex = 69;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(353, 163);
-            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label9.Location = new System.Drawing.Point(471, 201);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(69, 17);
+            this.label9.Size = new System.Drawing.Size(91, 23);
             this.label9.TabIndex = 68;
             this.label9.Text = "Trạng thái:";
             // 
@@ -372,10 +374,9 @@ namespace MINIPOS
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(353, 131);
-            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Location = new System.Drawing.Point(471, 161);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(64, 17);
+            this.label8.Size = new System.Drawing.Size(82, 23);
             this.label8.TabIndex = 67;
             this.label8.Text = "Số lượng:";
             // 
@@ -383,10 +384,9 @@ namespace MINIPOS
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(353, 99);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Location = new System.Drawing.Point(471, 122);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(91, 17);
+            this.label7.Size = new System.Drawing.Size(121, 23);
             this.label7.TabIndex = 66;
             this.label7.Text = "Ngày kết thúc:";
             // 
@@ -394,10 +394,9 @@ namespace MINIPOS
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(353, 68);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Location = new System.Drawing.Point(471, 84);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(91, 17);
+            this.label6.Size = new System.Drawing.Size(118, 23);
             this.label6.TabIndex = 65;
             this.label6.Text = "Ngày bắt đầu:";
             // 
@@ -405,10 +404,9 @@ namespace MINIPOS
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(353, 36);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Location = new System.Drawing.Point(471, 44);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(79, 17);
+            this.label5.Size = new System.Drawing.Size(103, 23);
             this.label5.TabIndex = 64;
             this.label5.Text = "Giảm tối đa:";
             // 
@@ -416,10 +414,9 @@ namespace MINIPOS
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(353, 4);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Location = new System.Drawing.Point(471, 5);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(86, 17);
+            this.label4.Size = new System.Drawing.Size(115, 23);
             this.label4.TabIndex = 63;
             this.label4.Text = "Đơn tối thiểu:";
             // 
@@ -427,10 +424,9 @@ namespace MINIPOS
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(12, 165);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(16, 203);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(79, 17);
+            this.label3.Size = new System.Drawing.Size(103, 23);
             this.label3.TabIndex = 62;
             this.label3.Text = "Giá trị giảm:";
             // 
@@ -438,10 +434,9 @@ namespace MINIPOS
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 133);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(16, 164);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(91, 17);
+            this.label2.Size = new System.Drawing.Size(118, 23);
             this.label2.TabIndex = 61;
             this.label2.Text = "Kiểu giảm giá:";
             // 
@@ -449,10 +444,9 @@ namespace MINIPOS
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 69);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(16, 85);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(104, 17);
+            this.label1.Size = new System.Drawing.Size(138, 23);
             this.label1.TabIndex = 60;
             this.label1.Text = "Loại khuyến mãi:";
             // 
@@ -460,10 +454,9 @@ namespace MINIPOS
             // 
             this.lblCategory.AutoSize = true;
             this.lblCategory.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCategory.Location = new System.Drawing.Point(12, 37);
-            this.lblCategory.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblCategory.Location = new System.Drawing.Point(16, 46);
             this.lblCategory.Name = "lblCategory";
-            this.lblCategory.Size = new System.Drawing.Size(100, 17);
+            this.lblCategory.Size = new System.Drawing.Size(133, 23);
             this.lblCategory.TabIndex = 56;
             this.lblCategory.Text = "Tên khuyến mãi:";
             // 
@@ -471,10 +464,9 @@ namespace MINIPOS
             // 
             this.lblBarcode.AutoSize = true;
             this.lblBarcode.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBarcode.Location = new System.Drawing.Point(12, 5);
-            this.lblBarcode.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblBarcode.Location = new System.Drawing.Point(16, 6);
             this.lblBarcode.Name = "lblBarcode";
-            this.lblBarcode.Size = new System.Drawing.Size(90, 17);
+            this.lblBarcode.Size = new System.Drawing.Size(118, 23);
             this.lblBarcode.TabIndex = 55;
             this.lblBarcode.Text = "Mã Code KM:";
             // 
@@ -483,9 +475,9 @@ namespace MINIPOS
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(107)))), ((int)(((byte)(154)))));
             this.panel2.Controls.Add(this.lblMiniPOSInventory);
             this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(770, 52);
+            this.panel2.Size = new System.Drawing.Size(1027, 64);
             this.panel2.TabIndex = 47;
             // 
             // lblMiniPOSInventory
@@ -493,10 +485,9 @@ namespace MINIPOS
             this.lblMiniPOSInventory.AutoSize = true;
             this.lblMiniPOSInventory.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMiniPOSInventory.ForeColor = System.Drawing.Color.White;
-            this.lblMiniPOSInventory.Location = new System.Drawing.Point(2, 15);
-            this.lblMiniPOSInventory.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblMiniPOSInventory.Location = new System.Drawing.Point(3, 18);
             this.lblMiniPOSInventory.Name = "lblMiniPOSInventory";
-            this.lblMiniPOSInventory.Size = new System.Drawing.Size(289, 25);
+            this.lblMiniPOSInventory.Size = new System.Drawing.Size(360, 29);
             this.lblMiniPOSInventory.TabIndex = 2;
             this.lblMiniPOSInventory.Text = "MiniPOS - Cửa hàng Tiện lợi";
             // 
@@ -511,10 +502,10 @@ namespace MINIPOS
             this.panel1.Controls.Add(this.btnKhachHang);
             this.panel1.Controls.Add(this.btnKho);
             this.panel1.Controls.Add(this.btnBanHang);
-            this.panel1.Location = new System.Drawing.Point(0, 50);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel1.Location = new System.Drawing.Point(0, 62);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(105, 371);
+            this.panel1.Size = new System.Drawing.Size(140, 457);
             this.panel1.TabIndex = 48;
             // 
             // btnCaiDat
@@ -531,9 +522,10 @@ namespace MINIPOS
             this.btnCaiDat.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnCaiDat.IconSize = 22;
             this.btnCaiDat.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnCaiDat.Location = new System.Drawing.Point(0, 323);
+            this.btnCaiDat.Location = new System.Drawing.Point(0, 398);
+            this.btnCaiDat.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnCaiDat.Name = "btnCaiDat";
-            this.btnCaiDat.Size = new System.Drawing.Size(105, 46);
+            this.btnCaiDat.Size = new System.Drawing.Size(140, 57);
             this.btnCaiDat.TabIndex = 19;
             this.btnCaiDat.Text = "Cài đặt";
             this.btnCaiDat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -554,9 +546,10 @@ namespace MINIPOS
             this.btnBaoCao.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnBaoCao.IconSize = 22;
             this.btnBaoCao.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnBaoCao.Location = new System.Drawing.Point(0, 277);
+            this.btnBaoCao.Location = new System.Drawing.Point(0, 341);
+            this.btnBaoCao.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnBaoCao.Name = "btnBaoCao";
-            this.btnBaoCao.Size = new System.Drawing.Size(105, 46);
+            this.btnBaoCao.Size = new System.Drawing.Size(140, 57);
             this.btnBaoCao.TabIndex = 18;
             this.btnBaoCao.Text = "Báo cáo";
             this.btnBaoCao.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -577,13 +570,15 @@ namespace MINIPOS
             this.btnXemHDNhap.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnXemHDNhap.IconSize = 22;
             this.btnXemHDNhap.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnXemHDNhap.Location = new System.Drawing.Point(0, 231);
+            this.btnXemHDNhap.Location = new System.Drawing.Point(0, 284);
+            this.btnXemHDNhap.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnXemHDNhap.Name = "btnXemHDNhap";
-            this.btnXemHDNhap.Size = new System.Drawing.Size(105, 46);
+            this.btnXemHDNhap.Size = new System.Drawing.Size(140, 57);
             this.btnXemHDNhap.TabIndex = 17;
             this.btnXemHDNhap.Text = "Hóa đơn nháp";
             this.btnXemHDNhap.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnXemHDNhap.UseVisualStyleBackColor = false;
+            this.btnXemHDNhap.Click += new System.EventHandler(this.btnXemHDNhap_Click);
             // 
             // btnKhuyenMai
             // 
@@ -599,9 +594,10 @@ namespace MINIPOS
             this.btnKhuyenMai.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnKhuyenMai.IconSize = 22;
             this.btnKhuyenMai.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnKhuyenMai.Location = new System.Drawing.Point(0, 186);
+            this.btnKhuyenMai.Location = new System.Drawing.Point(0, 229);
+            this.btnKhuyenMai.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnKhuyenMai.Name = "btnKhuyenMai";
-            this.btnKhuyenMai.Size = new System.Drawing.Size(105, 46);
+            this.btnKhuyenMai.Size = new System.Drawing.Size(140, 57);
             this.btnKhuyenMai.TabIndex = 16;
             this.btnKhuyenMai.Text = "Khuyến mãi";
             this.btnKhuyenMai.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -621,9 +617,10 @@ namespace MINIPOS
             this.btnNhanVien.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnNhanVien.IconSize = 22;
             this.btnNhanVien.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnNhanVien.Location = new System.Drawing.Point(0, 140);
+            this.btnNhanVien.Location = new System.Drawing.Point(0, 172);
+            this.btnNhanVien.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnNhanVien.Name = "btnNhanVien";
-            this.btnNhanVien.Size = new System.Drawing.Size(105, 46);
+            this.btnNhanVien.Size = new System.Drawing.Size(140, 57);
             this.btnNhanVien.TabIndex = 15;
             this.btnNhanVien.Text = "Nhân viên";
             this.btnNhanVien.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -644,9 +641,10 @@ namespace MINIPOS
             this.btnKhachHang.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnKhachHang.IconSize = 22;
             this.btnKhachHang.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnKhachHang.Location = new System.Drawing.Point(0, 94);
+            this.btnKhachHang.Location = new System.Drawing.Point(0, 116);
+            this.btnKhachHang.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnKhachHang.Name = "btnKhachHang";
-            this.btnKhachHang.Size = new System.Drawing.Size(105, 46);
+            this.btnKhachHang.Size = new System.Drawing.Size(140, 57);
             this.btnKhachHang.TabIndex = 14;
             this.btnKhachHang.Text = "Khách hàng";
             this.btnKhachHang.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -667,9 +665,10 @@ namespace MINIPOS
             this.btnKho.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnKho.IconSize = 22;
             this.btnKho.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnKho.Location = new System.Drawing.Point(0, 48);
+            this.btnKho.Location = new System.Drawing.Point(0, 59);
+            this.btnKho.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnKho.Name = "btnKho";
-            this.btnKho.Size = new System.Drawing.Size(105, 46);
+            this.btnKho.Size = new System.Drawing.Size(140, 57);
             this.btnKho.TabIndex = 13;
             this.btnKho.Text = "Kho";
             this.btnKho.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -690,9 +689,10 @@ namespace MINIPOS
             this.btnBanHang.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnBanHang.IconSize = 22;
             this.btnBanHang.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnBanHang.Location = new System.Drawing.Point(0, 3);
+            this.btnBanHang.Location = new System.Drawing.Point(0, 4);
+            this.btnBanHang.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnBanHang.Name = "btnBanHang";
-            this.btnBanHang.Size = new System.Drawing.Size(105, 46);
+            this.btnBanHang.Size = new System.Drawing.Size(140, 57);
             this.btnBanHang.TabIndex = 1;
             this.btnBanHang.Text = "Bán Hàng";
             this.btnBanHang.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -701,15 +701,15 @@ namespace MINIPOS
             // 
             // FrmKhuyenMaiChoQuanLy
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(242)))), ((int)(((byte)(247)))));
-            this.ClientSize = new System.Drawing.Size(771, 424);
+            this.ClientSize = new System.Drawing.Size(1028, 522);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FrmKhuyenMaiChoQuanLy";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản Lý Khuyến Mãi (dành cho quản lý)";

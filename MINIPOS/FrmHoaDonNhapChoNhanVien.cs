@@ -32,7 +32,7 @@ namespace MINIPOS
 
         private void btnBanHang_Click(object sender, EventArgs e)
         {
-            FrmBanHangChoQuanLy frm = new FrmBanHangChoQuanLy();
+            FrmBanHangChoNhanVien frm = new FrmBanHangChoNhanVien();
 
             frm.Show();
             this.Hide();
@@ -48,8 +48,7 @@ namespace MINIPOS
 
         private void btnKhachHang_Click(object sender, EventArgs e)
         {
-            FrmKhachHang frm = new FrmKhachHang();
-
+            FrmKhachHang frm = new FrmKhachHang(this); // Truyền 'this' vào đây
             frm.Show();
             this.Hide();
         }
@@ -66,7 +65,7 @@ namespace MINIPOS
 
         private void MoCaiDat()
         {
-            var frm = new FrmCaiDatChoQuanLy();
+            var frm = new FrmCaiDatChoNhanVien();
             frm.Show();
             this.Hide();
         }
@@ -124,19 +123,37 @@ namespace MINIPOS
             }
         }
 
+        // 1. SỬA LẠI NÚT SỬ DỤNG HOÁ ĐƠN NHÁP: Giải quyết triệt để lỗi văng ứng dụng
         private void btnSuDung_Click(object sender, EventArgs e)
         {
             if (dgvMaster.CurrentRow == null) return;
             int maHD = Convert.ToInt32(dgvMaster.CurrentRow.Cells["MaHDNhap"].Value);
 
-            // Gán dữ liệu chi tiết hàng hóa trả về cho form chính xử lý
-            DataRestore = _bus.GetChiTietHDNhap(maHD);
+            // Lấy chi tiết hàng hóa từ database
+            DataTable dtRestore = _bus.GetChiTietHDNhap(maHD);
 
-            // Hệ thống tự động xóa bỏ bản ghi tạm trong database để giải phóng phiên làm việc
-            _bus.XoaHDNhap(maHD);
+            if (dtRestore != null && dtRestore.Rows.Count > 0)
+            {
+                // Xóa hóa đơn tạm trong DB để giải phóng
+                _bus.XoaHDNhap(maHD);
 
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+                // Khởi tạo Form bán hàng mới cho nhân viên
+                FrmBanHangChoNhanVien frmBanHang = new FrmBanHangChoNhanVien();
+                frmBanHang.Show();
+
+                // Gọi hàm nạp ngược dữ liệu vừa viết ở Bước 1 vào giỏ hàng
+                frmBanHang.NapDuLieuHoaDonNhap(dtRestore);
+
+                // Ẩn form hóa đơn nháp hiện tại đi
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Không thể tải dữ liệu hóa đơn nháp này!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
+        // 2. SỬA LẠI NÚT ĐIỀU HƯỚNG SANG PHÂN HỆ BÁN HÀNG (Sửa lỗi mở nhầm Form Quản lý)
+ 
     }
 }

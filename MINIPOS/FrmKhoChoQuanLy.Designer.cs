@@ -372,6 +372,7 @@
             this.btnXemHDNhap.Text = "Hóa đơn nháp";
             this.btnXemHDNhap.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnXemHDNhap.UseVisualStyleBackColor = false;
+            this.btnXemHDNhap.Click += new System.EventHandler(this.btnXemHDNhap_Click);
             // 
             // btnKhuyenMai
             // 

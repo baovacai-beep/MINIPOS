@@ -424,7 +424,7 @@
             this.btnCaiDat.IconSize = 22;
             this.btnCaiDat.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnCaiDat.Location = new System.Drawing.Point(0, 398);
-            this.btnCaiDat.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCaiDat.Margin = new System.Windows.Forms.Padding(4);
             this.btnCaiDat.Name = "btnCaiDat";
             this.btnCaiDat.Size = new System.Drawing.Size(140, 57);
             this.btnCaiDat.TabIndex = 19;
@@ -447,7 +447,7 @@
             this.btnBaoCao.IconSize = 22;
             this.btnBaoCao.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnBaoCao.Location = new System.Drawing.Point(0, 341);
-            this.btnBaoCao.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnBaoCao.Margin = new System.Windows.Forms.Padding(4);
             this.btnBaoCao.Name = "btnBaoCao";
             this.btnBaoCao.Size = new System.Drawing.Size(140, 57);
             this.btnBaoCao.TabIndex = 18;
@@ -470,13 +470,14 @@
             this.btnXemHDNhap.IconSize = 22;
             this.btnXemHDNhap.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnXemHDNhap.Location = new System.Drawing.Point(0, 284);
-            this.btnXemHDNhap.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnXemHDNhap.Margin = new System.Windows.Forms.Padding(4);
             this.btnXemHDNhap.Name = "btnXemHDNhap";
             this.btnXemHDNhap.Size = new System.Drawing.Size(140, 57);
             this.btnXemHDNhap.TabIndex = 17;
             this.btnXemHDNhap.Text = "Hóa đơn nháp";
             this.btnXemHDNhap.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnXemHDNhap.UseVisualStyleBackColor = false;
+            this.btnXemHDNhap.Click += new System.EventHandler(this.btnXemHDNhap_Click);
             // 
             // btnKhuyenMai
             // 
@@ -492,7 +493,7 @@
             this.btnKhuyenMai.IconSize = 22;
             this.btnKhuyenMai.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnKhuyenMai.Location = new System.Drawing.Point(0, 229);
-            this.btnKhuyenMai.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnKhuyenMai.Margin = new System.Windows.Forms.Padding(4);
             this.btnKhuyenMai.Name = "btnKhuyenMai";
             this.btnKhuyenMai.Size = new System.Drawing.Size(140, 57);
             this.btnKhuyenMai.TabIndex = 16;
@@ -515,7 +516,7 @@
             this.btnNhanVien.IconSize = 22;
             this.btnNhanVien.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnNhanVien.Location = new System.Drawing.Point(0, 172);
-            this.btnNhanVien.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnNhanVien.Margin = new System.Windows.Forms.Padding(4);
             this.btnNhanVien.Name = "btnNhanVien";
             this.btnNhanVien.Size = new System.Drawing.Size(140, 57);
             this.btnNhanVien.TabIndex = 15;
@@ -537,7 +538,7 @@
             this.btnKhachHang.IconSize = 22;
             this.btnKhachHang.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnKhachHang.Location = new System.Drawing.Point(0, 116);
-            this.btnKhachHang.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnKhachHang.Margin = new System.Windows.Forms.Padding(4);
             this.btnKhachHang.Name = "btnKhachHang";
             this.btnKhachHang.Size = new System.Drawing.Size(140, 57);
             this.btnKhachHang.TabIndex = 14;
@@ -560,7 +561,7 @@
             this.btnKho.IconSize = 22;
             this.btnKho.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnKho.Location = new System.Drawing.Point(0, 59);
-            this.btnKho.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnKho.Margin = new System.Windows.Forms.Padding(4);
             this.btnKho.Name = "btnKho";
             this.btnKho.Size = new System.Drawing.Size(140, 57);
             this.btnKho.TabIndex = 13;
@@ -583,7 +584,7 @@
             this.btnBanHang.IconSize = 22;
             this.btnBanHang.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnBanHang.Location = new System.Drawing.Point(0, 4);
-            this.btnBanHang.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnBanHang.Margin = new System.Windows.Forms.Padding(4);
             this.btnBanHang.Name = "btnBanHang";
             this.btnBanHang.Size = new System.Drawing.Size(140, 57);
             this.btnBanHang.TabIndex = 1;

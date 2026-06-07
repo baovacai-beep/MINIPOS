@@ -218,8 +218,7 @@ namespace MINIPOS
         }
         private void btnKhachHang_Click(object sender, EventArgs e)
         {
-            FrmKhachHang frm = new FrmKhachHang();
-
+            FrmKhachHang frm = new FrmKhachHang(this); // Truyền 'this' vào đây
             frm.Show();
             this.Hide();
         }
@@ -583,31 +582,41 @@ namespace MINIPOS
         }
 
         // SỰ KIỆN 2: BẤM NÚT XEM DANH SÁCH HOÁ ĐƠN NHÁP ĐÃ LƯU
+        // 1. SỬA LẠI SỰ KIỆN BẤM NÚT XEM HOÁ ĐƠN NHÁP
         private void btnXemHDNhap_Click(object sender, EventArgs e)
         {
-            FrmHoaDonNhapChoQuanLy frm = new FrmHoaDonNhapChoQuanLy();
-            if (frm.ShowDialog() == DialogResult.OK && frm.DataRestore != null)
-            {
-                dgvGioHang.Rows.Clear();
-                foreach (DataRow row in frm.DataRestore.Rows)
-                {
-                    int maSP = Convert.ToInt32(row["MaSanPham"]);
-                    string tenSP = row["TenSanPham"].ToString();
-                    int soLuong = Convert.ToInt32(row["SoLuong"]);
-                    decimal donGia = Convert.ToDecimal(row["DonGiaBan"]);
-                    decimal thanhTien = soLuong * donGia;
+            // Đổi từ ShowDialog sang Show/Hide để đồng bộ toàn hệ thống
+            // Chú ý: Nhân viên thì phải mở đúng Form của Nhân viên
+            FrmHoaDonNhapChoNhanVien frm = new FrmHoaDonNhapChoNhanVien();
+            frm.Show();
+            this.Hide();
+        }
 
-                    // Đưa ngược dữ liệu hóa đơn nháp được chọn vào lại dgvGioHang
-                    int rowIndex = dgvGioHang.Rows.Add();
-                    dgvGioHang.Rows[rowIndex].Cells[COL_MASP].Value = maSP;
-                    dgvGioHang.Rows[rowIndex].Cells[COL_STT].Value = rowIndex + 1;
-                    dgvGioHang.Rows[rowIndex].Cells[COL_TENSP].Value = tenSP;
-                    dgvGioHang.Rows[rowIndex].Cells[COL_DONGIA].Value = donGia;
-                    dgvGioHang.Rows[rowIndex].Cells[COL_SOLUONG].Value = soLuong;
-                    dgvGioHang.Rows[rowIndex].Cells[COL_THANHTIEN].Value = thanhTien;
-                }
-                TinhTongTien();
+        // 2. THÊM MỚI HÀM NÀY VÀO BÊN TRONG CLASS FrmBanHangChoNhanVien
+        // Hàm này giúp Form Hóa đơn nháp gọi và truyền ngược dữ liệu vào Giỏ hàng khi bấm "Sử dụng"
+        public void NapDuLieuHoaDonNhap(DataTable dt)
+        {
+            if (dt == null) return;
+
+            dgvGioHang.Rows.Clear();
+            foreach (DataRow row in dt.Rows)
+            {
+                int maSP = Convert.ToInt32(row["MaSanPham"]);
+                string tenSP = row["TenSanPham"].ToString();
+                int soLuong = Convert.ToInt32(row["SoLuong"]);
+                decimal donGia = Convert.ToDecimal(row["DonGiaBan"]);
+                decimal thanhTien = soLuong * donGia;
+
+                // Đưa dữ liệu hóa đơn nháp được chọn vào lại dgvGioHang
+                int rowIndex = dgvGioHang.Rows.Add();
+                dgvGioHang.Rows[rowIndex].Cells[COL_MASP].Value = maSP;
+                dgvGioHang.Rows[rowIndex].Cells[COL_STT].Value = rowIndex + 1;
+                dgvGioHang.Rows[rowIndex].Cells[COL_TENSP].Value = tenSP;
+                dgvGioHang.Rows[rowIndex].Cells[COL_DONGIA].Value = donGia;
+                dgvGioHang.Rows[rowIndex].Cells[COL_SOLUONG].Value = soLuong;
+                dgvGioHang.Rows[rowIndex].Cells[COL_THANHTIEN].Value = thanhTien;
             }
+            TinhTongTien(); // Tính toán lại tổng tiền của giỏ hàng
         }
     }
 }

@@ -42,8 +42,7 @@ namespace MINIPOS
 
         private void btnKhachHang_Click(object sender, EventArgs e)
         {
-            FrmKhachHang frm = new FrmKhachHang();
-
+            FrmKhachHang frm = new FrmKhachHang(this); // Truyền 'this' vào đây
             frm.Show();
             this.Hide();
         }
@@ -138,5 +137,11 @@ namespace MINIPOS
             }
         }
 
+        private void btnXemHDNhap_Click(object sender, EventArgs e)
+        {
+            FrmHoaDonNhapChoQuanLy frm = new FrmHoaDonNhapChoQuanLy();
+            frm.Show();
+            this.Hide();
+        }
     }
 }

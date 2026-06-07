@@ -42,8 +42,7 @@ namespace MINIPOS
 
         private void btnKhachHang_Click(object sender, EventArgs e)
         {
-            FrmKhachHang frm = new FrmKhachHang();
-
+            FrmKhachHang frm = new FrmKhachHang(this); // Truyền 'this' vào đây
             frm.Show();
             this.Hide();
         }
@@ -149,14 +148,25 @@ namespace MINIPOS
             if (dgvMaster.CurrentRow == null) return;
             int maHD = Convert.ToInt32(dgvMaster.CurrentRow.Cells["MaHDNhap"].Value);
 
-            // Gán dữ liệu chi tiết hàng hóa trả về cho form chính xử lý
-            DataRestore = _bus.GetChiTietHDNhap(maHD);
+            DataTable dtRestore = _bus.GetChiTietHDNhap(maHD);
 
-            // Hệ thống tự động xóa bỏ bản ghi tạm trong database để giải phóng phiên làm việc
-            _bus.XoaHDNhap(maHD);
+            if (dtRestore != null && dtRestore.Rows.Count > 0)
+            {
+                _bus.XoaHDNhap(maHD);
 
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+                // Khởi tạo Form bán hàng cho QUẢN LÝ
+                FrmBanHangChoQuanLy frmBanHang = new FrmBanHangChoQuanLy();
+                frmBanHang.Show();
+
+                // Nạp dữ liệu vào giỏ hàng của Quản lý
+                frmBanHang.NapDuLieuHoaDonNhap(dtRestore);
+
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Không thể tải dữ liệu hóa đơn nháp này!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         // NÚT BẤM XEM LỊCH SỬ HOÁ ĐƠN

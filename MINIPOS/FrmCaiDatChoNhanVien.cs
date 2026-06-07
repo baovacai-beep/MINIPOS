@@ -37,7 +37,7 @@ namespace MINIPOS
 
         private void btnBanHang_Click(object sender, EventArgs e)
         {
-            FrmBanHangChoQuanLy frm = new FrmBanHangChoQuanLy();
+            FrmBanHangChoNhanVien frm = new FrmBanHangChoNhanVien();
 
             frm.Show();
             this.Hide();
@@ -53,8 +53,7 @@ namespace MINIPOS
 
         private void btnKhachHang_Click(object sender, EventArgs e)
         {
-            FrmKhachHang frm = new FrmKhachHang();
-
+            FrmKhachHang frm = new FrmKhachHang(this); // Truyền 'this' vào đây
             frm.Show();
             this.Hide();
         }
@@ -62,7 +61,6 @@ namespace MINIPOS
         private void btnXemHDNhap_Click(object sender, EventArgs e)
         {
             FrmHoaDonNhapChoNhanVien frm = new FrmHoaDonNhapChoNhanVien();
-
             frm.Show();
             this.Hide();
         }
@@ -79,7 +77,7 @@ namespace MINIPOS
 
         private void MoCaiDat()
         {
-            var frm = new FrmCaiDatChoQuanLy();
+            var frm = new FrmCaiDatChoNhanVien();
             frm.Show();
             this.Hide();
         }
